@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Mover</string>
+    <string name="button_trayectos">Trayectos</string>
+    <string name="button_paradas">Paradas</string>
+    <string name="button_lineas">Lineas</string>
+
 </resources>

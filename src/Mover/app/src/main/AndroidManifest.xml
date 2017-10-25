@@ -11,8 +11,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".View.MainActivity">
             <intent-filter>
-
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -20,10 +18,12 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".View.LineasFragment" />
+        <activity android:name=".View.ParadasFragment" />
+        <activity android:name=".View.DireccionesFragment"></activity>
     </application>
 
 </manifest>
