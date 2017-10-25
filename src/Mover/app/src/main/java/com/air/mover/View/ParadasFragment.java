@@ -14,7 +14,7 @@ public class ParadasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance)
     {
-        View v= inflater.inflate(R.layout.activity_lineas_fragment, container, false);
+        View v= inflater.inflate(R.layout.activity_paradas_fragment, container, false);
         return v;
     }
 }

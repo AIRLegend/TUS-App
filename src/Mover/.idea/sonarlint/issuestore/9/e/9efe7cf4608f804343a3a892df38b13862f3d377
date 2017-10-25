@@ -1,0 +1,6 @@
+
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(÷¾þÍ8×£ÉÇô+
+hsquid:MaximumInheritanceDepth"<This class has 7 parents which is greater than 5 authorized.(ÄË›ºøÿÿÿÿ
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‹¥ã®ûÿÿÿÿ8 ¼Çô+
+Ksquid:S00108")Either remove or fill this block of code.(¥ì¹Æüÿÿÿÿ8ÈÉÇô+
+ysquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(‘÷üîÿÿÿÿÿ8ÞÜëô+
