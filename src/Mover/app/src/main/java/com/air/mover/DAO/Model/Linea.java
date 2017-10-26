@@ -4,7 +4,8 @@ package com.air.mover.DAO.Model;
  * Clase
  */
 
-public class Linea {
+public class Linea
+{
 
     private String name;
     private int identifier;

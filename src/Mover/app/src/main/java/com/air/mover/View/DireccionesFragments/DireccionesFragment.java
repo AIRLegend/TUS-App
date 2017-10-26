@@ -1,4 +1,4 @@
-package com.air.mover.View;
+package com.air.mover.View.DireccionesFragments;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 
 import com.air.mover.R;
 
-public class ParadasFragment extends Fragment {
+public class DireccionesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance)
     {
-        View v= inflater.inflate(R.layout.activity_paradas_fragment, container, false);
+        View v= inflater.inflate(R.layout.activity_direcciones_fragment, container, false);
         return v;
     }
 }

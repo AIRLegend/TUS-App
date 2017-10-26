@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.air.mover">
 
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_logo_app"
@@ -21,9 +24,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.LineasFragment" />
-        <activity android:name=".View.ParadasFragment" />
-        <activity android:name=".View.DireccionesFragment"></activity>
     </application>
 
 </manifest>
