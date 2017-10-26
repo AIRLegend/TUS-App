@@ -16,15 +16,17 @@ public class LineasFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance)
     {
+        super.onCreate(savedInstance);
         mTabHost= new FragmentTabHost(getActivity());
 
         mTabHost.setup(getActivity(), getChildFragmentManager(), R.layout.activity_lineas_fragment);
 
         //Create child tab1
         mTabHost.addTab(mTabHost.newTabSpec("tab_todas").setIndicator("Todas"), LineasTodasFragment.class, null);
-
         mTabHost.addTab(mTabHost.newTabSpec("tab_favoritas").setIndicator("Favoritas"), LineasFavoritasFragment.class, null);
 
+        //mTabHost.getTabWidget().getChildTabViewAt(0).getLayoutParams().height = 50;
+        //mTabHost.getTabWidget().getChildTabViewAt(1).getLayoutParams().height = 50;
 
         return mTabHost;
     }

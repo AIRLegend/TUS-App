@@ -45,7 +45,7 @@ public class ListLineasAdapter extends ArrayAdapter {
         TextView textViewNumero = (TextView) viewRow.findViewById(R.id.textViewNumero);
         textViewName.setText(lineasBus.get(position).getName().trim());
 
-        String numLinea= Integer.toString(lineasBus.get(position).getIdentifier());
+        String numLinea=lineasBus.get(position).getNumero().trim();
         String numAlineado="";
         if(numLinea.length()==1)
         {

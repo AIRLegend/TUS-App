@@ -52,7 +52,9 @@ public class ParserJSON{
         int identifier=-1;
         while(reader.hasNext()) {
             String n = reader.nextName();
-            if (n.equals("dc:name")) {
+            if (n.equals("ayto:numero")) {
+                numero = reader.nextString();
+            } else if (n.equals("dc:name")) {
                 name = reader.nextString();
             } else if (n.equals("dc:identifier")) {
                 identifier = reader.nextInt();
@@ -61,7 +63,7 @@ public class ParserJSON{
             }
         }
         reader.endObject();
-        return new Linea(name,identifier);
+        return new Linea(name,numero,identifier);
     }//readLinea
 
 

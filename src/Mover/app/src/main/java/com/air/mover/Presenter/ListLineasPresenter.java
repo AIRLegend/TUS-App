@@ -86,7 +86,6 @@ public class ListLineasPresenter
         try {
             remoteFetchLineas.getJSON(RemoteFetch.URL_LINEAS_BUS);;
             listaLineasBus = ParserJSON.readArrayLineasBus(remoteFetchLineas.getBufferedData());
-            Log.d("ENTRA", "Obten gasolineras:"+listaLineasBus.size());
             return true;
         }catch(Exception e){
             Log.e("ERROR","Error en la obtención de las lineas de Bus: "+e.getMessage());

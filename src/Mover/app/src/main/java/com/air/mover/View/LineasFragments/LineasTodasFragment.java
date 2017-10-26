@@ -39,9 +39,14 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
         super.onActivityCreated(savedInstanceState);
         this.listLineasPresenter = new ListLineasPresenter(getContext(),this);
         dialog= new ProgressDialog(getContext());
-        this.listLineasPresenter.start();
+
     }
 
+    @Override
+    public void onResume() {
+        this.listLineasPresenter.start();   // Se pone en el onResume
+        super.onResume();
+    }
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
         Log.d("pulsado", ""+position);
