@@ -16,19 +16,21 @@ public class LineasFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance)
     {
-        super.onCreate(savedInstance);
-        mTabHost= new FragmentTabHost(getActivity());
+        //super.onCreate(savedInstance);
+        //mTabHost= new FragmentTabHost(getActivity());
+        View view = inflater.inflate(R.layout.activity_lineas_fragment, container, false);
 
-        mTabHost.setup(getActivity(), getChildFragmentManager(), R.layout.activity_lineas_fragment);
+        mTabHost = (FragmentTabHost)view.findViewById(R.id.tabhost_lineas);
+        mTabHost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
 
         //Create child tab1
         mTabHost.addTab(mTabHost.newTabSpec("tab_todas").setIndicator("Todas"), LineasTodasFragment.class, null);
         mTabHost.addTab(mTabHost.newTabSpec("tab_favoritas").setIndicator("Favoritas"), LineasFavoritasFragment.class, null);
 
-        //mTabHost.getTabWidget().getChildTabViewAt(0).getLayoutParams().height = 50;
-        //mTabHost.getTabWidget().getChildTabViewAt(1).getLayoutParams().height = 50;
 
-        return mTabHost;
+        mTabHost.getTabWidget().getChildTabViewAt(0).getLayoutParams().height = (int) (30 * this.getResources().getDisplayMetrics().density);
+        mTabHost.getTabWidget().getChildTabViewAt(1).getLayoutParams().height = (int) (30 * this.getResources().getDisplayMetrics().density);
+        return view;
     }
 
     @Override

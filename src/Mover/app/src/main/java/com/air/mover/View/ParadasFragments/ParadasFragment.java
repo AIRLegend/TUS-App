@@ -16,17 +16,23 @@ public class ParadasFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstance)
     {
-        mTabHost= new FragmentTabHost(getActivity());
+        //mTabHost= new FragmentTabHost(getActivity());
 
-        mTabHost.setup(getActivity(), getChildFragmentManager(), R.layout.activity_paradas_fragment);
+        //mTabHost.setup(getActivity(), getChildFragmentManager(), R.layout.activity_paradas_fragment);
+
+        View view = inflater.inflate(R.layout.activity_paradas_fragment, container, false);
+
+        mTabHost = (FragmentTabHost)view.findViewById(R.id.tabhost_paradas);
+        mTabHost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
 
         //Create child tab1
         mTabHost.addTab(mTabHost.newTabSpec("tab_todas").setIndicator("Todas"), ParadasTodasFragment.class, null);
-
         mTabHost.addTab(mTabHost.newTabSpec("tab_favoritas").setIndicator("Favoritas"), ParadasFavoritasFragment.class, null);
 
+        mTabHost.getTabWidget().getChildTabViewAt(0).getLayoutParams().height = (int) (30 * this.getResources().getDisplayMetrics().density);
+        mTabHost.getTabWidget().getChildTabViewAt(1).getLayoutParams().height = (int) (30 * this.getResources().getDisplayMetrics().density);
 
-        return mTabHost;
+        return view;
     }
 
     @Override
