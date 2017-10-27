@@ -7,7 +7,11 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp">
 
-
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_directions_bus_black_24dp"
+        android:layout_gravity="center_vertical"/>
 
     <TextView
         android:id="@+id/textViewNumero"
@@ -16,7 +20,7 @@
         android:layout_gravity="center_vertical"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:textSize="28sp"/>
+        android:textSize="22sp"/>
 
     <TextView
         android:id="@+id/textViewName"
@@ -25,6 +29,6 @@
         android:layout_gravity="center_vertical"
         android:textColor="@android:color/black"
         android:textStyle="normal"
-        android:textSize="17sp"/>
+        android:textSize="14sp"/>
 
 </LinearLayout>

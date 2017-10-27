@@ -73,4 +73,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         return true;
     }
+
+    /**
+     * Cuando se reinicia la app / activity se pone por defecto en la primera pestana de lineas.
+     */
+    @Override
+    protected void onStart() {
+        super.onStart();
+        onNavigationItemSelected(mBottomBar.getMenu().getItem(0));
+        mBottomBar.setSelectedItemId(R.id.action_lineas);
+    }
 }
