@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:adjustViewBounds="false"
+        android:tint="@color/Linea1"
         android:src="@drawable/ic_directions_bus_black_24dp" />
 
     <TextView
