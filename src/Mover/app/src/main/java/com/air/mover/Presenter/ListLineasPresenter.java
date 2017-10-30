@@ -135,27 +135,5 @@ public class ListLineasPresenter
     }//getListaLineasBus
 
 
-    /**
-     * Método para obtener un cadena de texto con todas las lineas. En esta cadena
-     * se muestra unicamente el nombre de la linea
-     *  @return String con todas las gasolineras separadas por un doble salto de línea
-     */
-    public String getTextoLineas(){
-        String textoLineas="";
-        if(listaLineasBus!=null)
-        {
-            for (int i=0; i<listaLineasBus.size(); i++)
-            {
-                textoLineas=textoLineas+listaLineasBus.get(i).getIdentifier()+"\n\n";
-            }//for
-        }//if
-        else
-        {
-            textoLineas="Sin lineas";
-        }//else
-        return textoLineas;
-    }//getTextoLineas
-
-
 }// ListLineasPresenter
 
