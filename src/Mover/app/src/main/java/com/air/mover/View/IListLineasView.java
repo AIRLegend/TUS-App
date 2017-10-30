@@ -5,9 +5,9 @@ import com.air.mover.DAO.Model.Linea;
 import java.util.List;
 
 /**
- * Created by alejandro on 11/10/17.
+ * Interfaz que implementará la vista de una lista de lineas de TUS
+ * @version 29/10/17
  */
-
 public interface IListLineasView {
     void showList(List<Linea> lineaList);
     void showProgress(boolean state);
