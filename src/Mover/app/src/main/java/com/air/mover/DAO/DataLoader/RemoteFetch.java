@@ -8,6 +8,8 @@ import java.net.URL;
 
 /**
  * Clase en la que se realizan la descarga de los datos desde el servicio "REST"
+ *
+ * @version 29/10/17
  */
 
 public class RemoteFetch {

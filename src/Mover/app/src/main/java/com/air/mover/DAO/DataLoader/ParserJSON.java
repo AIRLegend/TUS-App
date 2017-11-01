@@ -8,11 +8,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
+  *  Esta clase se encarga de realizar el parseo de los datos correspondientes a las lineas de los TUS de Santander.
+  *  Estos datos son leidos del Open Data proporcionado por el Ayuntamiento de Santander y son representados en un formato denominado JSON.
  *
- */
+ *   @version 29/10/17
+  */
+
 public class ParserJSON{
 
     /**
@@ -21,7 +26,8 @@ public class ParserJSON{
      * @return Lista con todas las lineas
      * @throws IOException
      */
-    public static List<Linea> readArrayLineasBus (InputStream in) throws IOException {
+    public static List<Linea> readArrayLineasBus (InputStream in) throws IOException
+    {
             JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
             List<Linea> listLineasBus = new ArrayList<Linea>();
             reader.beginObject(); //summary y resources
@@ -29,19 +35,25 @@ public class ParserJSON{
                     String name = reader.nextName();
                     if(name.equals ("resources")){
                         reader.beginArray(); //cada elemento del array es un object
-                        while(reader.hasNext())
+                        while(reader.hasNext()){
                             listLineasBus.add(readLinea(reader));
-                    }else{
+                        }//while
+
+                    }//if
+                    else{
                         reader.skipValue();
-                    }
+                    }//else
             }
+            //Ordenamos la lista obtenida
+            Collections.sort(listLineasBus);
+
             return listLineasBus;
-        }
+        }//readArrayLineasBus
 
     /**
-     * Lee una linea
-     * @param reader
-     * @return
+     * Metodo que se encarga de leer y crear una linea TUS a partir del lector pasado como parametro
+     * @param reader lector de los datos con formato JSON
+     * @return linea TUS leida
      * @throws IOException
      */
     public static Linea readLinea (JsonReader reader) throws IOException {
@@ -52,16 +64,22 @@ public class ParserJSON{
             String n = reader.nextName();
             if (n.equals("ayto:numero")) {
                 numero = reader.nextString();
-            } else if (n.equals("dc:name")) {
+            }//if
+            else if (n.equals("dc:name")) {
                 name = reader.nextString();
-            } else if (n.equals("dc:identifier")) {
+            }//else if
+            else if (n.equals("dc:identifier")) {
                 identifier = reader.nextInt();
-            } else {
+            }//else if
+            else {
                 reader.skipValue();
-            }
-        }
+            }//else
+        }//while
+
         reader.endObject();
+
         return new Linea(name,numero,identifier);
+
     }//readLinea
 
 

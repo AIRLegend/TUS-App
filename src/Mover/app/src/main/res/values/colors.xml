@@ -4,6 +4,26 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="LineaPorDefecto">#FFAA79</color>
+    <color name="Linea1">#f44336</color>
+    <color name="Linea2">#AB47BC</color>
+    <color name="Linea3">#FFD54F</color>
+    <color name="Linea4">#00BCD4</color>
+    <color name="Linea5">#9E9E9E</color>
+    <color name="Linea6">#2E7D32</color>
+    <color name="Linea7">#FF6F00</color>
+    <color name="Linea11">#1A237E</color>
+    <color name="Linea12">#AED581</color>
+    <color name="Linea13">#B39DDB</color>
+    <color name="Linea14">#1565C0</color>
+    <color name="Linea16">#880E4F</color>
+    <color name="Linea17">#EF9A9A</color>
+    <color name="Linea18">#A3E4D7</color>
+    <color name="Linea19">#00838F</color>
+    <color name="Linea20">#97FF77</color>
+    <color name="Linea21">#9CCC65</color>
+    <color name="Linea23">#CFD8DC</color>
+    <color name="LineaN">#000000</color>
 
     <color name="blueBackground">#297efc</color>
 </resources>
