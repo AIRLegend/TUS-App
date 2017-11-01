@@ -41,6 +41,10 @@ public class ListLineasPresenter
         this.remoteFetchLineas = new RemoteFetch();
     }// ListLineasPresenter
 
+    public void setListaLineasBus(List<Linea> listaLineasBus) {
+        this.listaLineasBus = listaLineasBus;
+    }
+
 
     /**
      * Clase asincrona que permite descargar las lineas de TUS de internet
@@ -85,18 +89,13 @@ public class ListLineasPresenter
         {
             if (result) {
                 List<Linea> lineas = getListaLineasBus();
-                if(lineas==null){
-                    lineas=new ArrayList<Linea>();
-                }
+                if(lineas == null){
+                    lineas = new ArrayList<Linea>();
+                }//if
                 listLineasView.showList(lineas);
                 listLineasView.showProgress(false);
-
-            
-
-
-
             }//if
-        }//onPostExecute
+        }
 
     }
 
@@ -125,7 +124,7 @@ public class ListLineasPresenter
         try
         {
             remoteFetchLineas.getJSON(RemoteFetch.URL_LINEAS_BUS);;
-            listaLineasBus = ParserJSON.readArrayLineasBus(remoteFetchLineas.getBufferedData());
+            setListaLineasBus(ParserJSON.readArrayLineasBus(remoteFetchLineas.getBufferedData()));
             return true;
         }//try
         catch(Exception e){
@@ -139,7 +138,6 @@ public class ListLineasPresenter
     public List<Linea> getListaLineasBus() {
         return listaLineasBus;
     }//getListaLineasBus
-
 
 }// ListLineasPresenter
 

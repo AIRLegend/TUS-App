@@ -5,6 +5,7 @@ f
 6app/src/main/java/com/air/mover/View/MainActivity.java,5/7/576518e999853a485c716a2c187f6186ba953dcf
 f
 6app/src/main/java/com/air/mover/View/SplashScreen.java,9/e/9efe7cf4608f804343a3a892df38b13862f3d377
+<<<<<<< HEAD
 d
 4app\src\main\java\com\air\mover\DAO\Model\Linea.java,4\4\44acf35717ac881d4f4c3d160119fd045e49647b
 n
@@ -19,5 +20,11 @@ k
 ;app\src\main\java\com\air\mover\View\ListLineasAdapter.java,4\3\43eaa1e5d92c84ec1bd45cc5fc0bcea84ec27d7c
 o
 ?app\src\main\java\com\air\mover\DAO\DataLoader\RemoteFetch.java,c\c\cc233e8c5014935a8a0b0ed13b30b6f0d5a7e320
+=======
+}
+Mapp\src\androidTest\java\com\air\mover\Presenter\ListLineasPresenterTest.java,4\a\4a6b02918e183f4d74032c1206835aa656b11bcc
+P
+ app\src\main\AndroidManifest.xml,a\c\ac6e0c942798c8a768fab2e3ab7e6a6b69b346f1
+>>>>>>> 011f11e4cafd0d78d4885d4356c3180e2ec14d8f
 r
 Bapp\src\main\java\com\air\mover\Presenter\ListLineasPresenter.java,f\b\fb95b8df9ed22f234ebd28c36a444e95922ef1b9
