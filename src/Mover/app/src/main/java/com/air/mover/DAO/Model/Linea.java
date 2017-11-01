@@ -95,6 +95,6 @@ public class Linea implements Comparable<Linea>
      @Override
      public int compareTo(@NonNull Linea linea)
      {
-         return identifier-linea.getIdentifier();
+         return identifier - linea.getIdentifier();
      }//compareTo
  }//Linea
