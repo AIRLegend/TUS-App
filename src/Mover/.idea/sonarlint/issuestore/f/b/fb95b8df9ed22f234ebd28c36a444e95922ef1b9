@@ -1,7 +1,6 @@
 
-6squid:S1643"Use a StringBuilder instead.(‘š²¢ıÿÿÿÿ
-Dsquid:EmptyStatementUsageCheck"Remove this empty statement.(ù¼Û
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 ?squid:S1068"+Remove this unused "context" private field.(êİç
+Dsquid:EmptyStatementUsageCheck"Remove this empty statement.(ù¼Û
 ssquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(úæßéşÿÿÿÿ
 msquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(Ş¥‚
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
