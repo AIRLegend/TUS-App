@@ -1,17 +1,15 @@
 package com.air.mover.Presenter;
 
-import android.app.*;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.air.mover.DAO.DataLoader.ParserJSON;
 import com.air.mover.DAO.DataLoader.RemoteFetch;
 import com.air.mover.DAO.Model.Linea;
 import com.air.mover.View.IListLineasView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,7 +36,9 @@ public class ListLineasPresenter
         this.remoteFetchLineas = new RemoteFetch();
     }// ListLineasPresenter
 
-
+    public void setListaLineasBus(List<Linea> listaLineasBus) {
+        this.listaLineasBus = listaLineasBus;
+    }
 
     private class LeerLineasInternet extends AsyncTask<Object, Boolean, Boolean>
     {
@@ -59,9 +59,13 @@ public class ListLineasPresenter
         protected void onPostExecute(Boolean result)
         {
             if (result) {
-                listLineasView.showList(getListaLineasBus());
+                List<Linea> lineas = getListaLineasBus();
+                if(lineas == null){
+                    lineas = new ArrayList<Linea>();
+                }//if
+                listLineasView.showList(lineas);
                 listLineasView.showProgress(false);
-            }
+            }//if
         }
     }
 
@@ -85,7 +89,7 @@ public class ListLineasPresenter
     public boolean obtenLineas(){
         try {
             remoteFetchLineas.getJSON(RemoteFetch.URL_LINEAS_BUS);;
-            listaLineasBus = ParserJSON.readArrayLineasBus(remoteFetchLineas.getBufferedData());
+            setListaLineasBus(ParserJSON.readArrayLineasBus(remoteFetchLineas.getBufferedData()));
             return true;
         }catch(Exception e){
             Log.e("ERROR","Error en la obtención de las lineas de Bus: "+e.getMessage());
@@ -107,10 +111,10 @@ public class ListLineasPresenter
      */
     public String getTextoLineas(){
         String textoLineas="";
-        if(listaLineasBus!=null)
+        if(getListaLineasBus() !=null)
         {
-            for (int i=0; i<listaLineasBus.size(); i++){
-                textoLineas=textoLineas+listaLineasBus.get(i).getIdentifier()+"\n\n";
+            for (int i = 0; i< getListaLineasBus().size(); i++){
+                textoLineas=textoLineas+ getListaLineasBus().get(i).getIdentifier()+"\n\n";
             }//for
         }else{
             textoLineas="Sin lineas";
