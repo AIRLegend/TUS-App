@@ -1,0 +1,7 @@
+
+fsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.(˜®¬z
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(‘÷üîÿÿÿÿÿ
+Zsquid:UselessImportCheck"9Remove this unused import 'android.graphics.ColorFilter'.(âñû^
+qsquid:UselessImportCheck"PRemove this unused import 'android.support.v4.graphics.drawable.DrawableCompat'.(ò…Ÿr
+Zsquid:UselessImportCheck"8Remove this unused import 'android.graphics.PorterDuff'.(•ÙÄ±
+fsquid:UselessImportCheck"?Remove this unused import 'android.graphics.drawable.Drawable'.(Á‰º„ùÿÿÿÿ

@@ -1,0 +1,14 @@
+
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+<<<<<<< HEAD
+Tsquid:UselessImportCheck"2Remove this unused import 'android.os.StrictMode'.(Ä§Ì„
+Rsquid:UselessImportCheck"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+Dsquid:EmptyStatementUsageCheck"Remove this empty statement.(ù¼Û
+?squid:S1068"+Remove this unused "context" private field.(êİç
+Xsquid:UselessImportCheck"1Remove this unused import 'android.widget.Toast'.(©›ïÍúÿÿÿÿ
+=======
+?squid:S1068"+Remove this unused "context" private field.(êİç
+Dsquid:EmptyStatementUsageCheck"Remove this empty statement.(ù¼Û
+ssquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(úæßéşÿÿÿÿ
+>>>>>>> 011f11e4cafd0d78d4885d4356c3180e2ec14d8f
+msquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(Ş¥‚

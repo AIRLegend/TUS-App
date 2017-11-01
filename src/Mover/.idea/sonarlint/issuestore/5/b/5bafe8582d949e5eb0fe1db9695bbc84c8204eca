@@ -1,0 +1,5 @@
+
+9squid:S1659"$Declare "numero" on a separate line.(ËÅ‚ã
+nsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(Îä©
+Tsquid:S1118":Add a private constructor to hide the implicit public one.(İÃ¸‰úÿÿÿÿ
+rsquid:S00120"WRename this package name to match the regular expression '^[a-z]+(\.[a-z][a-z0-9]*)*$'.(ÈûŞ„üÿÿÿÿ
