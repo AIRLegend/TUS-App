@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/action_lineas"
+        android:icon="@drawable/ic_directions_bus_black_24dp"
+        android:title="@string/item_navigation_lineas" />
+    <item
+        android:id="@+id/action_paradas"
+        android:icon="@drawable/ic_location_on_black_24dp"
+        android:title="@string/item_navigation_paradas" />
+    <item android:id="@+id/action_buscar"
+        android:icon="@drawable/ic_directions_black_24dp"
+        android:title="@string/item_navigation_trayectos" />
+        />
+
+</menu>

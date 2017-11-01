@@ -3,18 +3,36 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.0'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+
+plugins {
+    id "org.sonarqube" version "2.5"
+}
+
+sonarqube {
+    properties {
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.organization", "isuc"
+        property "sonar.login", "7581ebd0d74f43ef91ae6b9864776973b548c9d3"
+        property "sonar.projectKey", "tusgrupo2"
+        property "sonar.projectName", "TUS Grupo 2"
+    }
+}
+
+
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 }
 

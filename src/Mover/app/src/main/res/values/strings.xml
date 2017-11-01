@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Mover</string>
+    <string name="item_navigation_trayectos">Buscar</string>
+    <string name="item_navigation_paradas">Paradas</string>
+    <string name="item_navigation_lineas">Lineas</string>
+    <string name="cont_tab_todas">Todas</string>
+    <string name="cont_tab_favoritas">Favoritas</string>
+
 </resources>
