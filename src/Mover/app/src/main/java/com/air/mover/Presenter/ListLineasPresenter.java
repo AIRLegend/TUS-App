@@ -1,17 +1,15 @@
 package com.air.mover.Presenter;
 
-import android.app.*;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.StrictMode;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.air.mover.DAO.DataLoader.ParserJSON;
 import com.air.mover.DAO.DataLoader.RemoteFetch;
 import com.air.mover.DAO.Model.Linea;
 import com.air.mover.View.IListLineasView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -59,9 +57,14 @@ public class ListLineasPresenter
         protected void onPostExecute(Boolean result)
         {
             if (result) {
-                listLineasView.showList(getListaLineasBus());
+                List<Linea> lineas = getListaLineasBus();
+                if(lineas==null){
+                    lineas=new ArrayList<Linea>();
+                }
+                listLineasView.showList(lineas);
                 listLineasView.showProgress(false);
             }
+
         }
     }
 

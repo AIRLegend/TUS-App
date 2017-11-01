@@ -2,15 +2,13 @@ package com.air.mover.DAO.DataLoader;
 
 import android.util.JsonReader;
 
-import org.xml.sax.helpers.ParserAdapter;
+import com.air.mover.DAO.Model.Linea;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.air.mover.DAO.Model.Linea;
 
 /**
  *
@@ -46,7 +44,7 @@ public class ParserJSON{
      * @return
      * @throws IOException
      */
-    private static Linea readLinea (JsonReader reader) throws IOException {
+    public static Linea readLinea (JsonReader reader) throws IOException {
         reader.beginObject(); //Leemos un object
         String name ="", numero="";
         int identifier=-1;

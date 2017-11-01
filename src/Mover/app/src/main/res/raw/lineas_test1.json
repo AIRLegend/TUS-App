@@ -1,0 +1,11 @@
+{"summary":{"items":33,"items_per_page":1000,"pages":1,"current_page":1},"resources":[
+    {
+      "ayto:numero":"20",
+      "dc:name":"ESTACIONES-BARRIO LA TORRE",
+      "dc:modified":"2017-09-11T23:00:00.976Z",
+      "dc:identifier":"20",
+      "uri":"http://datos.santander.es/api/datos/lineas_bus/20.json"},
+    {
+
+    }]
+}
