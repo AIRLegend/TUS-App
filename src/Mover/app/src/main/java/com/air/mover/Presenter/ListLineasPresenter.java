@@ -24,7 +24,7 @@ public class ListLineasPresenter
     private IListLineasView listLineasView; //Vista de las lineas de TUS
     private List<Linea> listaLineasBus;
     private RemoteFetch remoteFetchLineas; //Modelo de datos lineas de TUS
-    private Context context;
+    //private Context context;
 
 
     /**
@@ -37,7 +37,7 @@ public class ListLineasPresenter
     public ListLineasPresenter(Context context, IListLineasView listLineasView)
     {
         this.listLineasView = listLineasView;
-        this.context = context;
+        //this.context = context;
         this.remoteFetchLineas = new RemoteFetch();
     }// ListLineasPresenter
 
@@ -123,13 +123,12 @@ public class ListLineasPresenter
     public boolean obtenLineas(){
         try
         {
-            remoteFetchLineas.getJSON(RemoteFetch.URL_LINEAS_BUS);;
+            remoteFetchLineas.getJSON(RemoteFetch.URL_LINEAS_BUS);
             setListaLineasBus(ParserJSON.readArrayLineasBus(remoteFetchLineas.getBufferedData()));
             return true;
         }//try
         catch(Exception e){
             Log.e("ERROR","Error en la obtención de las lineas de Bus: "+e.getMessage());
-            e.printStackTrace();
             return false;
         }//catch
     }//obtenLineas

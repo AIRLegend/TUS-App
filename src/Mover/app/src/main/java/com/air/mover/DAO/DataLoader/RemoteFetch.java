@@ -30,7 +30,7 @@ public class RemoteFetch {
     //Estimacion del tiempo de llegada
     public static final String URL_ESTIMACION= "http://datos.santander.es/api/rest/datasets/control_flotas_estimaciones.json?items=2300";
 
-    public static BufferedInputStream bufferedData;
+    private static BufferedInputStream bufferedData;
 
     /**
      * Metodo que a través de una dirección URL obtiene el bufferedInputStream correspondiente
@@ -50,7 +50,7 @@ public class RemoteFetch {
      * llamar antes a getJSON
      * @return
      */
-    public BufferedInputStream getBufferedData() {
+    public static BufferedInputStream getBufferedData() {
         return bufferedData;
     }//getBufferedData
 

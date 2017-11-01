@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 lf.setArguments(getIntent().getExtras());
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, lf).commit();
                 break;
-
         } //switch
         return true;
 
