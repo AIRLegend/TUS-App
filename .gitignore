@@ -1,5 +1,7 @@
 .DS_Store
 .directory
+.idea/sonarlint/*
+./.idea
 
 # Built application files
 #*.apk
