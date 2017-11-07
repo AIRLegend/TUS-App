@@ -48,6 +48,10 @@ public class ParserJSON{
             //Ordenamos la lista obtenida
             Collections.sort(listLineasBus);
 
+            //TODO: Borrar cuando se arregle la API del ayuntamiento.
+            Linea l = new Linea("LINEA", "1", 1);
+            listLineasBus.add(l);
+
             return listLineasBus;
         }//readArrayLineasBus
 
