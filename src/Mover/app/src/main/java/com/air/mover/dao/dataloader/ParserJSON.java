@@ -123,11 +123,11 @@ public class ParserJSON{
      * @return parada TUS leida
      * @throws IOException
      */
-    private static Parada readParada (JsonReader reader) throws IOException
+    public static Parada readParada (JsonReader reader) throws IOException
     {
         reader.beginObject(); //Leemos un object
         String name ="";
-        double pX = -1, pY = -1;
+        double pX = -1.0, pY = -1.0;
         int numParada=-1;
         while(reader.hasNext())
         {
