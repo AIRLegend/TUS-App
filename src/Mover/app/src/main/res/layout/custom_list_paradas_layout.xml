@@ -1,24 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:layout_marginBottom="5dp"
     android:paddingLeft="20dp"
-    android:paddingRight="20dp">
+    android:paddingRight="20dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
+
 
     <TextView
         android:id="@+id/txtNumParada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="242" />
-
+        android:layout_centerVertical="true"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"/>
     <TextView
         android:id="@+id/txtParadaName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PARADA"
-        android:layout_marginLeft="40dp"
-        android:textStyle="bold"/>
+        android:layout_centerInParent="true"
+        android:layout_alignLeft="@id/txtNumParada"
+        android:textColor="@android:color/black"
+        android:textStyle="normal"
+        android:textSize="14sp"
+        android:layout_marginLeft="70dp" />
 
-</LinearLayout>
+
+</RelativeLayout>
