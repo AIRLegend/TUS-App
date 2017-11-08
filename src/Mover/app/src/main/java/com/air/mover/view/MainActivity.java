@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public void callback(Linea linea) {
         Intent intent = new Intent(this, DetallesLineaActivity.class);
+        intent.putExtra("linea",linea.getIdentifier());
         startActivity(intent);
     }//callback
 

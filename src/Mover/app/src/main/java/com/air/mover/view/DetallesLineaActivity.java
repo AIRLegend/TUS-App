@@ -1,5 +1,6 @@
 package com.air.mover.view;
 
+import android.app.ProgressDialog;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.view.View;
 
 import com.air.mover.R;
 import com.air.mover.dao.Model.Parada;
+import com.air.mover.dao.dataloader.ParserJSON;
+import com.air.mover.presenter.ListParadasLineaPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,8 @@ import java.util.List;
 public class DetallesLineaActivity extends AppCompatActivity implements  ListParadasLineaAdapter.ItemClickListener{
 
     ListParadasLineaAdapter adapter;
+    ListParadasLineaPresenter listParadasLineaPresenter;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +32,14 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        dialog= new ProgressDialog(this);
+
+        int numLinea= getIntent().getIntExtra("linea", 34);
+
+
 
         //Esto es una parada de prueba que dejo porque no van las API y queda hacer el presenter / DAO.
         List<Parada> list = new ArrayList<>();
-        list.add(new Parada("PARADA2", 1, 1, 12));
 
 
         // Crear el recyclerview
@@ -39,7 +48,21 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
         adapter = new ListParadasLineaAdapter(this, list);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
+
+        listParadasLineaPresenter= new ListParadasLineaPresenter(this, adapter, numLinea);
     }
+
+    /**
+     * Metodo que se ejecuta cuando el usuario regresa a la actividad
+     * para interactuar con ella. Invoca al presenter de lineas del TUS para que gestione la view
+     */
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        this.listParadasLineaPresenter.start();
+    }//onResume
+
 
     /**
      * Metodo para manejar los clics en las paradas.
@@ -50,4 +73,21 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
     public void onItemClick(View view, int position) {
         Log.d("[Parada]","Parada pulsada");
     }
+
+    /**
+     * Este método cuando es llamado se encarga de mostrar un progressDialog
+     * @param state si es true pone el progressDialog en la interfaz, si es false lo cancela
+     */
+    public void showProgress (boolean state)
+    {
+        if(state)
+        {
+            dialog.setMessage("Cargando datos");
+            dialog.show();
+        }//if
+        else
+        {
+            dialog.cancel();
+        }//else
+    }//showProgress
 }

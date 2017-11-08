@@ -61,6 +61,11 @@ public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLin
         return mData.size();
     }
 
+    public void updateData(List<Parada> paradas)
+    {
+        this.mData = paradas;
+        notifyDataSetChanged();
+    }
 
     /**
      * Este metodo no es necesario, pero sirve para poder coger los elementos de la lista
