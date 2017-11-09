@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 {
     private BottomNavigationView mBottomBar;
 
+    //Para controlar si se ha cambiado de actividad. Asi no se puede lanzar dos veces
+    private boolean _isChangingActivity ;
+
     /**
      * Metodo que se ejecuta cuando se crea la activity. Se encarga
      * de asociar la activity con su vista asi como de la gestion de esta
@@ -53,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         LineasFragment lf = new LineasFragment();
         lf.setArguments(getIntent().getExtras());
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, lf).commit();
+
+        _isChangingActivity = false;
 
     } //onCreate
 
@@ -103,11 +108,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
      */
     @Override
     public void callback(Linea linea) {
-        Intent intent = new Intent(this, DetallesLineaActivity.class);
-        intent.putExtra("linea",linea.getIdentifier());
-        startActivity(intent);
+
+        if (!_isChangingActivity) {
+            Intent intent = new Intent(this, DetallesLineaActivity.class);
+            intent.putExtra("identificadorLinea",linea.getIdentifier());
+            intent.putExtra("numeroLinea", linea.getNumero());
+            intent.putExtra("nombreLinea", linea.getName());
+            _isChangingActivity = true;
+            startActivity(intent);
+        }
     }//callback
 
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        _isChangingActivity = false;
+    }
 
     /**
      *  Metodo que se ejecuta cuando se reinicia la app y hace que la activity se ponga por defecto en
