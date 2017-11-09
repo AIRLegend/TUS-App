@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.air.mover.R;
 import com.air.mover.dao.Model.Parada;
@@ -22,6 +23,7 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
     ListParadasLineaAdapter adapter;
     ListParadasLineaPresenter listParadasLineaPresenter;
     private ProgressDialog dialog;
+    TextView tituloParadasPorLinea;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +36,13 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
 
         dialog= new ProgressDialog(this);
 
-        int numLinea= getIntent().getIntExtra("linea", 34);
-
-
+        int identificadorLinea= getIntent().getIntExtra("identificadorLinea", 60);
+        String numeroLinea= getIntent().getStringExtra("numeroLinea");
+        String nombreLinea= getIntent().getStringExtra("nombreLinea");
 
         //Esto es una parada de prueba que dejo porque no van las API y queda hacer el presenter / DAO.
         List<Parada> list = new ArrayList<>();
+
 
 
         // Crear el recyclerview
@@ -49,7 +52,11 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
 
-        listParadasLineaPresenter= new ListParadasLineaPresenter(this, adapter, numLinea);
+        listParadasLineaPresenter= new ListParadasLineaPresenter(this, adapter, identificadorLinea);
+
+        tituloParadasPorLinea= (TextView) findViewById(R.id.tituloParadasLinea);
+        tituloParadasPorLinea.setText("Linea "+ numeroLinea +"\n"+nombreLinea);
+
     }
 
     /**
