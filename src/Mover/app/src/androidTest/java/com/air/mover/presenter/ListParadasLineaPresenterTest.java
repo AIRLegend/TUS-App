@@ -47,7 +47,7 @@ public class ListParadasLineaPresenterTest {
             public void run() {
                 listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),
-                                new ArrayList<Parada>()),1);
+                                Collections.<Parada>emptyList()),1);
             }
         });
         Assert.assertEquals("URL correcta, con conexion a internet",true,
@@ -60,7 +60,7 @@ public class ListParadasLineaPresenterTest {
      * @throws Exception
      */
     @Test
-    public void I2B() throws  Exception{
+    public void I2prueba_url() throws  Exception{
         if(!checkInternet()){
             return;     // si no tengo conexion no me interesa ejecutarlo
         }//if
@@ -90,7 +90,7 @@ public class ListParadasLineaPresenterTest {
             }
         });
         Assert.assertEquals(false, listParadasLineaPresenter.obtenParadasLineas(1));
-    }//I2B
+    }//I2prueba_de_mas
 
     /**
      * Test para comprobar que el metodo obtenParadasLinea() retorne false cuando la url dada es la correcta,
@@ -98,7 +98,7 @@ public class ListParadasLineaPresenterTest {
      * @throws Exception
      */
     @Test
-    public void I2C() throws  Exception{
+    public void I2B() throws  Exception{
         // si tengo internet no me interesa ejecutar esto
         if(checkInternet()){
             return;
@@ -112,6 +112,28 @@ public class ListParadasLineaPresenterTest {
             }
         });
         Assert.assertEquals(false,listParadasLineaPresenter.obtenParadasLineas(1));
+    }//I2B
+
+    /**
+     * Test para comprobar que el metodo obtenParadasLinea() retorne true cuando la url dada es correcta,
+     * haya conexión a internet y el identificador de la línea es 0.
+     * @throws Exception
+     */
+    @Test
+    public void I2C() throws Exception {
+        if(!checkInternet()){
+            return;     // si no tengo conexion no me interesa ejecutarlo
+        }//if
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),
+                                Collections.<Parada>emptyList()),0);
+            }
+        });
+        Assert.assertEquals("El identificador de la línea no existe",true,
+                listParadasLineaPresenter.obtenParadasLineas(0));
     }//I2C
 
     /**
