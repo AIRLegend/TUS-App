@@ -9,24 +9,29 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <!-- Por si hay que meter algun menu o algo mas, linearlayout -->
+
+
         <TextView
+            android:id="@+id/tituloParadasLinea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/paradas_title"
             android:textAlignment="center"
             android:textStyle="bold"
             android:textSize="22sp"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="12dp"/>
+            android:textColor="@color/Linea14"
+            android:layout_marginTop="12dp" />
 
     </LinearLayout>
 
-
     <android.support.v7.widget.SearchView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.SearchView>
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.SearchView>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listaParadasLinea"
