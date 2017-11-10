@@ -19,7 +19,7 @@ public class RemoteFetch {
 
     //URL para obtener un listado de la secuencia de paradas
     //http://datos.santander.es/resource/?ds=lineas-bus&id=bbfe898c-715b-4dfd-a418-a878d276f9fc&ft=JSON
-    public static final String URL_SECUENCIA_PARADAS="http://datos.santander.es/api/rest/datasets/lineas_bus_secuencia.json";
+    public static final String URL_SECUENCIA_PARADAS="http://datos.santander.es/api/rest/datasets/lineas_bus_secuencia.json?query=ayto\\:Linea:";
 
     //URL para obtener un listado de todas las paradas de autobus
     public static final String URL_PARADAS_BUS="http://datos.santander.es/api/rest/datasets/lineas_bus_paradas.json?items=2000";

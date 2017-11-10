@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 import com.air.mover.R;
 
@@ -31,7 +32,9 @@ public class SplashScreen extends AppCompatActivity
         {
             this.getSupportActionBar().hide();
         }
-        catch (NullPointerException e){}
+        catch (NullPointerException e){
+            Log.e("Error", "No se ha podido encontrar el ActionBar");
+        }
 
 
         //Ocultamos la barra de notificaciones

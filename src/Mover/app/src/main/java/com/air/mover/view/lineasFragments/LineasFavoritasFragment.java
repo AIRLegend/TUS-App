@@ -1,4 +1,4 @@
-package com.air.mover.view.LineasFragments;
+package com.air.mover.view.lineasFragments;
 
 
 import android.os.Bundle;
