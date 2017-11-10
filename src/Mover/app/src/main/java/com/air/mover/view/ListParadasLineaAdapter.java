@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.air.mover.R;
-import com.air.mover.dao.Model.Parada;
+import com.air.mover.dao.model.Parada;
 
 import java.util.Collections;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
  * Created by air on 7/11/17.
  */
 
-public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLineaAdapter.ViewHolder> {
+public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLineaAdapter.ViewHolderParadasLinea> {
 
     private List<Parada> mData = Collections.emptyList();
     private LayoutInflater mInflater;
@@ -35,10 +35,9 @@ public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLin
      * @return viewholder creado
      */
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolderParadasLinea onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.custom_list_paradas_layout, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+         return  new ViewHolderParadasLinea(view);
     }//onCreateViewHolder
 
     /**
@@ -47,9 +46,9 @@ public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLin
      * @param position
      */
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolderParadasLinea holder, int position) {
         holder.textViewNombre.setText(mData.get(position).getNombre());
-        holder.textViewNumero.setText(""+mData.get(position).getNumParada()); //Forzar la conversion a String.
+        holder.textViewNumero.setText(Integer.toString(mData.get(position).getNumParada())); //Forzar la conversion a String.
     }//onBindViewHolder
 
     /**
@@ -89,11 +88,11 @@ public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLin
     /**
      * Esta clase almacena los "items" de la lista (vistas) cuando salen de la pantalla.
      */
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView textViewNumero;
-        public TextView textViewNombre;
+    public class ViewHolderParadasLinea extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private TextView textViewNumero;
+        private TextView textViewNombre;
 
-        public ViewHolder(View itemView) {
+        public ViewHolderParadasLinea(View itemView) {
             super(itemView);
             textViewNumero = (TextView) itemView.findViewById(R.id.txtNumParada);
             textViewNombre = (TextView) itemView.findViewById(R.id.txtParadaName);

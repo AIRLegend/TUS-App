@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import com.air.mover.dao.Model.Linea;
+import com.air.mover.dao.model.Linea;
 import com.air.mover.presenter.ListLineasPresenter;
 import com.air.mover.R;
 import com.air.mover.view.DataCommunication;
@@ -30,7 +30,7 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
     private DataCommunication dataCommunication;
     private ProgressDialog dialog;
     private ListLineasPresenter listLineasPresenter;
-    public CallbackParadasLinea callback;
+    private CallbackParadasLinea callback;
 
 
     /**
@@ -133,4 +133,14 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
             dialog.cancel();
         }//else
     }//showProgress
+
+    public CallbackParadasLinea getCallback()
+    {
+        return callback;
+    }//getCallback
+
+    public void setCallback(CallbackParadasLinea c)
+    {
+        this.callback=c;
+    }//setCallback
 }

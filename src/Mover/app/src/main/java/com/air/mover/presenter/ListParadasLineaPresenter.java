@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.air.mover.dao.Model.Parada;
+import com.air.mover.dao.model.Parada;
 import com.air.mover.dao.dataloader.ParserJSON;
 import com.air.mover.dao.dataloader.RemoteFetch;
 import com.air.mover.view.DetallesLineaActivity;
@@ -23,8 +23,6 @@ public class ListParadasLineaPresenter
     private List<Parada> listaParadasLinea;
     private Context context;
     private int numLinea;
-    private LeerParadasLineaInternet leerParadasLineaInternet;
-
 
     public ListParadasLineaPresenter(Context context, ListParadasLineaAdapter adapter, int numLinea)
     {
@@ -86,7 +84,7 @@ public class ListParadasLineaPresenter
                     ((DetallesLineaActivity) (context)).showProgress(false);
                 }
                 Log.d("ADAPTER", adapter.toString());
-                adapter.updateData(listaParadasLinea);
+                adapter.updateData(paradasLinea);
 
             }//if
         }

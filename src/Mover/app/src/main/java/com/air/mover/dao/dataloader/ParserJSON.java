@@ -2,8 +2,8 @@ package com.air.mover.dao.dataloader;
 
 import android.util.JsonReader;
 
-import com.air.mover.dao.Model.Linea;
-import com.air.mover.dao.Model.Parada;
+import com.air.mover.dao.model.Linea;
+import com.air.mover.dao.model.Parada;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,7 +61,7 @@ public class ParserJSON{
     public static List<Parada> readParadasList (InputStream in) throws  IOException
     {
         JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
-        List<Parada> paradas = new ArrayList<Parada>();
+        List<Parada> paradas = new ArrayList<>();
         reader.beginObject();
 
         while (reader.hasNext())
@@ -127,7 +127,8 @@ public class ParserJSON{
     {
         reader.beginObject(); //Leemos un object
         String name ="";
-        double pX = -1.0, pY = -1.0;
+        double pX = -1.0;
+        double pY = -1.0;
         int numParada=-1;
         while(reader.hasNext())
         {

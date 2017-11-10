@@ -1,4 +1,4 @@
-package com.air.mover.dao.Model;
+package com.air.mover.dao.model;
 
 /**
  * Clase que almacena la información referente a una parada de TUS

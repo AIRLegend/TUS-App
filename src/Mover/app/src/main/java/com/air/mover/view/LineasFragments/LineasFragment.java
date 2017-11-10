@@ -11,8 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.air.mover.R;
-import com.air.mover.dao.Model.Linea;
-import com.air.mover.view.MainActivity;
+import com.air.mover.dao.model.Linea;
 import com.air.mover.view.callbacks.CallbackParadasLinea;
 
 /**
@@ -22,7 +21,7 @@ import com.air.mover.view.callbacks.CallbackParadasLinea;
 public class LineasFragment extends Fragment implements  CallbackParadasLinea
 {
     FragmentTabHost mTabHost; //TabHost donde se definiran las pestanas del fragmento
-    public CallbackParadasLinea callback;
+    private CallbackParadasLinea callbackParadas;
 
     /**
      * Metodo que se ejecuta cuando se dibuja por primera vez el fragment en la
@@ -72,7 +71,7 @@ public class LineasFragment extends Fragment implements  CallbackParadasLinea
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof  CallbackParadasLinea) {
-            callback = (CallbackParadasLinea) context;
+            callbackParadas = (CallbackParadasLinea) context;
         } else {
             Log.e("Error", "El contexto no es implementa el callback necesario.");
         }
@@ -92,6 +91,16 @@ public class LineasFragment extends Fragment implements  CallbackParadasLinea
 
     @Override
     public void callback(Linea linea) {
-        callback.callback(linea);
+        callbackParadas.callback(linea);
     }//callback
+
+    public CallbackParadasLinea getCallback()
+    {
+        return callbackParadas;
+    }//getCallback
+
+    public void setCallback(CallbackParadasLinea c)
+    {
+        this.callbackParadas=c;
+    }//setCallback
 }

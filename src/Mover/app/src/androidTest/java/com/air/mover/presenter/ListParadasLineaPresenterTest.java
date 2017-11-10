@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 import android.support.test.rule.ActivityTestRule;
 import android.util.Log;
 
-import com.air.mover.dao.Model.Parada;
+import com.air.mover.dao.model.Parada;
 import com.air.mover.dao.dataloader.ParserJSON;
 import com.air.mover.dao.dataloader.RemoteFetch;
 import com.air.mover.view.ListParadasLineaAdapter;

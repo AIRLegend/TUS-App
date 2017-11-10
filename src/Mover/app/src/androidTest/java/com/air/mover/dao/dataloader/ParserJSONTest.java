@@ -4,8 +4,8 @@ import android.support.test.InstrumentationRegistry;
 import android.util.JsonReader;
 
 import com.air.mover.R;
-import com.air.mover.dao.Model.Linea;
-import com.air.mover.dao.Model.Parada;
+import com.air.mover.dao.model.Linea;
+import com.air.mover.dao.model.Parada;
 
 import junit.framework.Assert;
 

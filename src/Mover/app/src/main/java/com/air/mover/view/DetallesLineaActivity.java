@@ -11,8 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.air.mover.R;
-import com.air.mover.dao.Model.Parada;
-import com.air.mover.dao.dataloader.ParserJSON;
+import com.air.mover.dao.model.Parada;
 import com.air.mover.presenter.ListParadasLineaPresenter;
 
 import java.util.ArrayList;

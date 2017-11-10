@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.air.mover.dao.Model.Linea;
+import com.air.mover.dao.model.Linea;
 import com.air.mover.R;
 import java.util.List;
 

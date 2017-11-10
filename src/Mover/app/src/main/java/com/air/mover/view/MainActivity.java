@@ -6,10 +6,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import com.air.mover.R;
-import com.air.mover.dao.Model.Linea;
+import com.air.mover.dao.model.Linea;
 import com.air.mover.view.DireccionesFragments.DireccionesFragment;
 import com.air.mover.view.LineasFragments.LineasFragment;
 import com.air.mover.view.ParadasFragments.ParadasFragment;
@@ -25,10 +24,10 @@ import java.io.Serializable;
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
         CallbackParadasLinea, Serializable
 {
-    private BottomNavigationView mBottomBar;
+    private transient BottomNavigationView mBottomBar;
 
     //Para controlar si se ha cambiado de actividad. Asi no se puede lanzar dos veces
-    private boolean _isChangingActivity ;
+    private boolean isChangingActivity ;
 
     /**
      * Metodo que se ejecuta cuando se crea la activity. Se encarga
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         lf.setArguments(getIntent().getExtras());
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, lf).commit();
 
-        _isChangingActivity = false;
+        isChangingActivity = false;
 
     } //onCreate
 
@@ -85,10 +84,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.action_lineas:
                 LineasFragment lf = new LineasFragment();
-                /*Bundle b = new Bundle();
-                b.putSerializable("main_activity", this);
-                b.putAll(getIntent().getExtras());
-                lf.setArguments(b);*/
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, lf).commit();
                 break;
             default:
@@ -109,12 +104,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public void callback(Linea linea) {
 
-        if (!_isChangingActivity) {
+        if (!isChangingActivity) {
             Intent intent = new Intent(this, DetallesLineaActivity.class);
             intent.putExtra("identificadorLinea",linea.getIdentifier());
             intent.putExtra("numeroLinea", linea.getNumero());
             intent.putExtra("nombreLinea", linea.getName());
-            _isChangingActivity = true;
+            isChangingActivity = true;
             startActivity(intent);
         }
     }//callback
@@ -123,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public void onResume() {
         super.onResume();
-        _isChangingActivity = false;
+        isChangingActivity = false;
     }
 
     /**

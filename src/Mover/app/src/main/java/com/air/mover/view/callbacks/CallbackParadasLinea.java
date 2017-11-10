@@ -1,6 +1,6 @@
 package com.air.mover.view.callbacks;
 
-import com.air.mover.dao.Model.Linea;
+import com.air.mover.dao.model.Linea;
 
 /**
  * Created by air on 7/11/17.
