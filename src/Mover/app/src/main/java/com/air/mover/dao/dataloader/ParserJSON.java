@@ -21,6 +21,8 @@ import java.util.List;
 
 public class ParserJSON{
 
+    //Constructor privado para evitar la creacion de instancias
+    private ParserJSON(){}
     /**
      * Método para obtener todas las lineas de buses
      * @param in InputStream del JSON con las lineas de buses

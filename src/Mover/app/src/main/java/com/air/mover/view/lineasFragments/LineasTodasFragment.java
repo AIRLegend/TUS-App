@@ -1,4 +1,4 @@
-package com.air.mover.view.LineasFragments;
+package com.air.mover.view.lineasFragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -94,13 +94,7 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
         Log.d("pulsado", Integer.toString(position));
-        //Cuando se ha pulsado se hace callback. Se va llamando al padre de cada fragment hasta
-        //llegar al main activity, que se encarga de abrir una activity nueva con las paradas.
         callback.callback((Linea)listView.getAdapter().getItem(position));
-        //Haciendo uso de la interfaz DataCommunication podemos enviar los datos entre fragmentos
-        //Ejemplo: dataCommunication = (DataCommunication) getContext();
-        //Ejemplo: dataCommunication.setLineaIdentifier(datosBuses.getListaLineasBus().get(position).getIdentifier());
-
     }//onListItemClick
 
     /**

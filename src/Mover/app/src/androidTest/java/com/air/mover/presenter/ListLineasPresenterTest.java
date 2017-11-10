@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import com.air.mover.view.LineasFragments.LineasTodasFragment;
+import com.air.mover.view.lineasFragments.LineasTodasFragment;
 import com.air.mover.view.MainActivity;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
