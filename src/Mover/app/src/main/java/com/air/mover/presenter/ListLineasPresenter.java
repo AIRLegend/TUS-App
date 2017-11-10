@@ -6,7 +6,7 @@ import android.util.Log;
 
 import com.air.mover.dao.dataloader.ParserJSON;
 import com.air.mover.dao.dataloader.RemoteFetch;
-import com.air.mover.dao.Model.Linea;
+import com.air.mover.dao.model.Linea;
 import com.air.mover.view.IListLineasView;
 
 import java.util.ArrayList;

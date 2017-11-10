@@ -3,8 +3,9 @@ package com.air.mover.dao.dataloader;
 import android.support.test.InstrumentationRegistry;
 import android.util.JsonReader;
 
-import com.air.mover.dao.Model.Linea;
 import com.air.mover.R;
+import com.air.mover.dao.model.Linea;
+import com.air.mover.dao.model.Parada;
 
 import junit.framework.Assert;
 
@@ -118,6 +119,115 @@ public class ParserJSONTest {
             Assert.assertEquals(0, l.size());
         }catch(Exception e){
             Assert.fail("Error: eltamaño dela lista debería ser cero");
+            e.printStackTrace();
+        }
+    }
+
+    //TESTS DE PARADAS
+    @Test
+    public void testU1aParada(){
+        //Prueba U1.a //lee parada
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test_readparada);//Añadir json
+            JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+            Parada p = ParserJSON.readParada(reader);
+
+            Assert.assertEquals(p.getNombre(),"ARSENIO ODRIOZOLA 16");//Añadir nombre
+            Assert.assertEquals(p.getNumParada(),328);//Añandir numero
+            Assert.assertEquals(p.getPosX(),435985.96875);//Añadir posx
+            Assert.assertEquals(p.getPosY(),4815050.5);//Añadir posy
+        }catch(Exception e){
+            Assert.fail("Error: lectura de parada incorrecta");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testU1bParada(){
+        //Prueba U1.b //No hay parada
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test_readparada_vacio);//Añadir json
+            JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+            Parada p = ParserJSON.readParada(reader);
+
+            Assert.assertEquals(p.getNombre(),"");
+            Assert.assertEquals(p.getNumParada(),-1);
+            Assert.assertEquals(p.getPosX(),-1.0);
+            Assert.assertEquals(p.getPosY(),-1.0);
+        }catch(Exception e){
+            Assert.fail("Error: no debería de haber parada");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testU2aParada() throws Exception {
+
+        //Prueba U2.a Lista vacia
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test_vacio);
+            List<Parada> p = ParserJSON.readParadasList(is);
+
+            Assert.assertEquals(0, p.size());
+        }catch(Exception e){
+            Assert.fail("Error: la lsta debería estar vacía");
+            e.printStackTrace();
+
+        }
+    }
+
+    @Test
+    public void testU2bParada() throws Exception{
+
+        //Prueba U2.b Lista con un elemento
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test1);
+            List<Parada> p = ParserJSON.readParadasList(is);
+
+            Assert.assertEquals(p.get(0).getNombre(),"ARSENIO ODRIOZOLA 16");//Añadir nombre
+            Assert.assertEquals(p.get(0).getNumParada(),328);//Añandir numero
+            Assert.assertEquals(p.get(0).getPosX(),435985.96875);//Añadir posx
+            Assert.assertEquals(p.get(0).getPosY(),4815050.5);//Añadir posy
+        }catch(Exception e){
+            Assert.fail("Error: lectura de parada incorrecta");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testU2cParada() throws Exception{
+
+        //Prueba U2.c Lista con mas de un elemento
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test);
+            List<Parada> p = ParserJSON.readParadasList(is);
+
+            Assert.assertEquals(p.get(0).getNombre(),"ARSENIO ODRIOZOLA 16");//Añadir nombre
+            Assert.assertEquals(p.get(0).getNumParada(),328);//Añandir numero
+            Assert.assertEquals(p.get(0).getPosX(),435985.96875);//Añadir posx
+            Assert.assertEquals(p.get(0).getPosY(),4815050.5);//Añadir posy
+
+            Assert.assertEquals(p.get(1).getNombre(),"DOCTOR DIEGO MADRAZO");//Añadir nombre
+            Assert.assertEquals(p.get(1).getNumParada(),330);//Añandir numero
+            Assert.assertEquals(p.get(1).getPosX(),435737.53125);//Añadir posx
+            Assert.assertEquals(p.get(1).getPosY(),4814926.5);//Añadir posy
+        }catch(Exception e){
+            Assert.fail("Error: lectura de paradas incorrecta");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testU2dParada() throws Exception{
+
+        //Prueba U2.d Lista con estructura de json incorrecta
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test_erroneo);
+            List<Parada> p = ParserJSON.readParadasList(is);
+
+            Assert.assertEquals(0, p.size());
+        }catch(Exception e){
+            Assert.fail("Error: el tamaño dela lista debería ser cero");
             e.printStackTrace();
         }
     }

@@ -1,6 +1,7 @@
 package com.air.mover.view.LineasFragments;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.util.Log;
@@ -8,12 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import com.air.mover.dao.Model.Linea;
+import com.air.mover.dao.model.Linea;
 import com.air.mover.presenter.ListLineasPresenter;
 import com.air.mover.R;
 import com.air.mover.view.DataCommunication;
 import com.air.mover.view.IListLineasView;
 import com.air.mover.view.ListLineasAdapter;
+import com.air.mover.view.callbacks.CallbackParadasLinea;
 
 import java.util.List;
 
@@ -28,7 +30,23 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
     private DataCommunication dataCommunication;
     private ProgressDialog dialog;
     private ListLineasPresenter listLineasPresenter;
+    private CallbackParadasLinea callback;
 
+
+    /**
+     * Este metodo se añade el fragment a la vista superior. Aqui se comprueba si la activity o
+     * fragment superior implementa el Callback que se necesita.
+     * NOTA: Para este fragment la sucesion de llamadas es:
+     *  LineasTodasFragment -> LineasFragment -> MainActivity.
+     * @param context contexto
+     */
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (getParentFragment() instanceof CallbackParadasLinea) {
+            callback = (CallbackParadasLinea) getParentFragment();
+        }
+    }
 
     /**
      * Metodo que se ejecuta cuando se dibuja por primera vez el fragment en la
@@ -46,7 +64,6 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
         View rootView = inflater.inflate(R.layout.activity_lineas_todas_fragment, container, false);
         return rootView;
     }//onCreateView
-
 
     /**
      * Metodo que se ejecutara cuando la actividad contenedora del fragment
@@ -77,9 +94,13 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
         Log.d("pulsado", Integer.toString(position));
+        //Cuando se ha pulsado se hace callback. Se va llamando al padre de cada fragment hasta
+        //llegar al main activity, que se encarga de abrir una activity nueva con las paradas.
+        callback.callback((Linea)listView.getAdapter().getItem(position));
         //Haciendo uso de la interfaz DataCommunication podemos enviar los datos entre fragmentos
         //Ejemplo: dataCommunication = (DataCommunication) getContext();
         //Ejemplo: dataCommunication.setLineaIdentifier(datosBuses.getListaLineasBus().get(position).getIdentifier());
+
     }//onListItemClick
 
     /**
@@ -102,7 +123,7 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
     @Override
     public void showProgress (boolean state)
     {
-        if(state==true)
+        if(state)
         {
             dialog.setMessage("Cargando datos");
             dialog.show();
@@ -112,4 +133,14 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
             dialog.cancel();
         }//else
     }//showProgress
+
+    public CallbackParadasLinea getCallback()
+    {
+        return callback;
+    }//getCallback
+
+    public void setCallback(CallbackParadasLinea c)
+    {
+        this.callback=c;
+    }//setCallback
 }

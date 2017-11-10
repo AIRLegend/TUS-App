@@ -1,4 +1,4 @@
-package com.air.mover.dao.Model;
+package com.air.mover.dao.model;
 
 import android.support.annotation.NonNull;
 

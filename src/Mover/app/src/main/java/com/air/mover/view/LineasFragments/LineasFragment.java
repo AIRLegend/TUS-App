@@ -1,22 +1,27 @@
 package com.air.mover.view.LineasFragments;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.air.mover.R;
+import com.air.mover.dao.model.Linea;
+import com.air.mover.view.callbacks.CallbackParadasLinea;
 
 /**
  *  Esta clase se encarga de definir y gestionar la vista correspondiente al fragmento lineas de la aplicacion
  * @version 30/10/17
  */
-public class LineasFragment extends Fragment
+public class LineasFragment extends Fragment implements  CallbackParadasLinea
 {
     FragmentTabHost mTabHost; //TabHost donde se definiran las pestanas del fragmento
+    private CallbackParadasLinea callbackParadas;
 
     /**
      * Metodo que se ejecuta cuando se dibuja por primera vez el fragment en la
@@ -56,6 +61,23 @@ public class LineasFragment extends Fragment
 
 
     /**
+     * Este metodo se añade el fragment a la vista superior. Aqui se comprueba si la activity o
+     * fragment superior implementa el Callback que se necesita.
+     * NOTA: Para este fragment la sucesion de llamadas es:
+     *  LineasFragment -> MainActivity.
+     * @param context contexto
+     */
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof  CallbackParadasLinea) {
+            callbackParadas = (CallbackParadasLinea) context;
+        } else {
+            Log.e("Error", "El contexto no es implementa el callback necesario.");
+        }
+    }//onAttach
+
+    /**
      * Metodo que es ejecutado cuando la jerarquia de views a la cual ha sido asociado el
      * fragment ha sido destruida. Se encarga de destruir la view del fragment y liberar recursos
      */
@@ -66,4 +88,19 @@ public class LineasFragment extends Fragment
         mTabHost=null;
 
     }//onDestroyView
+
+    @Override
+    public void callback(Linea linea) {
+        callbackParadas.callback(linea);
+    }//callback
+
+    public CallbackParadasLinea getCallback()
+    {
+        return callbackParadas;
+    }//getCallback
+
+    public void setCallback(CallbackParadasLinea c)
+    {
+        this.callbackParadas=c;
+    }//setCallback
 }

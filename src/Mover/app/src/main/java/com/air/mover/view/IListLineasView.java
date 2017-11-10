@@ -1,6 +1,6 @@
 package com.air.mover.view;
 
-import com.air.mover.dao.Model.Linea;
+import com.air.mover.dao.model.Linea;
 
 import java.util.List;
 
