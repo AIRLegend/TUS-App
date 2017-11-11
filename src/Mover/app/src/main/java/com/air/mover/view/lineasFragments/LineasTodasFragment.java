@@ -27,12 +27,9 @@ import java.util.List;
  */
 public class LineasTodasFragment extends ListFragment implements IListLineasView
 {
-    private DataCommunication dataCommunication;
     private ProgressDialog dialog;
     private ListLineasPresenter listLineasPresenter;
     private CallbackParadasLinea callback;
-
-
     /**
      * Este metodo se añade el fragment a la vista superior. Aqui se comprueba si la activity o
      * fragment superior implementa el Callback que se necesita.
@@ -61,8 +58,7 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_lineas_todas_fragment, container, false);
-        return rootView;
+        return inflater.inflate(R.layout.activity_lineas_todas_fragment, container, false);
     }//onCreateView
 
     /**
