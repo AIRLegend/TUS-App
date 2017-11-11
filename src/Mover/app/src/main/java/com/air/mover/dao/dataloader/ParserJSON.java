@@ -2,7 +2,8 @@ package com.air.mover.dao.dataloader;
 
 import android.util.JsonReader;
 
-import com.air.mover.dao.Model.Linea;
+import com.air.mover.dao.model.Linea;
+import com.air.mover.dao.model.Parada;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,6 +21,8 @@ import java.util.List;
 
 public class ParserJSON{
 
+    //Constructor privado para evitar la creacion de instancias
+    private ParserJSON(){}
     /**
      * Método para obtener todas las lineas de buses
      * @param in InputStream del JSON con las lineas de buses
@@ -49,6 +52,38 @@ public class ParserJSON{
 
             return listLineasBus;
         }//readArrayLineasBus
+
+
+    /**
+     * Método para obtener todas las paradas de buses
+     * @param in InputStream del JSON con las paradas de buses
+     * @return Lista con todas las paradas de TUS
+     * @throws IOException
+     */
+    public static List<Parada> readParadasList (InputStream in) throws  IOException
+    {
+        JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+        List<Parada> paradas = new ArrayList<>();
+        reader.beginObject();
+
+        while (reader.hasNext())
+        {
+            String name = reader.nextName();
+            if(name.equals ("resources"))
+            {
+                reader.beginArray(); //cada elemento del array es un object
+                while(reader.hasNext())
+                {
+                    paradas.add(readParada(reader));
+                }//while
+            }//if
+            else
+            {
+                reader.skipValue();
+            }//else
+        }//while
+        return paradas;
+    }//readParadasList
 
     /**
      * Metodo que se encarga de leer y crear una linea TUS a partir del lector pasado como parametro
@@ -83,6 +118,49 @@ public class ParserJSON{
 
     }//readLinea
 
+
+    /**
+     * Metodo que se encarga de leer y crear una parada de TUS a partir del lector pasado como parametro
+     * @param reader lector de los datos con formato JSON
+     * @return parada TUS leida
+     * @throws IOException
+     */
+    public static Parada readParada (JsonReader reader) throws IOException
+    {
+        reader.beginObject(); //Leemos un object
+        String name ="";
+        double pX = -1.0;
+        double pY = -1.0;
+        int numParada=-1;
+        while(reader.hasNext())
+        {
+            String n = reader.nextName();
+            if (n.equals("ayto:NombreParada"))
+            {
+                name = reader.nextString();
+            }//if
+            else if (n.equals("ayto:PosX"))
+            {
+                pX = reader.nextDouble();
+            }//else if
+            else if (n.equals("ayto:PosY"))
+            {
+                pY = reader.nextDouble();
+            }//else if
+            else if (n.equals("ayto:NParada"))
+            {
+                numParada = reader.nextInt();
+            }//else if
+            else
+            {
+                reader.skipValue();
+            }//else
+        }//while
+
+        reader.endObject();
+        return new Parada(name,pX, pY, numParada);
+
+    }//readParada
 
 
 }//ParserJSON

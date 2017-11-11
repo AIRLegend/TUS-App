@@ -1,4 +1,5 @@
-package com.air.mover.view.ParadasFragments;
+package com.air.mover.view.lineasfragments;
+
 
 import android.os.Bundle;
 import com.air.mover.R;
@@ -8,14 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-
 /**
- *  Esta clase se encarga de definir y gestionar la vista correspondiente al fragmento paradas favoritas de la aplicacion
+ *  Esta clase se encarga de definir y gestionar la vista correspondiente al fragmento lineas favoritas de la aplicacion
  * @version 30/10/17
  */
-public class ParadasFavoritasFragment extends Fragment
+public class LineasFavoritasFragment extends Fragment
 {
-
 
     /**
      * Metodo que se ejecuta cuando se dibuja por primera vez el fragment en la
@@ -28,8 +27,8 @@ public class ParadasFavoritasFragment extends Fragment
      * @return vista creada para el fragment
      */
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.activity_paradas_favoritas_fragment, container, false);
-        return rootView;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+        return inflater.inflate(R.layout.activity_lineas_favoritas_fragment, container, false);
     }//onCreateView
 }

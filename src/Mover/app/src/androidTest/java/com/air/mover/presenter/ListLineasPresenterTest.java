@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.air.mover.dao.dataloader.ParserJSON;
 import com.air.mover.dao.dataloader.RemoteFetch;
-import com.air.mover.dao.Model.Linea;
+import com.air.mover.dao.model.Linea;
 
 import org.junit.Assert;
 import org.junit.Rule;
@@ -16,7 +16,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import com.air.mover.view.LineasFragments.LineasTodasFragment;
+import com.air.mover.view.lineasfragments.LineasTodasFragment;
 import com.air.mover.view.MainActivity;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;

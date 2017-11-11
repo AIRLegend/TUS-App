@@ -1,5 +1,6 @@
 package com.air.mover.view;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
@@ -7,18 +8,26 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import com.air.mover.R;
-import com.air.mover.view.DireccionesFragments.DireccionesFragment;
-import com.air.mover.view.LineasFragments.LineasFragment;
-import com.air.mover.view.ParadasFragments.ParadasFragment;
+import com.air.mover.dao.model.Linea;
+import com.air.mover.view.direccionesfragments.DireccionesFragment;
+import com.air.mover.view.lineasfragments.LineasFragment;
+import com.air.mover.view.paradasfragments.ParadasFragment;
+import com.air.mover.view.callbacks.CallbackParadasLinea;
+
+import java.io.Serializable;
 
 /**
  *  Esta clase se encarga de definir y gestionar la vista principal de la aplicacion
  *
  *  @version 29/10/17
  */
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener,
+        CallbackParadasLinea, Serializable
 {
-    private BottomNavigationView mBottomBar;
+    private transient BottomNavigationView mBottomBar;
+
+    //Para controlar si se ha cambiado de actividad. Asi no se puede lanzar dos veces
+    private boolean isChangingActivity ;
 
     /**
      * Metodo que se ejecuta cuando se crea la activity. Se encarga
@@ -47,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         lf.setArguments(getIntent().getExtras());
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, lf).commit();
 
+        isChangingActivity = false;
+
     } //onCreate
 
     /**
@@ -73,7 +84,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.action_lineas:
                 LineasFragment lf = new LineasFragment();
-                lf.setArguments(getIntent().getExtras());
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, lf).commit();
                 break;
             default:
@@ -86,6 +96,30 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     } //onNavigationItemSelected
 
+    /**
+     * Este método se ejecuta cuando se ha pulsado una linea. Abrira una Activity nueva con
+     * las paradas de esa linea.
+     * @param linea
+     */
+    @Override
+    public void callback(Linea linea) {
+
+        if (!isChangingActivity) {
+            Intent intent = new Intent(this, DetallesLineaActivity.class);
+            intent.putExtra("identificadorLinea",linea.getIdentifier());
+            intent.putExtra("numeroLinea", linea.getNumero());
+            intent.putExtra("nombreLinea", linea.getName());
+            isChangingActivity = true;
+            startActivity(intent);
+        }
+    }//callback
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        isChangingActivity = false;
+    }
 
     /**
      *  Metodo que se ejecuta cuando se reinicia la app y hace que la activity se ponga por defecto en

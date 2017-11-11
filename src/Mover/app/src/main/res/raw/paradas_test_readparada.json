@@ -1,0 +1,20 @@
+
+  {
+    "ayto:Ruta":"122",
+    "ayto:PuntoKM":"0",
+    "ayto:NParada":"328",
+    "dc:EtiquetaLinea":"1",
+    "dc:modified":"2017-10-17T03:10:00.253Z",
+    "ayto:Linea":"1",
+    "ayto:Seccion":"135",
+    "ayto:SentidoRuta":"1",
+    "dc:identifier":"1-1-1-1-135-328-0",
+    "ayto:NombreSublinea":"ODRIOZOLA-PCTCAN",
+    "ayto:NombreParada":"ARSENIO ODRIOZOLA 16",
+    "ayto:PosX":"435985.96875",
+    "ayto:PosY":"4815050.5",
+    "uri": "http://datos.santander.es/api/datos/lineas_bus_secuencia/1-1-1-1-135-328-0.json"
+
+  }
+  
+ 
