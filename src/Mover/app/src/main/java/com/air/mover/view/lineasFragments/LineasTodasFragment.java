@@ -1,4 +1,4 @@
-package com.air.mover.view.lineasFragments;
+package com.air.mover.view.lineasfragments;
 
 import android.app.ProgressDialog;
 import android.content.Context;

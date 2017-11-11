@@ -9,9 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import com.air.mover.R;
 import com.air.mover.dao.model.Linea;
-import com.air.mover.view.direccionesFragments.DireccionesFragment;
-import com.air.mover.view.lineasFragments.LineasFragment;
-import com.air.mover.view.paradasFragments.ParadasFragment;
+import com.air.mover.view.direccionesfragments.DireccionesFragment;
+import com.air.mover.view.lineasfragments.LineasFragment;
+import com.air.mover.view.paradasfragments.ParadasFragment;
 import com.air.mover.view.callbacks.CallbackParadasLinea;
 
 import java.io.Serializable;

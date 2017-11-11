@@ -1,4 +1,4 @@
-package com.air.mover.view.paradasFragments;
+package com.air.mover.view.paradasfragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;

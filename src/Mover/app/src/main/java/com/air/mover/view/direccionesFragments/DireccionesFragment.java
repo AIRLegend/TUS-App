@@ -1,4 +1,4 @@
-package com.air.mover.view.direccionesFragments;
+package com.air.mover.view.direccionesfragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.air.mover.view.paradasFragments;
+package com.air.mover.view.paradasfragments;
 
 import android.os.Bundle;
 import com.air.mover.R;
