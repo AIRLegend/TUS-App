@@ -12,7 +12,6 @@ import android.widget.ListView;
 import com.air.mover.dao.model.Linea;
 import com.air.mover.presenter.ListLineasPresenter;
 import com.air.mover.R;
-import com.air.mover.view.DataCommunication;
 import com.air.mover.view.IListLineasView;
 import com.air.mover.view.ListLineasAdapter;
 import com.air.mover.view.callbacks.CallbackParadasLinea;
