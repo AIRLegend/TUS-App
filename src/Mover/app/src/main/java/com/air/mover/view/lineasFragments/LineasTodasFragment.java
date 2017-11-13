@@ -73,6 +73,10 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
         this.listLineasPresenter = new ListLineasPresenter(getContext(),this);
         dialog= new ProgressDialog(getContext());
 
+        if (getParentFragment() instanceof LineasFragment) {
+            ((LineasFragment)getParentFragment()).setLineasListPresenter(listLineasPresenter);
+        }
+
     }//onActivityCreated
 
     /**
@@ -122,6 +126,15 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
             dialog.cancel();
         }//else
     }//showProgress
+
+    /**
+     * Obtener el adapter del listview.
+     * @return
+     */
+    @Override
+    public ListLineasAdapter getAdapter() {
+        return (ListLineasAdapter) getListView().getAdapter();
+    }
 
     public CallbackParadasLinea getCallback()
     {

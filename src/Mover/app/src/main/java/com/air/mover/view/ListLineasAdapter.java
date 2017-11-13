@@ -223,4 +223,5 @@ public class ListLineasAdapter extends ArrayAdapter
     }// getColor
 
 
+
 }// ListLineasAdapter

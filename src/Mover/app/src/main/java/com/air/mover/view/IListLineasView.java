@@ -11,4 +11,5 @@ import java.util.List;
 public interface IListLineasView {
     void showList(List<Linea> lineaList);
     void showProgress(boolean state);
+    ListLineasAdapter getAdapter();
 }//IListLineasView
