@@ -127,15 +127,6 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
         }//else
     }//showProgress
 
-    /**
-     * Obtener el adapter del listview.
-     * @return
-     */
-    @Override
-    public ListLineasAdapter getAdapter() {
-        return (ListLineasAdapter) getListView().getAdapter();
-    }
-
     public CallbackParadasLinea getCallback()
     {
         return callback;

@@ -142,8 +142,9 @@ public class ListLineasPresenter
     /**
      * Metodo que actualiza la lista del adapter en funcion del texto que se manda.
      * @param query a buscar
+     * @return Lista con las lineas que coinciden con la query
      */
-    public void filterLineas(String query) {
+    public List<Linea> filterLineas(String query) {
         List<Linea> lineasFiltered = new ArrayList<>();
         //lineasFiltered.addAll(listaLineasBus);
 
@@ -159,6 +160,7 @@ public class ListLineasPresenter
             }
             listLineasView.showList(lineasFiltered);
         }
+        return lineasFiltered;
     }
 
 }// ListLineasPresenter
