@@ -14,6 +14,12 @@ import java.util.List;
 public class CommonUtils {
 
     /**
+     * Ocultar el constructor para que no se creen instancias de esta clase
+     */
+    private CommonUtils () {}
+
+
+    /**
      * Filtra una lista de lineas en base al texto que se pasa
      * @param lineaOriginal lista que se quiere filtrar
      * @param query texto de busqueda
@@ -31,7 +37,6 @@ public class CommonUtils {
                     nuevaLista.add(l);
                 }
             }
-            //nuevaLista.showList(lineasFiltered);
         }
         return nuevaLista;
     }
