@@ -42,7 +42,7 @@ public class AceptacionBuscarParadasLineaTest {
     public ActivityTestRule<SplashScreen> mActivityTestRule = new ActivityTestRule<>(SplashScreen.class);
 
     @Test
-    public void aceptacionFiltrarParadasLineaTest() {
+    public void aceptacionBuscarParadasLineaTest2() {
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
@@ -154,7 +154,18 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete3.perform(replaceText("6"), closeSoftKeyboard());
+        searchAutoComplete3.perform(click());
+
+        ViewInteraction searchAutoComplete4 = onView(
+                allOf(withId(R.id.search_src_text),
+                        childAtPosition(
+                                allOf(withId(R.id.search_plate),
+                                        childAtPosition(
+                                                withId(R.id.search_edit_frame),
+                                                1)),
+                                0),
+                        isDisplayed()));
+        searchAutoComplete4.perform(replaceText("6"), closeSoftKeyboard());
 
         ViewInteraction textView3 = onView(
                 allOf(withId(R.id.txtNumParada), withText("268"),
@@ -236,7 +247,7 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         textView10.check(matches(withText("CALLE ALTA 56")));
 
-        ViewInteraction searchAutoComplete4 = onView(
+        ViewInteraction searchAutoComplete5 = onView(
                 allOf(withId(R.id.search_src_text), withText("6"),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
@@ -245,9 +256,9 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete4.perform(replaceText("68"));
+        searchAutoComplete5.perform(replaceText("68"));
 
-        ViewInteraction searchAutoComplete5 = onView(
+        ViewInteraction searchAutoComplete6 = onView(
                 allOf(withId(R.id.search_src_text), withText("68"),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
@@ -256,7 +267,7 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete5.perform(closeSoftKeyboard());
+        searchAutoComplete6.perform(closeSoftKeyboard());
 
         ViewInteraction textView11 = onView(
                 allOf(withId(R.id.txtNumParada), withText("268"),
@@ -289,7 +300,7 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         appCompatImageView4.perform(click());
 
-        ViewInteraction searchAutoComplete6 = onView(
+        ViewInteraction searchAutoComplete7 = onView(
                 allOf(withId(R.id.search_src_text),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
@@ -298,7 +309,7 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete6.perform(replaceText("PLAZA DE TOROS"), closeSoftKeyboard());
+        searchAutoComplete7.perform(replaceText("PLAZA DE TOROS"), closeSoftKeyboard());
 
         ViewInteraction textView13 = onView(
                 allOf(withId(R.id.txtNumParada), withText("433"),
@@ -331,7 +342,7 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         appCompatImageView5.perform(click());
 
-        ViewInteraction searchAutoComplete7 = onView(
+        ViewInteraction searchAutoComplete8 = onView(
                 allOf(withId(R.id.search_src_text),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
@@ -340,7 +351,7 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete7.perform(replaceText("plaza de toros"), closeSoftKeyboard());
+        searchAutoComplete8.perform(replaceText("plaza de toros"), closeSoftKeyboard());
 
         ViewInteraction textView15 = onView(
                 allOf(withId(R.id.txtNumParada), withText("433"),
@@ -373,7 +384,7 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         appCompatImageView6.perform(click());
 
-        ViewInteraction searchAutoComplete8 = onView(
+        ViewInteraction searchAutoComplete9 = onView(
                 allOf(withId(R.id.search_src_text),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
@@ -382,7 +393,7 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete8.perform(replaceText("PlAzA dE tOrOs"), closeSoftKeyboard());
+        searchAutoComplete9.perform(replaceText("PlAzA De ToRoS"), closeSoftKeyboard());
 
         ViewInteraction textView17 = onView(
                 allOf(withId(R.id.txtNumParada), withText("433"),
@@ -415,17 +426,6 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         appCompatImageView7.perform(click());
 
-        ViewInteraction searchAutoComplete9 = onView(
-                allOf(withId(R.id.search_src_text),
-                        childAtPosition(
-                                allOf(withId(R.id.search_plate),
-                                        childAtPosition(
-                                                withId(R.id.search_edit_frame),
-                                                1)),
-                                0),
-                        isDisplayed()));
-        searchAutoComplete9.perform(click());
-
         ViewInteraction searchAutoComplete10 = onView(
                 allOf(withId(R.id.search_src_text),
                         childAtPosition(
@@ -435,7 +435,18 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete10.perform(replaceText("m"), closeSoftKeyboard());
+        searchAutoComplete10.perform(click());
+
+        ViewInteraction searchAutoComplete11 = onView(
+                allOf(withId(R.id.search_src_text),
+                        childAtPosition(
+                                allOf(withId(R.id.search_plate),
+                                        childAtPosition(
+                                                withId(R.id.search_edit_frame),
+                                                1)),
+                                0),
+                        isDisplayed()));
+        searchAutoComplete11.perform(replaceText("M"), closeSoftKeyboard());
 
         ViewInteraction textView19 = onView(
                 allOf(withId(R.id.txtNumParada), withText("268"),
@@ -537,19 +548,8 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         textView28.check(matches(withText("AYUNTAMIENTO")));
 
-        ViewInteraction searchAutoComplete11 = onView(
-                allOf(withId(R.id.search_src_text), withText("m"),
-                        childAtPosition(
-                                allOf(withId(R.id.search_plate),
-                                        childAtPosition(
-                                                withId(R.id.search_edit_frame),
-                                                1)),
-                                0),
-                        isDisplayed()));
-        searchAutoComplete11.perform(replaceText("mo"));
-
         ViewInteraction searchAutoComplete12 = onView(
-                allOf(withId(R.id.search_src_text), withText("mo"),
+                allOf(withId(R.id.search_src_text), withText("M"),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
                                         childAtPosition(
@@ -557,7 +557,18 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete12.perform(closeSoftKeyboard());
+        searchAutoComplete12.perform(replaceText("Mo"));
+
+        ViewInteraction searchAutoComplete13 = onView(
+                allOf(withId(R.id.search_src_text), withText("Mo"),
+                        childAtPosition(
+                                allOf(withId(R.id.search_plate),
+                                        childAtPosition(
+                                                withId(R.id.search_edit_frame),
+                                                1)),
+                                0),
+                        isDisplayed()));
+        searchAutoComplete13.perform(closeSoftKeyboard());
 
         ViewInteraction textView29 = onView(
                 allOf(withId(R.id.txtNumParada), withText("272"),
@@ -599,19 +610,8 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         textView32.check(matches(withText("JESUS DE MONASTERIO 21")));
 
-        ViewInteraction searchAutoComplete13 = onView(
-                allOf(withId(R.id.search_src_text), withText("mo"),
-                        childAtPosition(
-                                allOf(withId(R.id.search_plate),
-                                        childAtPosition(
-                                                withId(R.id.search_edit_frame),
-                                                1)),
-                                0),
-                        isDisplayed()));
-        searchAutoComplete13.perform(click());
-
         ViewInteraction searchAutoComplete14 = onView(
-                allOf(withId(R.id.search_src_text), withText("mo"),
+                allOf(withId(R.id.search_src_text), withText("Mo"),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
                                         childAtPosition(
@@ -619,10 +619,10 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete14.perform(replaceText("mon"));
+        searchAutoComplete14.perform(click());
 
         ViewInteraction searchAutoComplete15 = onView(
-                allOf(withId(R.id.search_src_text), withText("mon"),
+                allOf(withId(R.id.search_src_text), withText("Mo"),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
                                         childAtPosition(
@@ -630,7 +630,18 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete15.perform(closeSoftKeyboard());
+        searchAutoComplete15.perform(replaceText("Mon"));
+
+        ViewInteraction searchAutoComplete16 = onView(
+                allOf(withId(R.id.search_src_text), withText("Mon"),
+                        childAtPosition(
+                                allOf(withId(R.id.search_plate),
+                                        childAtPosition(
+                                                withId(R.id.search_edit_frame),
+                                                1)),
+                                0),
+                        isDisplayed()));
+        searchAutoComplete16.perform(closeSoftKeyboard());
 
         ViewInteraction textView33 = onView(
                 allOf(withId(R.id.txtNumParada), withText("272"),
@@ -672,19 +683,8 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         textView36.check(matches(withText("JESUS DE MONASTERIO 21")));
 
-        ViewInteraction searchAutoComplete16 = onView(
-                allOf(withId(R.id.search_src_text), withText("mon"),
-                        childAtPosition(
-                                allOf(withId(R.id.search_plate),
-                                        childAtPosition(
-                                                withId(R.id.search_edit_frame),
-                                                1)),
-                                0),
-                        isDisplayed()));
-        searchAutoComplete16.perform(click());
-
         ViewInteraction searchAutoComplete17 = onView(
-                allOf(withId(R.id.search_src_text), withText("mon"),
+                allOf(withId(R.id.search_src_text), withText("Mon"),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
                                         childAtPosition(
@@ -692,10 +692,10 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete17.perform(replaceText("mona"));
+        searchAutoComplete17.perform(replaceText("Mona"));
 
         ViewInteraction searchAutoComplete18 = onView(
-                allOf(withId(R.id.search_src_text), withText("mona"),
+                allOf(withId(R.id.search_src_text), withText("Mona"),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
                                         childAtPosition(
@@ -745,7 +745,18 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete19.perform(replaceText("plazas"), closeSoftKeyboard());
+        searchAutoComplete19.perform(click());
+
+        ViewInteraction searchAutoComplete20 = onView(
+                allOf(withId(R.id.search_src_text),
+                        childAtPosition(
+                                allOf(withId(R.id.search_plate),
+                                        childAtPosition(
+                                                withId(R.id.search_edit_frame),
+                                                1)),
+                                0),
+                        isDisplayed()));
+        searchAutoComplete20.perform(replaceText("Plazas"), closeSoftKeyboard());
 
         ViewInteraction recyclerView2 = onView(
                 allOf(withId(R.id.listaParadasLinea),
@@ -768,17 +779,6 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         appCompatImageView9.perform(click());
 
-        ViewInteraction searchAutoComplete20 = onView(
-                allOf(withId(R.id.search_src_text),
-                        childAtPosition(
-                                allOf(withId(R.id.search_plate),
-                                        childAtPosition(
-                                                withId(R.id.search_edit_frame),
-                                                1)),
-                                0),
-                        isDisplayed()));
-        searchAutoComplete20.perform(click());
-
         ViewInteraction searchAutoComplete21 = onView(
                 allOf(withId(R.id.search_src_text),
                         childAtPosition(
@@ -788,7 +788,7 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete21.perform(replaceText("9 valdecilla"), closeSoftKeyboard());
+        searchAutoComplete21.perform(replaceText("9 Valdecilla"), closeSoftKeyboard());
 
         ViewInteraction textView39 = onView(
                 allOf(withId(R.id.txtNumParada), withText("9"),
@@ -810,49 +810,6 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         textView40.check(matches(withText("VALDECILLA")));
 
-        ViewInteraction searchAutoComplete22 = onView(
-                allOf(withId(R.id.search_src_text), withText("9 valdecilla"),
-                        childAtPosition(
-                                allOf(withId(R.id.search_plate),
-                                        childAtPosition(
-                                                withId(R.id.search_edit_frame),
-                                                1)),
-                                0),
-                        isDisplayed()));
-        searchAutoComplete22.perform(click());
-
-        ViewInteraction searchAutoComplete23 = onView(
-                allOf(withId(R.id.search_src_text), withText("9 valdecilla"),
-                        childAtPosition(
-                                allOf(withId(R.id.search_plate),
-                                        childAtPosition(
-                                                withId(R.id.search_edit_frame),
-                                                1)),
-                                0),
-                        isDisplayed()));
-        searchAutoComplete23.perform(replaceText("9 moncloa"));
-
-        ViewInteraction searchAutoComplete24 = onView(
-                allOf(withId(R.id.search_src_text), withText("9 moncloa"),
-                        childAtPosition(
-                                allOf(withId(R.id.search_plate),
-                                        childAtPosition(
-                                                withId(R.id.search_edit_frame),
-                                                1)),
-                                0),
-                        isDisplayed()));
-        searchAutoComplete24.perform(closeSoftKeyboard());
-
-        ViewInteraction recyclerView3 = onView(
-                allOf(withId(R.id.listaParadasLinea),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(android.R.id.content),
-                                        0),
-                                2),
-                        isDisplayed()));
-        recyclerView3.check(matches(isDisplayed()));
-
         ViewInteraction appCompatImageView10 = onView(
                 allOf(withId(R.id.search_close_btn), withContentDescription("Clear query"),
                         childAtPosition(
@@ -864,7 +821,7 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         appCompatImageView10.perform(click());
 
-        ViewInteraction searchAutoComplete25 = onView(
+        ViewInteraction searchAutoComplete22 = onView(
                 allOf(withId(R.id.search_src_text),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
@@ -873,9 +830,30 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete25.perform(click());
+        searchAutoComplete22.perform(replaceText("90 Valdecilla"), closeSoftKeyboard());
 
-        ViewInteraction searchAutoComplete26 = onView(
+        ViewInteraction recyclerView3 = onView(
+                allOf(withId(R.id.listaParadasLinea),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(android.R.id.content),
+                                        0),
+                                2),
+                        isDisplayed()));
+        recyclerView3.check(matches(isDisplayed()));
+
+        ViewInteraction appCompatImageView11 = onView(
+                allOf(withId(R.id.search_close_btn), withContentDescription("Clear query"),
+                        childAtPosition(
+                                allOf(withId(R.id.search_plate),
+                                        childAtPosition(
+                                                withId(R.id.search_edit_frame),
+                                                1)),
+                                1),
+                        isDisplayed()));
+        appCompatImageView11.perform(click());
+
+        ViewInteraction searchAutoComplete23 = onView(
                 allOf(withId(R.id.search_src_text),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
@@ -884,7 +862,18 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete26.perform(replaceText("90 valdecilla"), closeSoftKeyboard());
+        searchAutoComplete23.perform(click());
+
+        ViewInteraction searchAutoComplete24 = onView(
+                allOf(withId(R.id.search_src_text),
+                        childAtPosition(
+                                allOf(withId(R.id.search_plate),
+                                        childAtPosition(
+                                                withId(R.id.search_edit_frame),
+                                                1)),
+                                0),
+                        isDisplayed()));
+        searchAutoComplete24.perform(replaceText("9 Unican"), closeSoftKeyboard());
 
         ViewInteraction recyclerView4 = onView(
                 allOf(withId(R.id.listaParadasLinea),
@@ -896,19 +885,19 @@ public class AceptacionBuscarParadasLineaTest {
                         isDisplayed()));
         recyclerView4.check(matches(isDisplayed()));
 
-        ViewInteraction searchAutoComplete27 = onView(
-                allOf(withId(R.id.search_src_text), withText("90 valdecilla"),
+        ViewInteraction appCompatImageView12 = onView(
+                allOf(withId(R.id.search_close_btn), withContentDescription("Clear query"),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
                                         childAtPosition(
                                                 withId(R.id.search_edit_frame),
                                                 1)),
-                                0),
+                                1),
                         isDisplayed()));
-        searchAutoComplete27.perform(click());
+        appCompatImageView12.perform(click());
 
-        ViewInteraction searchAutoComplete28 = onView(
-                allOf(withId(R.id.search_src_text), withText("90 valdecilla"),
+        ViewInteraction searchAutoComplete25 = onView(
+                allOf(withId(R.id.search_src_text),
                         childAtPosition(
                                 allOf(withId(R.id.search_plate),
                                         childAtPosition(
@@ -916,18 +905,7 @@ public class AceptacionBuscarParadasLineaTest {
                                                 1)),
                                 0),
                         isDisplayed()));
-        searchAutoComplete28.perform(replaceText("9   valdecilla"));
-
-        ViewInteraction searchAutoComplete29 = onView(
-                allOf(withId(R.id.search_src_text), withText("9   valdecilla"),
-                        childAtPosition(
-                                allOf(withId(R.id.search_plate),
-                                        childAtPosition(
-                                                withId(R.id.search_edit_frame),
-                                                1)),
-                                0),
-                        isDisplayed()));
-        searchAutoComplete29.perform(closeSoftKeyboard());
+        searchAutoComplete25.perform(replaceText("45 Valdecilla"), closeSoftKeyboard());
 
         ViewInteraction recyclerView5 = onView(
                 allOf(withId(R.id.listaParadasLinea),
@@ -938,6 +916,48 @@ public class AceptacionBuscarParadasLineaTest {
                                 2),
                         isDisplayed()));
         recyclerView5.check(matches(isDisplayed()));
+
+        ViewInteraction appCompatImageView13 = onView(
+                allOf(withId(R.id.search_close_btn), withContentDescription("Clear query"),
+                        childAtPosition(
+                                allOf(withId(R.id.search_plate),
+                                        childAtPosition(
+                                                withId(R.id.search_edit_frame),
+                                                1)),
+                                1),
+                        isDisplayed()));
+        appCompatImageView13.perform(click());
+
+        ViewInteraction searchAutoComplete26 = onView(
+                allOf(withId(R.id.search_src_text),
+                        childAtPosition(
+                                allOf(withId(R.id.search_plate),
+                                        childAtPosition(
+                                                withId(R.id.search_edit_frame),
+                                                1)),
+                                0),
+                        isDisplayed()));
+        searchAutoComplete26.perform(replaceText("9  Valdecilla"), closeSoftKeyboard());
+
+        ViewInteraction textView41 = onView(
+                allOf(withId(R.id.txtNumParada), withText("9"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.listaParadasLinea),
+                                        0),
+                                0),
+                        isDisplayed()));
+        textView41.check(matches(withText("9")));
+
+        ViewInteraction textView42 = onView(
+                allOf(withId(R.id.txtParadaName), withText("VALDECILLA"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.listaParadasLinea),
+                                        0),
+                                1),
+                        isDisplayed()));
+        textView42.check(matches(withText("VALDECILLA")));
 
     }
 
