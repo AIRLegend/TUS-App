@@ -142,25 +142,9 @@ public class ListLineasPresenter
     /**
      * Metodo que actualiza la lista del adapter en funcion del texto que se manda.
      * @param query a buscar
-     * @return Lista con las lineas que coinciden con la query
      */
-    public List<Linea> filterLineas(String query) {
-        List<Linea> lineasFiltered = new ArrayList<>();
-        //lineasFiltered.addAll(listaLineasBus);
-
-        query = query.toLowerCase();
-
-        if (query.length() == 0) {
-            listLineasView.showList(listaLineasBus);
-        } else {
-            for (Linea l : listaLineasBus) {
-                if (l.toString().toLowerCase().contains(query)) {
-                    lineasFiltered.add(l);
-                }
-            }
-            listLineasView.showList(lineasFiltered);
-        }
-        return lineasFiltered;
+    public void filterLineas(String query) {
+        listLineasView.showList(CommonUtils.filterLineas(listaLineasBus, query));
     }
 
 }// ListLineasPresenter
