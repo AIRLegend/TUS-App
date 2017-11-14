@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,16 +13,19 @@ import android.view.ViewGroup;
 
 import com.air.mover.R;
 import com.air.mover.dao.model.Linea;
+import com.air.mover.presenter.ListLineasPresenter;
 import com.air.mover.view.callbacks.CallbackParadasLinea;
 
 /**
  *  Esta clase se encarga de definir y gestionar la vista correspondiente al fragmento lineas de la aplicacion
  * @version 30/10/17
  */
-public class LineasFragment extends Fragment implements  CallbackParadasLinea
+public class LineasFragment extends Fragment implements  CallbackParadasLinea, SearchView.OnQueryTextListener
 {
-    FragmentTabHost mTabHost; //TabHost donde se definiran las pestanas del fragmento
+    private FragmentTabHost mTabHost; //TabHost donde se definiran las pestanas del fragmento
+    private SearchView searchView;
     private CallbackParadasLinea callbackParadas;
+    private ListLineasPresenter mlineasListPresenter;
 
     /**
      * Metodo que se ejecuta cuando se dibuja por primera vez el fragment en la
@@ -41,6 +45,10 @@ public class LineasFragment extends Fragment implements  CallbackParadasLinea
         View view = inflater.inflate(R.layout.activity_lineas_fragment, container, false);
 
         mTabHost = (FragmentTabHost)view.findViewById(R.id.tabhost_lineas);
+
+        searchView = (SearchView)view.findViewById(R.id.searchViewLinea);
+        searchView.setQueryHint(getResources().getString(R.string.search_lineas));
+        searchView.setOnQueryTextListener(this);
 
         //Configuramos el frame que contendra el contenido de la pestana
         mTabHost.setup(getActivity(), getChildFragmentManager(), android.R.id.tabcontent);
@@ -103,4 +111,29 @@ public class LineasFragment extends Fragment implements  CallbackParadasLinea
     {
         this.callbackParadas=c;
     }//setCallback
+
+    public void setLineasListPresenter(ListLineasPresenter listLineaPresenter) {this.mlineasListPresenter = listLineaPresenter;}
+
+    /**
+     * Ocultar el teclado cuando se envia la query
+     * @param query
+     * @return true
+     */
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        searchView.clearFocus();
+        return true;
+    }
+
+    /**
+     * Metodo para buscar en la lista del fragment hijo. El presenter lo ha pasado el hijo en la
+     * creacion
+     * @param newText texto a filtrar
+     * @return true
+     */
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        mlineasListPresenter.filterLineas(newText);
+        return true;
+    }
 }

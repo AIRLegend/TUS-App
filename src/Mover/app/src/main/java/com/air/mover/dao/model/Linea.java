@@ -96,4 +96,11 @@ public class Linea implements Comparable<Linea>
      {
          return identifier - linea.getIdentifier();
      }//compareTo
+
+     @Override
+     public String toString()
+     {
+        return numero +" "+name;
+     }//toString
+
  }//Linea
