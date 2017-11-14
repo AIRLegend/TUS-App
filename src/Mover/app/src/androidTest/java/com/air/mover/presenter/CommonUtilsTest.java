@@ -12,9 +12,7 @@ import java.util.List;
 
 import static com.air.mover.presenter.CommonUtils.filterLineas;
 
-/**
- * Created by Elisa on 14/11/2017.
- */
+
 public class CommonUtilsTest {
     private static List<Linea> l = new ArrayList<>();
 
@@ -48,6 +46,71 @@ public class CommonUtilsTest {
         l.add(l11);
         l.add(l12);
     }
+
+    /**
+     *  Test que comprueba que el tamaño de la lista obtenida es 1 cuando buscas por un
+     *  numero que existe
+     */
+    @Test
+    public void U4A() throws Exception {
+        Assert.assertEquals(filterLineas(l, "12").size(), 1);
+    }//U4A
+
+    /**
+     *  Test que comprueba que el tamaño de la lista obtenida es 0 cuando buscas por un
+     *  numero que no existe
+     */
+    @Test
+    public void U4B() throws Exception {
+        Assert.assertEquals(filterLineas(l, "50").size(), 0);
+    }//U4B
+
+    /**
+     *  Test que comprueba que el tamaño de la lista obtenida es 4, 2 y 1 cuando buscas por el
+     *  numero 5, 5C y 5C1 respectivamente.
+     */
+    @Test
+    public void U4C() throws Exception {
+        Assert.assertEquals(filterLineas(l, "5").size(), 4);
+        Assert.assertEquals(filterLineas(l, "5C").size(), 2);
+        Assert.assertEquals(filterLineas(l, "5C1").size(), 1);
+    }//U4C
+
+    /**
+     *  Test que comprueba que el tamaño de la lista obtenida es 1 cuando buscas por un
+     *  nombre completo que existe
+     */
+    @Test
+    public void U4D() throws Exception {
+        Assert.assertEquals(filterLineas(l, "PLAZA DE LOS REMEDIOS").size(), 1);
+    }//U4D
+
+    /**
+     *  Test que comprueba que el tamaño de la lista obtenida es 1 cuando buscas por un
+     *  nombre en minúsculas que existe
+     */
+    @Test
+    public void U4E() throws Exception {
+        Assert.assertEquals(filterLineas(l, "Ojaiz-piquio").size(), 1);
+    }//U4E
+
+    /**
+     *  Test que comprueba que el tamaño de la lista obtenida es 1 cuando buscas por un
+     *  nombre que existe intercalando mayúsculas y minúsculas
+     */
+    @Test
+    public void U4F() throws Exception {
+        Assert.assertEquals(filterLineas(l, "PcTcAn-VaLdEnOjA").size(), 1);
+    }//U4F
+
+    /**
+     *  Test que comprueba que el tamaño de la lista obtenida es 3 cuando buscas por un
+     *  nombre incompleto que existe
+     */
+    @Test
+    public void U4G() throws Exception {
+        Assert.assertEquals(filterLineas(l, "Valdec").size(), 3);
+    }//U4G
 
     /**
      *  Test que comprueba que el tamaño de la lista obtenida es 0 cuando buscas por un
