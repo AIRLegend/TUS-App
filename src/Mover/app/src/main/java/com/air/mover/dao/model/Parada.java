@@ -104,4 +104,10 @@ public class Parada
     public void setNumParada(int numParada) {
         this.numParada = numParada;
     } //setNumParada
+
+    @Override
+    public String toString()
+    {
+        return (numParada+" "+ nombre);
+    }
 }

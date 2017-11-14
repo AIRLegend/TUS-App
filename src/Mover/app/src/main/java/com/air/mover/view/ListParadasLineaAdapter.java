@@ -10,8 +10,10 @@ import android.widget.TextView;
 import com.air.mover.R;
 import com.air.mover.dao.model.Parada;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by air on 7/11/17.
@@ -19,13 +21,17 @@ import java.util.List;
 
 public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLineaAdapter.ViewHolderParadasLinea> {
 
+    Context context;
     private List<Parada> mData = Collections.emptyList();
+    private List<Parada> listaOrginal=new ArrayList<>();
+    private List<Parada> mParadasRestantes= new ArrayList<>();
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    public ListParadasLineaAdapter(Context context, List<Parada> data) {
+    public ListParadasLineaAdapter(Context context)
+    {
+        this.context=context;
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
     }//ListParadasLineaAdapter
 
     /**
@@ -113,6 +119,52 @@ public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLin
             void onItemClick(View view, int position);
     }//ItemClickListener
 
+
+    /**
+     * Metodo que se encarga de realizar el filtrado de busqueda en base
+     * al contenido del parametro pasado
+     *
+     * @param textoFiltrado texto en base al cual hay que realizar el filtrado
+     */
+    public void filter(String textoFiltrado)
+    {
+        //Dejamos charText en minusculas para evitar diferencias entre
+        //mayusculas y minusculas a la hora de comparar
+        textoFiltrado= textoFiltrado.toLowerCase(Locale.getDefault());
+
+        //Dejamos vacia la lista de paradas que se mostrara despues de introducir como
+        //texto el parametro, de esta forma podemos configurar la lista que queremos que se muestre atendiendo solo al parametro
+        mParadasRestantes.clear();
+
+        if(textoFiltrado.length()==0)
+        {
+            //No hay ningun caracter en el campo de busqueda
+            //por lo que se deben mostrar todas las paradas
+            mParadasRestantes.addAll(listaOrginal);
+        }//if
+        else
+        {
+            for(Parada p : listaOrginal)
+            {
+                if(p.toString().toLowerCase(Locale.getDefault()).contains(textoFiltrado))
+                {
+                    //La parada contiene el texto del parametro ya sea en su nombre y/o en su numero
+                    mParadasRestantes.add(p);
+                }//if
+            }//for
+        }//else
+
+        //A estas alturas, la lista de paradas a mostrar para el texto introducido
+        //ya esta configurada, por tanto actualizamos la vista con la lista creada
+        updateData(mParadasRestantes);
+
+    }//filter
+
+
+    public void setListaOrginal(List<Parada> lista)
+    {
+        listaOrginal = lista;
+    }
 
 
 }

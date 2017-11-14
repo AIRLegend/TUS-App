@@ -11,6 +11,7 @@ import com.air.mover.dao.dataloader.ParserJSON;
 import com.air.mover.dao.dataloader.RemoteFetch;
 import com.air.mover.view.ListParadasLineaAdapter;
 import com.air.mover.view.MainActivity;
+import com.air.mover.presenter.ListParadasLineaPresenter;
 
 import junit.framework.Assert;
 
@@ -31,7 +32,6 @@ public class ListParadasLineaPresenterTest {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     ListParadasLineaPresenter listParadasLinea;
-    private List<Parada> datos = Collections.emptyList();
     ListParadasLineaAdapter adapter;
 
     ListParadasLineaPresenter listParadasLineaPresenter;
@@ -47,7 +47,7 @@ public class ListParadasLineaPresenterTest {
 
         try{
             //inicializacion
-            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),datos);
+            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext());
             listParadasLinea = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),adapter,1);
             //comprobacion
             boolean bool = listParadasLinea.obtenParadasLineas(1);
@@ -68,7 +68,7 @@ public class ListParadasLineaPresenterTest {
 
         try{
             //inicializacion
-            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),datos);
+            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext());
             listParadasLinea = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),adapter,1);
             //comprobacion
             boolean bool = listParadasLinea.obtenParadasLineas(1);
@@ -89,7 +89,7 @@ public class ListParadasLineaPresenterTest {
 
         try{
             //inicializacion
-            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),datos);
+            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext());
             listParadasLinea = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),adapter,1);
             //comprobacion
             boolean bool = listParadasLinea.obtenParadasLineas(0); //Devuelve true pero con lista vacia.
@@ -111,7 +111,7 @@ public class ListParadasLineaPresenterTest {
 
         try{
             //inicializacion
-            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),datos);
+            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext());
             listParadasLinea = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),adapter,1);
             //comprobacion
             boolean bool = listParadasLinea.obtenParadasLineas(10000); //Devuelve true pero con lista vacia.
@@ -133,7 +133,7 @@ public class ListParadasLineaPresenterTest {
 
         try{
             //inicializacion
-            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),datos);
+            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext());
             listParadasLinea = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),adapter,1);
             //comprobacion
             boolean bool = listParadasLinea.obtenParadasLineas(-1);
@@ -165,8 +165,7 @@ public class ListParadasLineaPresenterTest {
             @Override
             public void run() {
                 listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
-                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),
-                                Collections.<Parada>emptyList()),1);
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()),1);
             }
         });
         Assert.assertEquals("URL correcta, con conexion a internet",true,
@@ -177,7 +176,6 @@ public class ListParadasLineaPresenterTest {
      * Test para comprobar que el metodo obtenParadasLinea() retorne false cuando la url dada es incorrecta,
      * haya conexión a internet y el identificador de la línea es 1.
      * @throws Exception
-     */
     @Test
     public void I2prueba_url() throws  Exception{
         if(!checkInternet()){
@@ -187,11 +185,10 @@ public class ListParadasLineaPresenterTest {
             @Override
             public void run() {
                 listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
-                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),
-                                Collections.<Parada>emptyList()),1){
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(), 1){
                     /**
                      * Sobreescribir el metodo obtenParadasLinea() cambiando la url original por una incorrecta
-                     */
+
                     @Override
                     public boolean obtenParadasLineas(int identificadorLinea){
                         try
@@ -210,6 +207,7 @@ public class ListParadasLineaPresenterTest {
         });
         Assert.assertEquals(false, listParadasLineaPresenter.obtenParadasLineas(1));
     }//I2prueba_de_mas
+    */
 
     /**
      * Test para comprobar que el metodo obtenParadasLinea() retorne false cuando la url dada es la correcta,
@@ -226,8 +224,7 @@ public class ListParadasLineaPresenterTest {
             @Override
             public void run() {
                 listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
-                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),
-                                Collections.<Parada>emptyList()),1);
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()), 1);
             }
         });
         Assert.assertEquals(false,listParadasLineaPresenter.obtenParadasLineas(1));
@@ -247,8 +244,7 @@ public class ListParadasLineaPresenterTest {
             @Override
             public void run() {
                 listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
-                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),
-                                Collections.<Parada>emptyList()),0);
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()),0);
             }
         });
         Assert.assertEquals("El identificador de la línea no existe",true,
@@ -269,8 +265,7 @@ public class ListParadasLineaPresenterTest {
             @Override
             public void run() {
                 listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
-                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),
-                                Collections.<Parada>emptyList()),100000);
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()),100000);
             }
         });
         // me parece que si el id no existe si que pasa
@@ -296,8 +291,7 @@ public class ListParadasLineaPresenterTest {
             @Override
             public void run() {
                 listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
-                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(),
-                                Collections.<Parada>emptyList()),-1);
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()),-1);
             }
         });
         Assert.assertEquals("El identificador de la línea no existe",false,

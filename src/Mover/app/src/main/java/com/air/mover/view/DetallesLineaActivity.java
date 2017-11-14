@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -17,11 +18,12 @@ import com.air.mover.presenter.ListParadasLineaPresenter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetallesLineaActivity extends AppCompatActivity implements  ListParadasLineaAdapter.ItemClickListener{
+public class DetallesLineaActivity extends AppCompatActivity implements  ListParadasLineaAdapter.ItemClickListener, SearchView.OnQueryTextListener{
 
-    ListParadasLineaAdapter adapter;
+    ListParadasLineaAdapter adapterParadasLinea;
     ListParadasLineaPresenter listParadasLineaPresenter;
     private ProgressDialog dialog;
+    private SearchView searchParadasLinea;
     TextView tituloParadasPorLinea;
 
     @Override
@@ -39,23 +41,21 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
         String numeroLinea= getIntent().getStringExtra("numeroLinea");
         String nombreLinea= getIntent().getStringExtra("nombreLinea");
 
-        //Esto es una parada de prueba que dejo porque no van las API y queda hacer el presenter / DAO.
-        List<Parada> list = new ArrayList<>();
-
-
-
         // Crear el recyclerview
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.listaParadasLinea);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ListParadasLineaAdapter(this, list);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
+        adapterParadasLinea = new ListParadasLineaAdapter(this);
+        adapterParadasLinea.setClickListener(this);
+        recyclerView.setAdapter(adapterParadasLinea);
 
-        listParadasLineaPresenter= new ListParadasLineaPresenter(this, adapter, identificadorLinea);
+        listParadasLineaPresenter= new ListParadasLineaPresenter(this, adapterParadasLinea, identificadorLinea);
 
         tituloParadasPorLinea= (TextView) findViewById(R.id.tituloParadasLinea);
         tituloParadasPorLinea.setText("Linea "+ numeroLinea +"\n"+nombreLinea);
 
+        searchParadasLinea= (SearchView) findViewById(R.id.searchParadasLinea);
+        searchParadasLinea.setQueryHint("\f"+getResources().getString(R.string.textoDefectoSearchParadas));
+        searchParadasLinea.setOnQueryTextListener(this);
     }
 
     /**
@@ -96,4 +96,33 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
             dialog.cancel();
         }//else
     }//showProgress
+
+    /**
+     * Metodo que se ejecuta cuando el usuario pulsa la tecla de confirmacion de busqueda.
+     * El metodo se encarga de cerrar el teclado emergente en el momento de la busqueda
+     *
+     * @param textoDeFiltraje texto existente en el campo de busqueda al momento de confirmar la busqueda
+     * @return true siempre puesto que la accion siempre es manejada
+     */
+    @Override
+    public boolean onQueryTextSubmit(String textoDeFiltraje)
+    {
+        searchParadasLinea.clearFocus();
+        return true;
+    }//onQueryTextSubmit
+
+    /**
+     * Metodo que se ejecuta cada vez que el usuario modifica el texto del campo de busqueda.
+     * El metodo se encarga de actualizar la vista mostrando tan solo aquellas paradas que coincidan
+     * con el texto modificado.
+     *
+     * @param newText nuevo texto para realizar el filtraje de paradas
+     * @return true siempre puesto que la accion siempre es manejada
+     */
+    @Override
+    public boolean onQueryTextChange(String newText)
+    {
+        adapterParadasLinea.filter(newText);
+        return true;
+    }//onQueryTextChange
 }

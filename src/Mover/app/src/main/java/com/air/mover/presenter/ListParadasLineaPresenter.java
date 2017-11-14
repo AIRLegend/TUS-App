@@ -23,6 +23,8 @@ public class ListParadasLineaPresenter
     private List<Parada> listaParadasLinea;
     private Context context;
     private int numLinea;
+    private LeerParadasLineaInternet leerParadasLineaInternet;
+
 
     public ListParadasLineaPresenter(Context context, ListParadasLineaAdapter adapter, int numLinea)
     {
@@ -31,11 +33,10 @@ public class ListParadasLineaPresenter
         this.numLinea=numLinea;
     }
 
-    public void setListaLineasBus(List<Parada> listaLineasBus) {
+    public void setListaLineasBus(List<Parada> listaLineasBus)
+    {
         this.listaParadasLinea = listaLineasBus;
     }
-
-
 
     /**
      * Clase asincrona que permite descargar las lineas de TUS de internet
@@ -84,8 +85,8 @@ public class ListParadasLineaPresenter
                     ((DetallesLineaActivity) (context)).showProgress(false);
                 }
                 Log.d("ADAPTER", adapter.toString());
-                adapter.updateData(paradasLinea);
-
+                adapter.setListaOrginal(listaParadasLinea);
+                adapter.updateData(listaParadasLinea);
             }//if
         }
 
