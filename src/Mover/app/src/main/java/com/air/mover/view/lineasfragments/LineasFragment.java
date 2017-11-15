@@ -2,9 +2,9 @@ package com.air.mover.view.lineasfragments;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
-import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,9 +13,6 @@ import android.view.ViewGroup;
 
 import com.air.mover.R;
 import com.air.mover.dao.model.Linea;
-import com.air.mover.presenter.ListLineasPresenter;
-import com.air.mover.view.ListLineasAdapter;
-import com.air.mover.view.MainActivity;
 import com.air.mover.view.callbacks.CallbackParadasLinea;
 
 /**
@@ -27,8 +24,6 @@ public class LineasFragment extends Fragment implements  CallbackParadasLinea, S
     private FragmentTabHost mTabHost; //TabHost donde se definiran las pestanas del fragmento
     private SearchView searchView;
     private CallbackParadasLinea callbackParadas;
-    private ListLineasPresenter mlineasListPresenter;
-    private LineasTodasFragment mlineasTodasFragment;
 
     /**
      * Metodo que se ejecuta cuando se dibuja por primera vez el fragment en la
@@ -115,7 +110,7 @@ public class LineasFragment extends Fragment implements  CallbackParadasLinea, S
         this.callbackParadas=c;
     }//setCallback
 
-    public void setLineasListPresenter(ListLineasPresenter listLineaPresenter) {this.mlineasListPresenter = listLineaPresenter;}
+    //public void setLineasListPresenter(ListLineasPresenter listLineaPresenter) {this.mlineasListPresenter = listLineaPresenter;}
 
     /**
      * Ocultar el teclado cuando se envia la query

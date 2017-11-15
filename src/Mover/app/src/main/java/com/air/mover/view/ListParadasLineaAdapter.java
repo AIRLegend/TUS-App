@@ -14,7 +14,7 @@ import com.air.mover.presenter.CommonUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
+
 
 /**
  * Created by air on 7/11/17.

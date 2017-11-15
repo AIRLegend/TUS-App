@@ -13,6 +13,8 @@ import java.util.List;
  */
 public class CommonUtils {
 
+
+    private CommonUtils(){}
     /**
      * Filtra una lista de lineas en base al texto que se pasa
      * @param lineaOriginal lista que se quiere filtrar
@@ -31,7 +33,7 @@ public class CommonUtils {
                     nuevaLista.add(l);
                 }
             }
-            //nuevaLista.showList(lineasFiltered);
+
         }
         return nuevaLista;
     }

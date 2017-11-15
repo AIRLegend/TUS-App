@@ -23,7 +23,6 @@ public class ListParadasLineaPresenter
     private List<Parada> listaParadasLinea;
     private Context context;
     private int numLinea;
-    private LeerParadasLineaInternet leerParadasLineaInternet;
 
 
     public ListParadasLineaPresenter(Context context, ListParadasLineaAdapter adapter, int numLinea)
@@ -85,8 +84,8 @@ public class ListParadasLineaPresenter
                     ((DetallesLineaActivity) (context)).showProgress(false);
                 }
                 Log.d("ADAPTER", adapter.toString());
-                adapter.setListaOrginal(listaParadasLinea);
-                adapter.updateData(listaParadasLinea);
+                adapter.setListaOrginal(paradasLinea);
+                adapter.updateData(paradasLinea);
             }//if
         }
 
