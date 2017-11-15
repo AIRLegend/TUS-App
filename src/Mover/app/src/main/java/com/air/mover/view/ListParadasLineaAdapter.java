@@ -9,9 +9,12 @@ import android.widget.TextView;
 
 import com.air.mover.R;
 import com.air.mover.dao.model.Parada;
+import com.air.mover.presenter.CommonUtils;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 /**
  * Created by air on 7/11/17.
@@ -19,13 +22,16 @@ import java.util.List;
 
 public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLineaAdapter.ViewHolderParadasLinea> {
 
+    Context context;
     private List<Parada> mData = Collections.emptyList();
+    private List<Parada> listaOrginal=new ArrayList<>();
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
-    public ListParadasLineaAdapter(Context context, List<Parada> data) {
+    public ListParadasLineaAdapter(Context context)
+    {
+        this.context=context;
         this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
     }//ListParadasLineaAdapter
 
     /**
@@ -113,6 +119,22 @@ public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLin
             void onItemClick(View view, int position);
     }//ItemClickListener
 
+
+    /**
+     * Metodo que se encarga de realizar el filtrado de busqueda en base
+     * al contenido del parametro pasado
+     *
+     * @param textoFiltrado texto en base al cual hay que realizar el filtrado
+     */
+    public void filter(String textoFiltrado)
+    {
+        updateData(CommonUtils.filterParadas(listaOrginal, textoFiltrado));
+    }
+
+    public void setListaOrginal(List<Parada> lista)
+    {
+        listaOrginal = lista;
+    }
 
 
 }

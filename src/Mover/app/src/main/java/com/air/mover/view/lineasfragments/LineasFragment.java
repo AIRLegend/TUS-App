@@ -2,9 +2,9 @@ package com.air.mover.view.lineasfragments;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
-import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -113,6 +113,7 @@ public class LineasFragment extends Fragment implements  CallbackParadasLinea, S
     }//setCallback
 
     public void setLineasListPresenter(ListLineasPresenter listLineaPresenter) {this.mlineasListPresenter = listLineaPresenter;}
+
 
     /**
      * Ocultar el teclado cuando se envia la query

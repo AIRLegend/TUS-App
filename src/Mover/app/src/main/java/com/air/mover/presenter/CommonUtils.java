@@ -18,7 +18,6 @@ public class CommonUtils {
      */
     private CommonUtils () {}
 
-
     /**
      * Filtra una lista de lineas en base al texto que se pasa
      * @param lineaOriginal lista que se quiere filtrar

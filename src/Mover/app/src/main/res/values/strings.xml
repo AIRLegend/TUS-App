@@ -7,5 +7,5 @@
     <string name="cont_tab_favoritas">Favoritas</string>
     <string name="paradas_title">PARADAS</string>
     <string name="search_lineas">Buscar linea</string>
-
+    <string name="search_paradas_lineas">Buscar parada</string>
 </resources>
