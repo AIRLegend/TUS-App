@@ -54,7 +54,7 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
         tituloParadasPorLinea.setText("Linea "+ numeroLinea +"\n"+nombreLinea);
 
         searchParadasLinea= (SearchView) findViewById(R.id.searchParadasLinea);
-        searchParadasLinea.setQueryHint("\f"+getResources().getString(R.string.textoDefectoSearchParadas));
+        searchParadasLinea.setQueryHint("\f"+getResources().getString(R.string.search_paradas_lineas));
         searchParadasLinea.setOnQueryTextListener(this);
     }
 

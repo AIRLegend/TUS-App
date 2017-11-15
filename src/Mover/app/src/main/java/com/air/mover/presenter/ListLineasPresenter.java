@@ -138,5 +138,14 @@ public class ListLineasPresenter
         return listaLineasBus;
     }//getListaLineasBus
 
+
+    /**
+     * Metodo que actualiza la lista del adapter en funcion del texto que se manda.
+     * @param query a buscar
+     */
+    public void filterLineas(String query) {
+        listLineasView.showList(CommonUtils.filterLineas(listaLineasBus, query));
+    }
+
 }// ListLineasPresenter
 

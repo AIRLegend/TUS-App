@@ -73,6 +73,10 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
         this.listLineasPresenter = new ListLineasPresenter(getContext(),this);
         dialog= new ProgressDialog(getContext());
 
+        if (getParentFragment() instanceof LineasFragment) {
+            ((LineasFragment)getParentFragment()).setLineasListPresenter(listLineasPresenter);
+        }
+
     }//onActivityCreated
 
     /**

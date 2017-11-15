@@ -23,16 +23,11 @@ public class CommonUtils {
         List<Linea> nuevaLista = new ArrayList<>();
         query = query.replaceAll("( +)", " ").trim().toLowerCase();
 
-        if (query.length() == 0)
-        {
+        if (query.length() == 0) {
             return lineaOriginal;
-        }
-        else
-        {
-            for (Linea l : lineaOriginal)
-            {
-                if (l.toString().toLowerCase().contains(query))
-                {
+        } else {
+            for (Linea l : lineaOriginal) {
+                if (l.toString().toLowerCase().contains(query)) {
                     nuevaLista.add(l);
                 }
             }
