@@ -40,7 +40,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U5A() throws Exception {
-        Assert.assertEquals(filterParadas(p, "429").size(), 1);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "429").size(), 1);
     }//U5A
 
     /*
@@ -48,7 +48,7 @@ public class CommonUtilsTest {
     */
     @Test
     public void U5B() throws Exception {
-        Assert.assertEquals(filterParadas(p, "90").size(), 0);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "90").size(), 0);
     }//U5B
     /*
     Método que comprueba si el tamaño de la lista es de dos y de uno cuando se realiza una consulta con un numero de "6"
@@ -56,22 +56,22 @@ public class CommonUtilsTest {
     */
     @Test
     public void U5C() throws Exception {
-        Assert.assertEquals(filterParadas(p, "6").size(), 2);
-        Assert.assertEquals(filterParadas(p, "68").size(), 1);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "6").size(), 3);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "68").size(), 1);
     }//U5C
     /*
     Método que comprueba si el tamaño de la lista es de uno cuando se realiza una consulta con un nombre existente en mayusculas
     */
     @Test
     public void U5D() throws Exception {
-        Assert.assertEquals(filterParadas(p, "PLAZA DE TOROS").size(), 1);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "PLAZA DE TOROS").size(), 1);
     }//U5D
     /*
     Método que comprueba si el tamaño de la lista es de uno cuando se realiza una consulta con un nombre existente en minusculas
     */
     @Test
     public void U5E() throws Exception {
-        Assert.assertEquals(filterParadas(p, "plaza de toros").size(), 1);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "plaza de toros").size(), 1);
     }//U5E
     /*
     Método que comprueba si el tamaño de la lista es de uno cuando se realiza una consulta con un nobre existente con mayuscula y
@@ -79,49 +79,49 @@ public class CommonUtilsTest {
     */
     @Test
     public void U5F() throws Exception {
-        Assert.assertEquals(filterParadas(p, "PlAzA De ToRoS").size(), 1);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "PlAzA De ToRoS").size(), 1);
     }//U5F
     /*
     Método que comprueba si el tamaño de la lista es de TRES cuando se realiza una consulta con un nombre incompleto existente
     */
     @Test
     public void U5G() throws Exception {
-        Assert.assertEquals(filterParadas(p, "Mona").size(), 3);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "Mona").size(), 1);
     }//U5G
     /*
     Método que comprueba si el tamaño de la lista es de cero cuando se realiza una consulta con un nombre inexistente
     */
     @Test
     public void U5H() throws Exception {
-        Assert.assertEquals(filterParadas(p, "Plazas").size(), 0);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "Plazas").size(), 0);
     }//U5H
     /*
     Método que comprueba si el tamaño de la lista es de uno cuando se realiza una consulta con un nombre y un valor existentes
     */
     @Test
     public void U5I() throws Exception {
-        Assert.assertEquals(filterParadas(p, "9 Valdecilla").size(), 1);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "9 Valdecilla").size(), 1);
     }//U5I
     /*
     Método que comprueba si el tamaño de la lista es de cero cuando se realiza una consulta con un nombre existente y valor inexistente
     */
     @Test
     public void U5J() throws Exception {
-        Assert.assertEquals(filterParadas(p, "90 Valdecilla").size(), 0);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "90 Valdecilla").size(), 0);
     }//U5J
     /*
     Método que comprueba si el tamaño de la lista es de cero cuando se realiza una consulta con nombre y un valor inexistentes
     */
     @Test
     public void U5K() throws Exception {
-        Assert.assertEquals(filterParadas(p, "9 Unican").size(), 0);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "9 Unican").size(), 0);
     }//U5K
     /*
     Método que comprueba si el tamaño de la lista es de cero cuando se realiza una consulta con un nombre existente y un valor inexistente
     */
     @Test
     public void U5L() throws Exception {
-        Assert.assertEquals(filterParadas(p, "45 Valdecilla").size(), 0);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "45 Valdecilla").size(), 0);
     }//U5L
     /*
     Método que comprueba si el tamaño de la lista es de uno cuando se realiza una consulta con un valor y nombre existentes
@@ -129,7 +129,7 @@ public class CommonUtilsTest {
     */
     @Test
     public void U5M() throws Exception {
-        Assert.assertEquals(filterParadas(p, "9  Valdecilla").size(), 1);
+        Assert.assertEquals(CommonUtils.filterParadas(p, "9  Valdecilla").size(), 1);
     }//U5AM
 
 }
