@@ -35,7 +35,7 @@ public class ListParadasLineaPresenterTest {
 
     @Test
     //Id linea existente, URL correcta, con conexion a internet. Devuelve true.
-    public void U3aTest() throws Exception{
+    public void U3A() throws Exception{
         if(!checkInternet()){//Si no tengo internet no me interesa ejecutar esto.
             return;
         }
@@ -56,7 +56,7 @@ public class ListParadasLineaPresenterTest {
 
     //Id linea existente, URL correcta, sin conexion a internet. Devuelve false.
     @Test
-    public void U3bTest() throws Exception{
+    public void U3B() throws Exception{
         if(checkInternet()){//Si tengo internet no me interesa ejecutar esto.
             return;
         }
@@ -77,7 +77,7 @@ public class ListParadasLineaPresenterTest {
 
     @Test
     //Línea igual a 0 .
-    public void U3cTest() throws Exception{
+    public void U3C() throws Exception{
         if(!checkInternet()){//Si tengo internet no me interesa ejecutar esto.
             return;
         }
@@ -99,7 +99,7 @@ public class ListParadasLineaPresenterTest {
 
     @Test
     //Linea mayor que 0 y no existente
-    public void U3dTest() throws Exception{
+    public void U3D() throws Exception{
         if(!checkInternet()){//Si tengo internet no me interesa ejecutar esto.
             return;
         }
@@ -121,7 +121,7 @@ public class ListParadasLineaPresenterTest {
 
     @Test
     //Linea menor que 0.
-    public void U3eTest() throws Exception{
+    public void U3E() throws Exception{
         if(!checkInternet()){//Si tengo internet no me interesa ejecutar esto.
             return;
         }
@@ -240,43 +240,6 @@ public class ListParadasLineaPresenterTest {
     }//I2A
 
     /**
-     * Test para comprobar que el metodo obtenParadasLinea() retorne false cuando la url dada es incorrecta,
-     * haya conexión a internet y el identificador de la línea es 1.
-     * @throws Exception
-    @Test
-    public void I2prueba_url() throws  Exception{
-        if(!checkInternet()){
-            return;     // si no tengo conexion no me interesa ejecutarlo
-        }//if
-        getInstrumentation().runOnMainSync(new Runnable() {
-            @Override
-            public void run() {
-                listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
-                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext(), 1){
-                    /**
-                     * Sobreescribir el metodo obtenParadasLinea() cambiando la url original por una incorrecta
-
-                    @Override
-                    public boolean obtenParadasLineas(int identificadorLinea){
-                        try
-                        {
-                            RemoteFetch.getJSON("http://www");
-                            setListaLineasBus(ParserJSON.readParadasList(RemoteFetch.getBufferedData()));
-                            return true;
-                        }//try
-                        catch(Exception e){
-                            Log.e("ERROR","Error en la obtención de las lineas de Bus: "+e.getMessage());
-                            return false;
-                        }//catch
-                    }//obtenParadasLinea
-                };
-            }
-        });
-        Assert.assertEquals(false, listParadasLineaPresenter.obtenParadasLineas(1));
-    }//I2prueba_de_mas
-    */
-
-    /**
      * Test para comprobar que el metodo obtenParadasLinea() retorne false cuando la url dada es la correcta,
      * pero no haya conexión a internet y el identificador de la línea sea 1.
      * @throws Exception
@@ -335,7 +298,6 @@ public class ListParadasLineaPresenterTest {
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()),100000);
             }
         });
-        // me parece que si el id no existe si que pasa
         Assert.assertEquals("El identificador de la línea no existe",true,
                 listParadasLineaPresenter.obtenParadasLineas(100000));
         // comprobamos que la lista de paradas de la línea esta vacía
@@ -364,6 +326,97 @@ public class ListParadasLineaPresenterTest {
         Assert.assertEquals("El identificador de la línea no existe",false,
                 listParadasLineaPresenter.obtenParadasLineas(-1));
     }//I2E
+
+
+    /**
+     *
+     * Pruebas de la US244924-VerParadas
+     * Created on 21/11/2017. Test de integración (US244924-VerParadas)
+     */
+
+    /**
+     * Test para comprobar que el metodo obtenParadasLineas() retorne true cuando
+     * haya conexión a internet y el identificador de la línea sea -10.
+     * @throws Exception
+     */
+    @Test
+    public void I3A() throws Exception {
+        if(!checkInternet()){
+            return;     // si no tengo conexion no me interesa ejecutarlo
+        }//if
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()));
+            }
+        });
+        Assert.assertEquals("El identificador de la línea no existe",true,
+                listParadasLineaPresenter.obtenParadasLineas(-10));
+    }//I3A
+
+    /**
+     * Test para comprobar que el metodo obtenParadasLineas() retorne true cuando haya
+     * conexión a internet y el identificador de la línea sea distinto de -10 y mayor que 0
+     * (en el este caso de prueba usaremos un id=2).
+     * @throws Exception
+     */
+    @Test
+    public void I3B() throws Exception {
+        if(!checkInternet()){
+            return;     // si no tengo conexion no me interesa ejecutarlo
+        }//if
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()));
+            }
+        });
+        Assert.assertEquals("El identificador de la línea no existe",true,
+                listParadasLineaPresenter.obtenParadasLineas(2));
+    }//I3B
+
+    /**
+     * Test para comprobar que el metodo obtenParadasLineas() retorne false cuando
+     * no haya conexión a internet.
+     * @throws Exception
+     */
+    @Test
+    public void I3C() throws Exception {
+        // si tengo internet no me interesa ejecutar esto
+        if(checkInternet()){
+            return;
+        }//if
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()));
+            }
+        });
+        Assert.assertEquals(false, listParadasLineaPresenter.obtenParadasLineas(1));
+    }//I3C
+
+    /**
+     * Test para comprobar que el metodo obtenParadasLineas() retorne false cuando haya
+     * conexión a internet y el identificador de la línea sea menor que 0 (en este caso -1)
+     * @throws Exception
+     */
+    @Test
+    public void I3D() throws Exception {
+        if(!checkInternet()){
+            return;     // si no tengo conexion no me interesa ejecutarlo
+        }//if
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                listParadasLineaPresenter = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),
+                        new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()));
+            }
+        });
+        Assert.assertEquals(false, listParadasLineaPresenter.obtenParadasLineas(-1));
+    }//I3D
 
 
     /**
