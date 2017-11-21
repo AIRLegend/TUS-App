@@ -231,4 +231,103 @@ public class ParserJSONTest {
             e.printStackTrace();
         }
     }
+
+    //TESTS PARADAS TODAS
+
+    @Test
+    public void testU6a() throws Exception{
+
+
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test);
+            JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+            Parada p = ParserJSON.readParadaGlobal(reader);
+
+            Assert.assertEquals(p.getNombre(),"La Pereda");
+            Assert.assertEquals(p.getNumParada(),463);
+            Assert.assertEquals(p.getPosX(),435031.38);
+            Assert.assertEquals(p.getPosY(),4814426.15);
+
+        }catch(Exception e){
+            Assert.fail("Deberia poder leer la parada");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testU6b() throws Exception{
+
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_vacio);
+            JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+            Parada p = ParserJSON.readParadaGlobal(reader);
+
+            Assert.assertEquals(p.getNombre(),"");
+            Assert.assertEquals(p.getNumParada(),-1);
+            Assert.assertEquals(p.getPosX(),-1.0);
+            Assert.assertEquals(p.getPosY(),-1.0);
+        }catch(Exception e){
+            Assert.fail("No deberia leer ninguna parada");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testU7a()throws Exception{
+
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_vacio);
+            List<Parada> p = ParserJSON.readParadasTodasList(is);
+
+            Assert.assertEquals(0, p.size());
+        }catch(Exception e){
+            Assert.fail("La lista debería estar vacía");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testU7b()throws Exception{
+
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test1);
+            List<Parada> p = ParserJSON.readParadasTodasList(is);
+
+            Assert.assertEquals(1, p.size());
+
+            Assert.assertEquals(p.get(0).getNombre(),"La Pereda");//Añadir nombre
+            Assert.assertEquals(p.get(0).getNumParada(),463);//Añandir numero
+            Assert.assertEquals(p.get(0).getPosX(),435031.38);//Añadir posx
+            Assert.assertEquals(p.get(0).getPosY(),4814426.15);//Añadir posy
+
+        }catch(Exception e){
+            Assert.fail("La lista debería tener 1 linea");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void testU7c()throws Exception{
+
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_varias);
+            List<Parada> p = ParserJSON.readParadasTodasList(is);
+
+            Assert.assertEquals(2, p.size());
+
+            Assert.assertEquals(p.get(0).getNombre(),"La Pereda");
+            Assert.assertEquals(p.get(0).getNumParada(),463);
+            Assert.assertEquals(p.get(0).getPosX(),435031.38);
+            Assert.assertEquals(p.get(0).getPosY(),4814426.15);
+
+            Assert.assertEquals(p.get(1).getNombre(),"Marques de Hazas - 1");
+            Assert.assertEquals(p.get(1).getNumParada(),479);
+            Assert.assertEquals(p.get(1).getPosX(),434829.58);
+            Assert.assertEquals(p.get(1).getPosY(),4814282.99);
+
+        }catch(Exception e){
+            Assert.fail("La lista debería tener 2 lineas");
+            e.printStackTrace();
+        }
+    }
 }

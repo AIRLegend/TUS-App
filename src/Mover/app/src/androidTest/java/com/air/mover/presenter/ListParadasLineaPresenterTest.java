@@ -4,21 +4,16 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.test.rule.ActivityTestRule;
-import android.util.Log;
 
 import com.air.mover.dao.model.Parada;
-import com.air.mover.dao.dataloader.ParserJSON;
-import com.air.mover.dao.dataloader.RemoteFetch;
 import com.air.mover.view.ListParadasLineaAdapter;
 import com.air.mover.view.MainActivity;
-import com.air.mover.presenter.ListParadasLineaPresenter;
 
 import junit.framework.Assert;
 
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.util.Collections;
 import java.util.List;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
@@ -145,6 +140,78 @@ public class ListParadasLineaPresenterTest {
         }
     }
 
+    /*
+    Test que comprueba si cuando se le pasa un -10 como parametro al metodo obtenParadasLineas() se descargan todas las paradas.
+     */
+    @Test
+    public void testU8a() throws Exception{
+        if(!checkInternet()){//Si no tengo internet no me interesa ejecutar esto.
+            return;
+        }
+
+        try{
+            //inicializacion
+            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext());
+            listParadasLinea = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),adapter,1);
+            //comprobacion
+            boolean bool = listParadasLinea.obtenParadasLineas(-10);
+            Assert.assertEquals(bool, true);
+            Assert.assertTrue(listParadasLinea.getListaParadasLineaBus().size() > 400);//En total hay 443 paradas.
+
+        }catch(Exception e){
+            Assert.fail("Error: se deberian obtener todas las paradas");
+            e.printStackTrace();
+        }
+    }
+
+    /*
+    Test que comprueba que cuando se le pasa un numero diferente de -10 aobtenParadasLineas() se descargan las paradas
+    correspondientes a la linea pasada como parametro.
+     */
+    @Test
+    public void testU8b() throws Exception{
+        if(!checkInternet()){//Si no tengo internet no me interesa ejecutar esto.
+            return;
+        }
+
+        try{
+            //inicializacion
+            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext());
+            listParadasLinea = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),adapter,1);
+            //comprobacion
+            boolean bool = listParadasLinea.obtenParadasLineas(1);
+            Assert.assertEquals(bool, true);
+            Assert.assertTrue(listParadasLinea.getListaParadasLineaBus().size() > 0);//En total hay 443 paradas.
+
+        }catch(Exception e){
+            Assert.fail("Error: se deberian obtener las paradas referentes a la linea 1");
+            e.printStackTrace();
+        }
+    }
+
+    /*
+    Test que comprueba que cuando no hay conexion a internet no se
+    pueden obtener las lineas
+     */
+    @Test
+    public void testU8c() throws Exception{
+        if(checkInternet()){//Si tengo internet no me interesa ejecutar esto.
+            return;
+        }
+
+        try{
+            //inicializacion
+            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext());
+            listParadasLinea = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),adapter,1);
+            //comprobacion
+            boolean bool = listParadasLinea.obtenParadasLineas(1);
+            Assert.assertEquals(bool, false);
+
+        }catch(Exception e){
+            Assert.fail("Error: no se deberian obtener las paradas porque no hay internet");
+            e.printStackTrace();
+        }
+    }
     //PRUEBAS INTEGRACION
 
 /**
