@@ -6,9 +6,11 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import com.air.mover.R;
 import com.air.mover.dao.model.Linea;
+import com.air.mover.dao.model.Parada;
 import com.air.mover.view.direccionesfragments.DireccionesFragment;
 import com.air.mover.view.lineasfragments.LineasFragment;
 import com.air.mover.view.paradasfragments.ParadasFragment;
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.action_paradas:
                 ParadasFragment pf = new ParadasFragment();
+                //pf.setCallback(this);
                 pf.setArguments(getIntent().getExtras());
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, pf).commit();
                 break;
@@ -113,6 +116,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             startActivity(intent);
         }
     }//callback
+
+
+    /**
+     * Este metodo se llama cuando se ha pulsado una parada. Abrira una Activity nueva con
+     * los detalles de esa parada.
+     * @param parada
+     */
+    @Override
+    public void callbackParada(Parada parada) {
+        if (!isChangingActivity) {
+            Log.d("[Parada pulsada] ==> ", parada.getNombre());
+            isChangingActivity = true;
+        }
+    }
 
 
     @Override

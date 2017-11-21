@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.air.mover.R;
 import com.air.mover.dao.model.Linea;
+import com.air.mover.dao.model.Parada;
 import com.air.mover.presenter.ListLineasPresenter;
 import com.air.mover.view.callbacks.CallbackParadasLinea;
 
@@ -101,6 +102,11 @@ public class LineasFragment extends Fragment implements  CallbackParadasLinea, S
     public void callback(Linea linea) {
         callbackParadas.callback(linea);
     }//callback
+
+    @Override
+    public void callbackParada(Parada parada) {
+        ; //No hace nada aqui.
+    }
 
     public CallbackParadasLinea getCallback()
     {

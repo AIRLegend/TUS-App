@@ -2,6 +2,7 @@ package com.air.mover.presenter;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Debug;
 import android.util.Log;
 
 import com.air.mover.dao.model.Parada;
@@ -32,9 +33,20 @@ public class ListParadasLineaPresenter
         this.numLinea=numLinea;
     }
 
+    public ListParadasLineaPresenter(Context context, ListParadasLineaAdapter adapter)
+    {
+        this.context= context;
+        this.adapter= adapter;
+        this.numLinea= -10;
+    }
+
     public void setListaLineasBus(List<Parada> listaLineasBus)
     {
         this.listaParadasLinea = listaLineasBus;
+    }
+
+    public void updateData() {
+        adapter.updateData(listaParadasLinea);
     }
 
     /**
@@ -83,7 +95,6 @@ public class ListParadasLineaPresenter
                 if (context instanceof DetallesLineaActivity) {
                     ((DetallesLineaActivity) (context)).showProgress(false);
                 }
-                Log.d("ADAPTER", adapter.toString());
                 adapter.setListaOrginal(paradasLinea);
                 adapter.updateData(paradasLinea);
             }//if
@@ -114,10 +125,15 @@ public class ListParadasLineaPresenter
          * @return
          */
         public boolean obtenParadasLineas(int identificadorLinea){
-            try
-            {
-                RemoteFetch.getJSON(""+RemoteFetch.URL_SECUENCIA_PARADAS+identificadorLinea);
-                setListaLineasBus(ParserJSON.readParadasList(RemoteFetch.getBufferedData()));
+            try {
+                if (identificadorLinea == -10) {  //Se obtienen todas las paradas
+                    RemoteFetch.getJSON("" + RemoteFetch.URL_PARADAS_BUS);
+                    setListaLineasBus(ParserJSON.readParadasTodasList(RemoteFetch.getBufferedData()));
+                } else {
+                    RemoteFetch.getJSON("" + RemoteFetch.URL_SECUENCIA_PARADAS + identificadorLinea);
+                    setListaLineasBus(ParserJSON.readParadasList(RemoteFetch.getBufferedData()));
+                }
+
                 return true;
             }//try
             catch(Exception e){
@@ -130,9 +146,6 @@ public class ListParadasLineaPresenter
         public List<Parada> getListaParadasLineaBus() {
             return listaParadasLinea;
         }//getListaLineasBus
-
-
-
 
     }
 
