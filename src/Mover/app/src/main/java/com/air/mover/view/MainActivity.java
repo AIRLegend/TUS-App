@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+
+import com.air.mover.DetallesParadaActivity;
 import com.air.mover.R;
 import com.air.mover.dao.model.Linea;
 import com.air.mover.dao.model.Parada;
@@ -126,7 +128,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public void callbackParada(Parada parada) {
         if (!isChangingActivity) {
+            Intent intent = new Intent(this, DetallesParadaActivity.class);
+            intent.putExtra("nombre", parada.getNombre());
+            intent.putExtra("posX", parada.getPosX());
+            intent.putExtra("posY", parada.getPosY());
+            intent.putExtra("numero", parada.getNumParada());
             Log.d("[Parada pulsada] ==> ", parada.getNombre());
+            startActivity(intent);
             isChangingActivity = true;
         }
     }

@@ -269,6 +269,7 @@ public class AceptacionVerParadasDeLineaTest {
         textView20.check(matches(withText("LOS CIRUELOS 47")));
 
         pressBack();
+
         DataInteraction relativeLayout3 = onData(anything())
                 .inAdapterView(allOf(withId(android.R.id.list),
                         childAtPosition(
@@ -278,104 +279,104 @@ public class AceptacionVerParadasDeLineaTest {
         relativeLayout3.perform(click());
 
         ViewInteraction textView21 = onView(
-                allOf(withId(R.id.txtNumParada), withText("80"),
+                allOf(withId(R.id.txtNumParada), withText("355"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.listaParadasLinea),
                                         0),
                                 0),
                         isDisplayed()));
-        textView21.check(matches(withText("80")));
+        textView21.check(matches(withText("355")));
 
         ViewInteraction textView22 = onView(
-                allOf(withId(R.id.txtParadaName), withText("PARQUE DOCTOR MORALES"),
+                allOf(withId(R.id.txtParadaName), withText("OJAIZ"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.listaParadasLinea),
                                         0),
                                 1),
                         isDisplayed()));
-        textView22.check(matches(withText("PARQUE DOCTOR MORALES")));
+        textView22.check(matches(withText("OJAIZ")));
 
         ViewInteraction textView23 = onView(
-                allOf(withId(R.id.txtNumParada), withText("81"),
+                allOf(withId(R.id.txtNumParada), withText("352"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.listaParadasLinea),
                                         1),
                                 0),
                         isDisplayed()));
-        textView23.check(matches(withText("81")));
+        textView23.check(matches(withText("352")));
 
         ViewInteraction textView24 = onView(
-                allOf(withId(R.id.txtParadaName), withText("LAS CALIFORNAS"),
+                allOf(withId(R.id.txtParadaName), withText("CAMARREAL 135"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.listaParadasLinea),
                                         1),
                                 1),
                         isDisplayed()));
-        textView24.check(matches(withText("LAS CALIFORNAS")));
+        textView24.check(matches(withText("CAMARREAL 135")));
 
         ViewInteraction textView25 = onView(
-                allOf(withId(R.id.txtNumParada), withText("82"),
+                allOf(withId(R.id.txtNumParada), withText("56"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.listaParadasLinea),
                                         2),
                                 0),
                         isDisplayed()));
-        textView25.check(matches(withText("82")));
+        textView25.check(matches(withText("56")));
 
         ViewInteraction textView26 = onView(
-                allOf(withId(R.id.txtParadaName), withText("CAMPOGIRO 90"),
+                allOf(withId(R.id.txtParadaName), withText("CAMARREAL 109"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.listaParadasLinea),
                                         2),
                                 1),
                         isDisplayed()));
-        textView26.check(matches(withText("CAMPOGIRO 90")));
+        textView26.check(matches(withText("CAMARREAL 109")));
 
         ViewInteraction textView27 = onView(
-                allOf(withId(R.id.txtNumParada), withText("83"),
+                allOf(withId(R.id.txtNumParada), withText("57"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.listaParadasLinea),
                                         3),
                                 0),
                         isDisplayed()));
-        textView27.check(matches(withText("83")));
+        textView27.check(matches(withText("57")));
 
         ViewInteraction textView28 = onView(
-                allOf(withId(R.id.txtParadaName), withText("ALTO DE LA PEÑA"),
+                allOf(withId(R.id.txtParadaName), withText("IGLESIA LA PEÑA"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.listaParadasLinea),
                                         3),
                                 1),
                         isDisplayed()));
-        textView28.check(matches(withText("ALTO DE LA PEÑA")));
+        textView28.check(matches(withText("IGLESIA LA PEÑA")));
 
         ViewInteraction textView29 = onView(
-                allOf(withId(R.id.txtNumParada), withText("84"),
+                allOf(withId(R.id.txtNumParada), withText("58"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.listaParadasLinea),
                                         4),
                                 0),
                         isDisplayed()));
-        textView29.check(matches(withText("84")));
+        textView29.check(matches(withText("58")));
 
         ViewInteraction textView30 = onView(
-                allOf(withId(R.id.txtParadaName), withText("EL EMPALME 6"),
+                allOf(withId(R.id.txtParadaName), withText("PEÑACASTILLO ESCUELAS"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.listaParadasLinea),
                                         4),
                                 1),
                         isDisplayed()));
-        textView30.check(matches(withText("EL EMPALME 6")));
+        textView30.check(matches(withText("PEÑACASTILLO ESCUELAS")));
 
         pressBack();
 
@@ -598,6 +599,7 @@ public class AceptacionVerParadasDeLineaTest {
         textView50.check(matches(withText("CALLE ALTA 81")));
 
         pressBack();
+
     }
 
     private static Matcher<View> childAtPosition(

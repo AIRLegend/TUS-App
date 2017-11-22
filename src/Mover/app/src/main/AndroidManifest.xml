@@ -24,7 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.DetallesLineaActivity"></activity>
+        <activity android:name=".view.DetallesLineaActivity" />
+        <activity
+            android:name=".DetallesParadaActivity"
+            android:label="@string/title_activity_detalles_parada"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
