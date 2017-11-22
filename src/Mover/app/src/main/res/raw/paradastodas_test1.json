@@ -1,0 +1,16 @@
+{"summary":{"items":156,"items_per_page":1000,"pages":1,"current_page":1},"resources":[
+  {
+    "wgs84_pos:long": "-3.848874267092121",
+    "ayto:numero": "463",
+    "gn:coordY": "4814426.15",
+    "gn:coordX": "435031.38",
+    "ayto:sentido": "LLuja - Cueto",
+    "vivo:address1": "Ricardo Leon",
+    "dc:modified": "2017-11-20T23:20:00.354Z",
+    "wgs84_pos:lat": "43.45566794936998",
+    "ayto:parada": "La Pereda",
+    "dc:identifier": "29521",
+    "uri": "http://datos.santander.es/api/datos/paradas_bus/29521.json"
+  }
+]
+}
