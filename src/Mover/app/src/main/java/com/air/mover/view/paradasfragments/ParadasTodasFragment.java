@@ -1,6 +1,5 @@
 package com.air.mover.view.paradasfragments;
 
-import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -11,22 +10,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.air.mover.R;
-import com.air.mover.dao.model.Linea;
 import com.air.mover.dao.model.Parada;
 import com.air.mover.presenter.ListParadasLineaPresenter;
-import com.air.mover.view.IListLineasView;
 import com.air.mover.view.IListParadasView;
-import com.air.mover.view.ListLineasAdapter;
 import com.air.mover.view.ListParadasLineaAdapter;
-import com.air.mover.view.MainActivity;
 import com.air.mover.view.callbacks.CallbackParadasLinea;
 
 import java.util.List;
 
-import javax.security.auth.callback.Callback;
 
 /**
  *  Esta clase se encarga de definir y gestionar la vista correspondiente al fragmento paradas todas de la aplicacion
