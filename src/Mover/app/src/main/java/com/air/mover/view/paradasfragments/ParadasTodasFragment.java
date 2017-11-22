@@ -17,6 +17,7 @@ import com.air.mover.R;
 import com.air.mover.dao.model.Linea;
 import com.air.mover.dao.model.Parada;
 import com.air.mover.presenter.ListParadasLineaPresenter;
+import com.air.mover.view.IListLineasView;
 import com.air.mover.view.IListParadasView;
 import com.air.mover.view.ListLineasAdapter;
 import com.air.mover.view.ListParadasLineaAdapter;
@@ -33,6 +34,7 @@ import javax.security.auth.callback.Callback;
  */
 public class ParadasTodasFragment extends Fragment implements IListParadasView, ListParadasLineaAdapter.ItemClickListener
 {
+
     private ProgressDialog dialog;
     private ListParadasLineaAdapter paradasAdapter;
     private ListParadasLineaPresenter paradasLineaPresenter;
@@ -65,6 +67,7 @@ public class ParadasTodasFragment extends Fragment implements IListParadasView, 
         paradasAdapter.setClickListener(this);
 
         paradasLineaPresenter = new ListParadasLineaPresenter(v.getContext(), paradasAdapter);
+        paradasLineaPresenter.setListParadasTodasView(this);
         return v;
     }
 
