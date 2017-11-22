@@ -21,7 +21,7 @@ import java.util.List;
 public class ParserJSONTest {
 
     @Test
-    public void testU1a() throws Exception {
+    public void U1A() throws Exception {
 
         //Prueba U1.a //lee linea
         try{
@@ -38,7 +38,7 @@ public class ParserJSONTest {
         }
     }
     @Test
-    public void testU1b() throws Exception {
+    public void U1B() throws Exception {
 
         //Prueba U1.b No hay linea
         try{
@@ -58,7 +58,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU2a() throws Exception {
+    public void U2A() throws Exception {
 
         //Prueba U2.a Lista vacia
         try{
@@ -73,7 +73,7 @@ public class ParserJSONTest {
         }
     }
     @Test
-    public void testU2b() throws Exception{
+    public void U2B() throws Exception{
 
         //Prueba U2.b Lista con un elemento
         try{
@@ -89,7 +89,7 @@ public class ParserJSONTest {
         }
     }
     @Test
-    public void testU2c() throws Exception{
+    public void U2C() throws Exception{
 
         //Prueba U2.c Lista con mas de un elemento
         try{
@@ -109,7 +109,7 @@ public class ParserJSONTest {
         }
     }
     @Test
-    public void testU2d() throws Exception{
+    public void U2D() throws Exception{
 
         //Prueba U2.d Lista con estructura de json incorrecta
         try{
@@ -235,7 +235,7 @@ public class ParserJSONTest {
     //TESTS PARADAS TODAS
 
     @Test
-    public void testU6a() throws Exception{
+    public void U6A() throws Exception{
 
 
         try{
@@ -255,7 +255,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU6b() throws Exception{
+    public void U6B() throws Exception{
 
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_vacio);
@@ -273,7 +273,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU7a()throws Exception{
+    public void U7A()throws Exception{
 
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_vacio);
@@ -287,7 +287,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU7b()throws Exception{
+    public void U7B()throws Exception{
 
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test1);
@@ -307,7 +307,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU7c()throws Exception{
+    public void U7C()throws Exception{
 
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_varias);
