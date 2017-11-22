@@ -105,7 +105,7 @@ public class LineasFragment extends Fragment implements  CallbackParadasLinea, S
 
     @Override
     public void callbackParada(Parada parada) {
-        ; //No hace nada aqui.
+         //No hace nada aqui.
     }
 
     public CallbackParadasLinea getCallback()
