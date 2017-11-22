@@ -35,7 +35,7 @@ public class ListParadasLineaPresenterTest {
 
     @Test
     //Id linea existente, URL correcta, con conexion a internet. Devuelve true.
-    public void U3A() throws Exception{
+    public void U6A() throws Exception{
         if(!checkInternet()){//Si no tengo internet no me interesa ejecutar esto.
             return;
         }
@@ -56,7 +56,7 @@ public class ListParadasLineaPresenterTest {
 
     //Id linea existente, URL correcta, sin conexion a internet. Devuelve false.
     @Test
-    public void U3B() throws Exception{
+    public void U6B() throws Exception{
         if(checkInternet()){//Si tengo internet no me interesa ejecutar esto.
             return;
         }
@@ -77,7 +77,7 @@ public class ListParadasLineaPresenterTest {
 
     @Test
     //Línea igual a 0 .
-    public void U3C() throws Exception{
+    public void U6C() throws Exception{
         if(!checkInternet()){//Si tengo internet no me interesa ejecutar esto.
             return;
         }
@@ -99,7 +99,7 @@ public class ListParadasLineaPresenterTest {
 
     @Test
     //Linea mayor que 0 y no existente
-    public void U3D() throws Exception{
+    public void U6D() throws Exception{
         if(!checkInternet()){//Si tengo internet no me interesa ejecutar esto.
             return;
         }
@@ -121,7 +121,7 @@ public class ListParadasLineaPresenterTest {
 
     @Test
     //Linea menor que 0.
-    public void U3E() throws Exception{
+    public void U6E() throws Exception{
         if(!checkInternet()){//Si tengo internet no me interesa ejecutar esto.
             return;
         }

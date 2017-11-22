@@ -108,25 +108,11 @@ public class ParserJSONTest {
             e.printStackTrace();
         }
     }
+
+    // PRUEBAS UNITARIAS US-VerParadasLinea
     @Test
-    public void U2D() throws Exception{
-
-        //Prueba U2.d Lista con estructura de json incorrecta
-        try{
-            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.lineas_test_erroneo);
-            List<Linea> l = ParserJSON.readArrayLineasBus(is);
-
-            Assert.assertEquals(0, l.size());
-        }catch(Exception e){
-            Assert.fail("Error: eltamaño dela lista debería ser cero");
-            e.printStackTrace();
-        }
-    }
-
-    //TESTS DE PARADAS
-    @Test
-    public void testU1aParada(){
-        //Prueba U1.a //lee parada
+    public void U4A(){
+        //Prueba U4A //lee parada
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test_readparada);//Añadir json
             JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
@@ -143,8 +129,8 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU1bParada(){
-        //Prueba U1.b //No hay parada
+    public void U4B(){
+        //Prueba U4B //No hay parada
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test_readparada_vacio);//Añadir json
             JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
@@ -161,7 +147,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU2aParada() throws Exception {
+    public void U5A() throws Exception {
 
         //Prueba U2.a Lista vacia
         try{
@@ -177,7 +163,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU2bParada() throws Exception{
+    public void U5B() throws Exception{
 
         //Prueba U2.b Lista con un elemento
         try{
@@ -195,7 +181,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU2cParada() throws Exception{
+    public void U5C() throws Exception{
 
         //Prueba U2.c Lista con mas de un elemento
         try{
@@ -217,25 +203,10 @@ public class ParserJSONTest {
         }
     }
 
-    @Test
-    public void testU2dParada() throws Exception{
-
-        //Prueba U2.d Lista con estructura de json incorrecta
-        try{
-            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test_erroneo);
-            List<Parada> p = ParserJSON.readParadasList(is);
-
-            Assert.assertEquals(0, p.size());
-        }catch(Exception e){
-            Assert.fail("Error: el tamaño dela lista debería ser cero");
-            e.printStackTrace();
-        }
-    }
-
-    //TESTS PARADAS TODAS
+    // PRUEBAS UNITARIAS US-244924-VerParadas
 
     @Test
-    public void U6A() throws Exception{
+    public void U9A() throws Exception{
 
 
         try{
@@ -255,7 +226,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void U6B() throws Exception{
+    public void U9B() throws Exception{
 
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_vacio);
@@ -273,7 +244,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void U7A()throws Exception{
+    public void U10A()throws Exception{
 
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_vacio);
@@ -287,7 +258,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void U7B()throws Exception{
+    public void U10B()throws Exception{
 
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test1);
@@ -307,7 +278,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void U7C()throws Exception{
+    public void U10C()throws Exception{
 
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_varias);
