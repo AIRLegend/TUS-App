@@ -70,13 +70,13 @@ public final class Database {
      * @return Objeto parada con los comentarios. El Nombre de parada sera Null si no
      *         se ha encontrado.
      */
-    public static Parada getCommentParada(String nombre, Context context) {
+    public static Parada getCommentParada(int id, String nombre, Context context) {
         Parada p = new Parada(null, 0, 0, 0);
         Database.DBHelper helper= new Database.DBHelper(context);
         SQLiteDatabase db = helper.getReadableDatabase();
         String[] projection = {ParadasTable.COLUMN_COMMENT};
-        String selection = ParadasTable.COLUMN_PARADA_NAME+ " = ?";
-        String[] selectionArgs = {nombre};
+        String selection = ParadasTable.COLUMN_ID+ " = ? AND " + ParadasTable.COLUMN_PARADA_NAME + " = ?";
+        String[] selectionArgs = {String.valueOf(id), nombre};
         String sortOrder = ParadasTable.COLUMN_ID + " ASC";
         Cursor c = db.query(Database.ParadasTable.TABLE_NAME, projection, selection, selectionArgs,
                 null, null, sortOrder);
@@ -99,13 +99,12 @@ public final class Database {
      * @param context contexto de la app. para que pueda funcionar el DBHelper.
      */
     public static void addComment(int id, String nombre, String comment, Context context) {
-        Parada exists = getCommentParada(nombre, context);
+        Parada exists = getCommentParada(id, nombre, context);
         Database.DBHelper dbHelper = new Database.DBHelper(context);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         if (exists.getNombre() == null) {
             //INSERT
-            //values.put(ParadasTable.TABLE_NAME);
             values.put(ParadasTable.COLUMN_ID, id);
             values.put(ParadasTable.COLUMN_PARADA_NAME, nombre);
             values.put(ParadasTable.COLUMN_COMMENT, comment);

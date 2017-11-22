@@ -55,7 +55,7 @@ public class DetallesParadaActivity extends AppCompatActivity {
 
 
         presenter = new DetallesParadaPresenter(this, getApplicationContext());
-        presenter.loadComment(parada.getNombre());
+        presenter.loadComment(parada.getNumParada(), parada.getNombre());
     }
 
 

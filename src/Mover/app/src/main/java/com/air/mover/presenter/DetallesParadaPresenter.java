@@ -25,8 +25,8 @@ public class DetallesParadaPresenter {
      * Carga un comentario de la base de datos y lo muestra en la vista.
      * @param name nombre de la parada
      */
-    public void loadComment(String name) {
-        Parada loaded = Database.getCommentParada(name,context);
+    public void loadComment(int id, String name) {
+        Parada loaded = Database.getCommentParada(id, name,context);
         if (loaded.getComentarios() == null) {
             view.setComment("");
         } else {
