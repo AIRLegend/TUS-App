@@ -212,6 +212,28 @@ public class ListParadasLineaPresenterTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testU8d() throws Exception{
+        if(!checkInternet()){//Si no tengo internet no me interesa ejecutar esto.
+            return;
+        }
+
+        try{
+            //inicializacion
+            adapter = new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext());
+            listParadasLinea = new ListParadasLineaPresenter(mActivityTestRule.getActivity().getApplicationContext(),adapter,1);
+            //comprobacion
+            boolean bool = listParadasLinea.obtenParadasLineas(-1);
+            Assert.assertEquals(bool, false);
+
+        }catch(Exception e){
+            Assert.fail("Error: no se deberian obtener las paradas porque no hay internet");
+            e.printStackTrace();
+        }
+    }
+
+
     //PRUEBAS INTEGRACION
 
 /**
