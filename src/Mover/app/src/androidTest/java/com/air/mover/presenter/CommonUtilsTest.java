@@ -37,6 +37,8 @@ public class CommonUtilsTest {
         p.add(p6);
     }
 
+    // PRUEBAS UNITARIAS (US-241438-BuscarParadaDeLinea)
+
     /*
     Método que comprueba si el tamaño de la lista es de uno cuando se realiza una consulta con un numero existente
      */
