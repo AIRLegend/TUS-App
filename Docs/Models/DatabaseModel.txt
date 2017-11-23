@@ -1,2 +1,0 @@
-Por el momento y debido al rumbo tomado en base a las decisiones internas con
-el product owner, no hemos realizado la base de datos.
