@@ -21,7 +21,7 @@ import java.util.List;
 public class ParserJSONTest {
 
     @Test
-    public void testU1a() throws Exception {
+    public void U1A() throws Exception {
 
         //Prueba U1.a //lee linea
         try{
@@ -38,7 +38,7 @@ public class ParserJSONTest {
         }
     }
     @Test
-    public void testU1b() throws Exception {
+    public void U1B() throws Exception {
 
         //Prueba U1.b No hay linea
         try{
@@ -58,7 +58,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU2a() throws Exception {
+    public void U2A() throws Exception {
 
         //Prueba U2.a Lista vacia
         try{
@@ -73,7 +73,7 @@ public class ParserJSONTest {
         }
     }
     @Test
-    public void testU2b() throws Exception{
+    public void U2B() throws Exception{
 
         //Prueba U2.b Lista con un elemento
         try{
@@ -89,7 +89,7 @@ public class ParserJSONTest {
         }
     }
     @Test
-    public void testU2c() throws Exception{
+    public void U2C() throws Exception{
 
         //Prueba U2.c Lista con mas de un elemento
         try{
@@ -108,25 +108,11 @@ public class ParserJSONTest {
             e.printStackTrace();
         }
     }
+
+    // PRUEBAS UNITARIAS US-VerParadasLinea
     @Test
-    public void testU2d() throws Exception{
-
-        //Prueba U2.d Lista con estructura de json incorrecta
-        try{
-            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.lineas_test_erroneo);
-            List<Linea> l = ParserJSON.readArrayLineasBus(is);
-
-            Assert.assertEquals(0, l.size());
-        }catch(Exception e){
-            Assert.fail("Error: eltamaño dela lista debería ser cero");
-            e.printStackTrace();
-        }
-    }
-
-    //TESTS DE PARADAS
-    @Test
-    public void testU1aParada(){
-        //Prueba U1.a //lee parada
+    public void U4A(){
+        //Prueba U4A //lee parada
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test_readparada);//Añadir json
             JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
@@ -143,8 +129,8 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU1bParada(){
-        //Prueba U1.b //No hay parada
+    public void U4B(){
+        //Prueba U4B //No hay parada
         try{
             InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test_readparada_vacio);//Añadir json
             JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
@@ -161,7 +147,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU2aParada() throws Exception {
+    public void U5A() throws Exception {
 
         //Prueba U2.a Lista vacia
         try{
@@ -177,7 +163,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU2bParada() throws Exception{
+    public void U5B() throws Exception{
 
         //Prueba U2.b Lista con un elemento
         try{
@@ -195,7 +181,7 @@ public class ParserJSONTest {
     }
 
     @Test
-    public void testU2cParada() throws Exception{
+    public void U5C() throws Exception{
 
         //Prueba U2.c Lista con mas de un elemento
         try{
@@ -217,17 +203,101 @@ public class ParserJSONTest {
         }
     }
 
-    @Test
-    public void testU2dParada() throws Exception{
+    // PRUEBAS UNITARIAS US-244924-VerParadas
 
-        //Prueba U2.d Lista con estructura de json incorrecta
+    @Test
+    public void U9A() throws Exception{
+
+
         try{
-            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradas_test_erroneo);
-            List<Parada> p = ParserJSON.readParadasList(is);
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test);
+            JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+            Parada p = ParserJSON.readParadaGlobal(reader);
+
+            Assert.assertEquals(p.getNombre(),"La Pereda");
+            Assert.assertEquals(p.getNumParada(),463);
+            Assert.assertEquals(p.getPosX(),435031.38);
+            Assert.assertEquals(p.getPosY(),4814426.15);
+
+        }catch(Exception e){
+            Assert.fail("Deberia poder leer la parada");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void U9B() throws Exception{
+
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_vacio);
+            JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+            Parada p = ParserJSON.readParadaGlobal(reader);
+
+            Assert.assertEquals(p.getNombre(),"");
+            Assert.assertEquals(p.getNumParada(),-1);
+            Assert.assertEquals(p.getPosX(),-1.0);
+            Assert.assertEquals(p.getPosY(),-1.0);
+        }catch(Exception e){
+            Assert.fail("No deberia leer ninguna parada");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void U10A()throws Exception{
+
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_vacio);
+            List<Parada> p = ParserJSON.readParadasTodasList(is);
 
             Assert.assertEquals(0, p.size());
         }catch(Exception e){
-            Assert.fail("Error: el tamaño dela lista debería ser cero");
+            Assert.fail("La lista debería estar vacía");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void U10B()throws Exception{
+
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test1);
+            List<Parada> p = ParserJSON.readParadasTodasList(is);
+
+            Assert.assertEquals(1, p.size());
+
+            Assert.assertEquals(p.get(0).getNombre(),"La Pereda");//Añadir nombre
+            Assert.assertEquals(p.get(0).getNumParada(),463);//Añandir numero
+            Assert.assertEquals(p.get(0).getPosX(),435031.38);//Añadir posx
+            Assert.assertEquals(p.get(0).getPosY(),4814426.15);//Añadir posy
+
+        }catch(Exception e){
+            Assert.fail("La lista debería tener 1 linea");
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void U10C()throws Exception{
+
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.paradastodas_test_varias);
+            List<Parada> p = ParserJSON.readParadasTodasList(is);
+
+            Assert.assertEquals(2, p.size());
+
+            Assert.assertEquals(p.get(0).getNombre(),"La Pereda");
+            Assert.assertEquals(p.get(0).getNumParada(),463);
+            Assert.assertEquals(p.get(0).getPosX(),435031.38);
+            Assert.assertEquals(p.get(0).getPosY(),4814426.15);
+
+            Assert.assertEquals(p.get(1).getNombre(),"Marques de Hazas - 1");
+            Assert.assertEquals(p.get(1).getNumParada(),479);
+            Assert.assertEquals(p.get(1).getPosX(),434829.58);
+            Assert.assertEquals(p.get(1).getPosY(),4814282.99);
+
+        }catch(Exception e){
+            Assert.fail("La lista debería tener 2 lineas");
             e.printStackTrace();
         }
     }

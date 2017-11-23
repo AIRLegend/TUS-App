@@ -22,7 +22,7 @@ public class RemoteFetch {
     public static final String URL_SECUENCIA_PARADAS="http://datos.santander.es/api/rest/datasets/lineas_bus_secuencia.json?query=ayto\\:Linea:";
 
     //URL para obtener un listado de todas las paradas de autobus
-    public static final String URL_PARADAS_BUS="http://datos.santander.es/api/rest/datasets/lineas_bus_paradas.json?items=2000";
+    public static final String URL_PARADAS_BUS="http://datos.santander.es/api/rest/datasets/paradas_bus.json?items=2000";
 
     //URL para obtener información extendida sobre las paradas
     public static final String URL_PARADAS_INFO= "http://datos.santander.es/api/rest/datasets/paradas_bus.json?items=2300";

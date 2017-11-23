@@ -2,8 +2,7 @@ package com.air.mover.dao.dataloader;
 
 import android.util.JsonReader;
 
-import com.air.mover.dao.model.Linea;
-import com.air.mover.dao.model.Parada;
+import com.air.mover.dao.model.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +18,10 @@ import java.util.List;
  *   @version 29/10/17
   */
 
-public class ParserJSON{
+public class ParserJSON
+{
+    private static final String CODIFICACION="UTF-8";
+    private static final String RECURSOS_JSON= "resources";
 
     //Constructor privado para evitar la creacion de instancias
     private ParserJSON(){}
@@ -31,12 +33,12 @@ public class ParserJSON{
      */
     public static List<Linea> readArrayLineasBus (InputStream in) throws IOException
     {
-            JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+            JsonReader reader = new JsonReader(new InputStreamReader(in, CODIFICACION));
             List<Linea> listLineasBus = new ArrayList<>();
             reader.beginObject(); //summary y resources
             while (reader.hasNext()){
                     String name = reader.nextName();
-                    if(name.equals ("resources")){
+                    if(name.equals (RECURSOS_JSON)){
                         reader.beginArray(); //cada elemento del array es un object
                         while(reader.hasNext()){
                             listLineasBus.add(readLinea(reader));
@@ -62,14 +64,14 @@ public class ParserJSON{
      */
     public static List<Parada> readParadasList (InputStream in) throws  IOException
     {
-        JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+        JsonReader reader = new JsonReader(new InputStreamReader(in, CODIFICACION));
         List<Parada> paradas = new ArrayList<>();
         reader.beginObject();
 
         while (reader.hasNext())
         {
             String name = reader.nextName();
-            if(name.equals ("resources"))
+            if(name.equals (RECURSOS_JSON))
             {
                 reader.beginArray(); //cada elemento del array es un object
                 while(reader.hasNext())
@@ -84,6 +86,40 @@ public class ParserJSON{
         }//while
         return paradas;
     }//readParadasList
+
+
+
+    /**
+     * Método para obtener todas (global) las paradas de buses
+     * @param in InputStream del JSON con las paradas de buses
+     * @return Lista con todas las paradas de TUS
+     * @throws IOException
+     */
+    public static List<Parada> readParadasTodasList (InputStream in) throws  IOException
+    {
+        JsonReader reader = new JsonReader(new InputStreamReader(in, CODIFICACION));
+        List<Parada> paradas = new ArrayList<>();
+        reader.beginObject();
+
+        while (reader.hasNext())
+        {
+            String name = reader.nextName();
+            if(name.equals (RECURSOS_JSON))
+            {
+                reader.beginArray(); //cada elemento del array es un object
+                while(reader.hasNext())
+                {
+                    paradas.add(readParadaGlobal(reader));
+                }//while
+            }//if
+            else
+            {
+                reader.skipValue();
+            }//else
+        }//while
+        return paradas;
+    }//readParadasList
+
 
     /**
      * Metodo que se encarga de leer y crear una linea TUS a partir del lector pasado como parametro
@@ -148,6 +184,51 @@ public class ParserJSON{
                 pY = reader.nextDouble();
             }//else if
             else if (n.equals("ayto:NParada"))
+            {
+                numParada = reader.nextInt();
+            }//else if
+            else
+            {
+                reader.skipValue();
+            }//else
+        }//while
+
+        reader.endObject();
+        return new Parada(name,pX, pY, numParada);
+
+    }//readParada
+
+
+
+    /**
+     * Metodo que se encarga de leer y crear una parada de TUS a partir del lector pasado como parametro
+     * @param reader lector de los datos con formato JSON
+     * @return parada TUS leida
+     * @throws IOException
+     */
+    public static Parada readParadaGlobal (JsonReader reader) throws IOException
+    {
+        reader.beginObject(); //Leemos un object
+        String name ="";
+        double pX = -1.0;
+        double pY = -1.0;
+        int numParada=-1;
+        while(reader.hasNext())
+        {
+            String n = reader.nextName();
+            if (n.equals("ayto:parada"))
+            {
+                name = reader.nextString();
+            }//if
+            else if (n.equals("gn:coordX"))
+            {
+                pX = reader.nextDouble();
+            }//else if
+            else if (n.equals("gn:coordY"))
+            {
+                pY = reader.nextDouble();
+            }//else if
+            else if (n.equals("ayto:numero"))
             {
                 numParada = reader.nextInt();
             }//else if

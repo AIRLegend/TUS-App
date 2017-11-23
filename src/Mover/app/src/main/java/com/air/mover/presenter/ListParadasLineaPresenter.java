@@ -8,8 +8,8 @@ import com.air.mover.dao.model.Parada;
 import com.air.mover.dao.dataloader.ParserJSON;
 import com.air.mover.dao.dataloader.RemoteFetch;
 import com.air.mover.view.DetallesLineaActivity;
+import com.air.mover.view.IListParadasView;
 import com.air.mover.view.ListParadasLineaAdapter;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +19,7 @@ import java.util.List;
 
 public class ListParadasLineaPresenter
 {
+    private IListParadasView listParadasTodasView; //Vista de las paradas de TUS
     private ListParadasLineaAdapter adapter;
     private List<Parada> listaParadasLinea;
     private Context context;
@@ -32,9 +33,25 @@ public class ListParadasLineaPresenter
         this.numLinea=numLinea;
     }
 
+    public ListParadasLineaPresenter(Context context, ListParadasLineaAdapter adapter)
+    {
+        this.context= context;
+        this.adapter= adapter;
+        this.numLinea= -10;
+    }
+
     public void setListaLineasBus(List<Parada> listaLineasBus)
     {
         this.listaParadasLinea = listaLineasBus;
+    }
+
+    public void setListParadasTodasView(IListParadasView listaParadasTodasView)
+    {
+        this.listParadasTodasView=listaParadasTodasView;
+    }
+
+    public void updateData() {
+        adapter.updateData(listaParadasLinea);
     }
 
     /**
@@ -51,6 +68,11 @@ public class ListParadasLineaPresenter
         protected void onPreExecute() {
             if (context instanceof DetallesLineaActivity)
                 ((DetallesLineaActivity) (context)).showProgress(true);
+            else
+            {
+                listParadasTodasView.showProgress(true);
+            }
+
         }//onPreExecute
 
         /**
@@ -80,10 +102,14 @@ public class ListParadasLineaPresenter
                 if (paradasLinea == null) {
                     paradasLinea = new ArrayList<>();
                 }//if
+
                 if (context instanceof DetallesLineaActivity) {
                     ((DetallesLineaActivity) (context)).showProgress(false);
                 }
-                Log.d("ADAPTER", adapter.toString());
+                else
+                {
+                    listParadasTodasView.showProgress(false);
+                }
                 adapter.setListaOrginal(paradasLinea);
                 adapter.updateData(paradasLinea);
             }//if
@@ -114,10 +140,15 @@ public class ListParadasLineaPresenter
          * @return
          */
         public boolean obtenParadasLineas(int identificadorLinea){
-            try
-            {
-                RemoteFetch.getJSON(""+RemoteFetch.URL_SECUENCIA_PARADAS+identificadorLinea);
-                setListaLineasBus(ParserJSON.readParadasList(RemoteFetch.getBufferedData()));
+            try {
+                if (identificadorLinea == -10) {  //Se obtienen todas las paradas
+                    RemoteFetch.getJSON("" + RemoteFetch.URL_PARADAS_BUS);
+                    setListaLineasBus(ParserJSON.readParadasTodasList(RemoteFetch.getBufferedData()));
+                } else {
+                    RemoteFetch.getJSON("" + RemoteFetch.URL_SECUENCIA_PARADAS + identificadorLinea);
+                    setListaLineasBus(ParserJSON.readParadasList(RemoteFetch.getBufferedData()));
+                }
+
                 return true;
             }//try
             catch(Exception e){
@@ -130,9 +161,6 @@ public class ListParadasLineaPresenter
         public List<Parada> getListaParadasLineaBus() {
             return listaParadasLinea;
         }//getListaLineasBus
-
-
-
 
     }
 

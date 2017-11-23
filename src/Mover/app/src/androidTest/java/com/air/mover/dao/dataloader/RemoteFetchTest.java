@@ -26,7 +26,7 @@ public class RemoteFetchTest {
     public static final String URL_ERRONEA="http://www.maaaarca.com";
 
     @Test
-    public void testU1a() throws Exception {
+    public void U3A() throws Exception {
         if (!checkInternet()) return;  //Si no tengo internet no me interesa ejecutar esto.
 
         //Prueba U1.a URL correcta con conexion
@@ -40,7 +40,7 @@ public class RemoteFetchTest {
         }
     }
     @Test
-    public void testU3b() throws Exception{//FALLA
+    public void U3B() throws Exception{//FALLA
 
         if (checkInternet()) return;  //Si tengo internet no me interesa ejecutar esto.
 
@@ -56,7 +56,7 @@ public class RemoteFetchTest {
 
     }
     @Test
-    public void testU3c() throws Exception{//FALLA
+    public void U3C() throws Exception{//FALLA
         if (!checkInternet()) return;  //Si no tengo internet no me interesa ejecutar esto.
 
         //Prueba U1.c URL erronea
@@ -64,7 +64,7 @@ public class RemoteFetchTest {
             RemoteFetch.getJSON(URL_ERRONEA);
             Assert.assertTrue(RemoteFetch.getBufferedData().available()>=0); //Nunca se va a ejecutar
         }catch(IOException e){
-            //Como la URL no es accesible entonces salta aqui (si todo esta correcto).
+            //Como la URL no es accesible entonces salta aqui.
             e.printStackTrace();
         }
     }

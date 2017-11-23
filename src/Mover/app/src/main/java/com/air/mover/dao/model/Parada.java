@@ -10,6 +10,7 @@ public class Parada
 {
 
     private String nombre;//Nombre de la parada
+    private String comentarios; //Comentarios de usuario de la parada
     private double posX; //Posicion x de la parada en un mapa (visto como un eje de coordenadas xy)
     private double posY; //Posicion y de la parada en un mapa (visto como un eje de coordenadas xy)
     private int numParada; //Numero de la parada
@@ -104,6 +105,10 @@ public class Parada
     public void setNumParada(int numParada) {
         this.numParada = numParada;
     } //setNumParada
+
+    public String getComentarios() {return comentarios;}
+
+    public void setComentarios(String comentarios) {this.comentarios = comentarios;}
 
     @Override
     public String toString()

@@ -8,8 +8,8 @@
     android:layout_marginBottom="5dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp">
 
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_centerVertical="true"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:textSize="18sp"
+        android:textSize="17sp"
         android:layout_marginLeft="10dp"/>
     <TextView
         android:id="@+id/txtParadaName"
@@ -29,8 +29,8 @@
         android:layout_alignLeft="@id/txtNumParada"
         android:textColor="@android:color/black"
         android:textStyle="normal"
-        android:textSize="14sp"
-        android:layout_marginLeft="70dp" />
+        android:textSize="15sp"
+        android:layout_marginLeft="60dp" />
 
 
 </RelativeLayout>

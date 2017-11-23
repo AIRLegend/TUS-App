@@ -1,22 +1,28 @@
 package com.air.mover.view.paradasfragments;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.air.mover.R;
+import com.air.mover.dao.model.Linea;
+import com.air.mover.dao.model.Parada;
+import com.air.mover.view.callbacks.CallbackParadasLinea;
 
 /**
  *  Esta clase se encarga de definir y gestionar la vista correspondiente al fragmento paradas de la aplicacion
  * @version 30/10/17
  */
-public class ParadasFragment extends Fragment
+public class ParadasFragment extends Fragment implements CallbackParadasLinea
 {
     FragmentTabHost mTabHost; //TabHost donde se definiran las pestanas del fragmento
+    CallbackParadasLinea callback; //Manejador del clic en una parada.
 
     /**
      * Metodo que se ejecuta cuando se dibuja por primera vez el fragment en la
@@ -50,6 +56,16 @@ public class ParadasFragment extends Fragment
         return view;
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof  CallbackParadasLinea) {
+            callback = (CallbackParadasLinea) context;
+        } else {
+            Log.e("Error", "El contexto no es implementa el callback necesario.");
+        }
+    }
+
     /**
      * Metodo que es ejecutado cuando la jerarquia de views a la cual ha sido asociado el
      * fragment ha sido destruida. Se encarga de destruir la view del fragment y liberar recursos
@@ -59,5 +75,20 @@ public class ParadasFragment extends Fragment
     {
         super.onDestroyView();
         mTabHost=null;
+    }
+
+    @Override
+    public void callback(Linea linea) {
+         //No hace nada en este fragment
+    }
+
+    /**
+     * Se ejecuta cuando se ha pulsado una parada. Sube la acción a la MainActivity para que lo
+     * maneje.
+     * @param parada
+     */
+    @Override
+    public void callbackParada(Parada parada) {
+        callback.callbackParada(parada);
     }
 }
