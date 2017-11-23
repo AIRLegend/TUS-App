@@ -3,8 +3,10 @@ package com.air.mover.dao.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.air.mover.dao.model.Parada;
 
@@ -105,10 +107,14 @@ public final class Database {
         ContentValues values = new ContentValues();
         if (exists.getNombre() == null) {
             //INSERT
-            values.put(ParadasTable.COLUMN_ID, id);
-            values.put(ParadasTable.COLUMN_PARADA_NAME, nombre);
-            values.put(ParadasTable.COLUMN_COMMENT, comment);
-            db.insert(Database.ParadasTable.TABLE_NAME, null, values);
+            try {
+                values.put(ParadasTable.COLUMN_ID, id);
+                values.put(ParadasTable.COLUMN_PARADA_NAME, nombre);
+                values.put(ParadasTable.COLUMN_COMMENT, comment);
+                db.insert(Database.ParadasTable.TABLE_NAME, null, values);
+            } catch (SQLException e) {
+                Log.e("[DATABASE ERROR]: ", "No se ha podido insertar. ¿Valor duplicado?");
+            }
         } else {
             //UPDATE
             values.put(ParadasTable.COLUMN_COMMENT, comment);
