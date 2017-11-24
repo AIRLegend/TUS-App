@@ -1,6 +1,7 @@
 package com.air.mover.view;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.air.mover.DetallesParadaActivity;
 import com.air.mover.R;
+import com.air.mover.dao.model.Parada;
 import com.air.mover.presenter.ListParadasLineaPresenter;
 
 public class DetallesLineaActivity extends AppCompatActivity implements  ListParadasLineaAdapter.ItemClickListener, SearchView.OnQueryTextListener{
@@ -73,7 +76,15 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
      */
     @Override
     public void onItemClick(View view, int position) {
-        Log.d("[Parada]","Parada pulsada");
+        //Log.d("[Parada]","Parada pulsada");
+        Parada parada = adapterParadasLinea.getItem(position);
+        Intent intent = new Intent(this, DetallesParadaActivity.class);
+        intent.putExtra("nombre", parada.getNombre());
+        intent.putExtra("posX", parada.getPosX());
+        intent.putExtra("posY", parada.getPosY());
+        intent.putExtra("numero", parada.getNumParada());
+        Log.d("[Parada pulsada] ==> ", parada.getNombre());
+        startActivity(intent);
     }
 
     /**
