@@ -119,7 +119,7 @@ public final class Database {
             //UPDATE
             values.put(ParadasTable.COLUMN_COMMENT, comment);
             String selection = ParadasTable.COLUMN_ID +" = ?";
-            String selectionArgs[] = {String.valueOf(id)};
+            String[] selectionArgs = {String.valueOf(id)};
             db.update(ParadasTable.TABLE_NAME, values, selection, selectionArgs);
         }
     }

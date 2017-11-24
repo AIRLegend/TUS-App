@@ -54,9 +54,6 @@ public class ParadasFragment extends Fragment implements CallbackParadasLinea
         mTabHost.getTabWidget().getChildTabViewAt(0).getLayoutParams().height = (int) (30 * r.getDisplayMetrics().density);
         mTabHost.getTabWidget().getChildTabViewAt(1).getLayoutParams().height = (int) (30 * r.getDisplayMetrics().density);
 
-        ParadasFragment fragment = (ParadasFragment) getFragmentManager().findFragmentById(R.id.lista_paradas);
-
-
         return view;
     }
 
@@ -81,13 +78,9 @@ public class ParadasFragment extends Fragment implements CallbackParadasLinea
         mTabHost=null;
     }
 
-   /* public void setCallback(CallbackParadasLinea callback) {
-        this.callback = callback;
-    }*/
-
     @Override
     public void callback(Linea linea) {
-        ; //No hace nada en este fragment
+        //No hace nada en este fragment
     }
 
     /**

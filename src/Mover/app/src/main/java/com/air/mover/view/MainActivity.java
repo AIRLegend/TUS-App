@@ -82,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
             case R.id.action_paradas:
                 ParadasFragment pf = new ParadasFragment();
-                //pf.setCallback(this);
                 pf.setArguments(getIntent().getExtras());
                 getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, pf).commit();
                 break;

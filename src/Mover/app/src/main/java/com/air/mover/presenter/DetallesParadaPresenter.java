@@ -1,8 +1,6 @@
 package com.air.mover.presenter;
 
 import android.content.Context;
-import android.provider.ContactsContract;
-
 import com.air.mover.DetallesParadaActivity;
 import com.air.mover.dao.database.Database;
 import com.air.mover.dao.model.Parada;

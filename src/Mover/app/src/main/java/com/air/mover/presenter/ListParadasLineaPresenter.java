@@ -2,17 +2,13 @@ package com.air.mover.presenter;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Debug;
 import android.util.Log;
-
 import com.air.mover.dao.model.Parada;
 import com.air.mover.dao.dataloader.ParserJSON;
 import com.air.mover.dao.dataloader.RemoteFetch;
 import com.air.mover.view.DetallesLineaActivity;
 import com.air.mover.view.IListParadasView;
 import com.air.mover.view.ListParadasLineaAdapter;
-import com.air.mover.view.paradasfragments.ParadasTodasFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 

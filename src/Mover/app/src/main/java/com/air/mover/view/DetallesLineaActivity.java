@@ -76,7 +76,6 @@ public class DetallesLineaActivity extends AppCompatActivity implements  ListPar
      */
     @Override
     public void onItemClick(View view, int position) {
-        //Log.d("[Parada]","Parada pulsada");
         Parada parada = adapterParadasLinea.getItem(position);
         Intent intent = new Intent(this, DetallesParadaActivity.class);
         intent.putExtra("nombre", parada.getNombre());
