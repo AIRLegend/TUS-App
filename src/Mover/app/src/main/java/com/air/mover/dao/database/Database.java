@@ -77,8 +77,8 @@ public final class Database {
         Database.DBHelper helper= new Database.DBHelper(context);
         SQLiteDatabase db = helper.getReadableDatabase();
         String[] projection = {ParadasTable.COLUMN_COMMENT};
-        String selection = ParadasTable.COLUMN_ID+ " = ? AND " + ParadasTable.COLUMN_PARADA_NAME + " = ?";
-        String[] selectionArgs = {String.valueOf(id), nombre};
+        String selection = ParadasTable.COLUMN_ID+ " = ? ";
+        String[] selectionArgs = {String.valueOf(id)};
         String sortOrder = ParadasTable.COLUMN_ID + " ASC";
         Cursor c = db.query(Database.ParadasTable.TABLE_NAME, projection, selection, selectionArgs,
                 null, null, sortOrder);
