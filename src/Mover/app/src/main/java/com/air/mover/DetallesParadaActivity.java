@@ -15,6 +15,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.air.mover.dao.model.Parada;
 import com.air.mover.presenter.DetallesParadaPresenter;
@@ -72,5 +73,6 @@ public class DetallesParadaActivity extends AppCompatActivity {
      */
     public void saveComment() {
         presenter.setComment(parada.getNumParada(), parada.getNombre(), comment.getText().toString());
+        Toast.makeText(this, "Nota guardada", Toast.LENGTH_SHORT).show();
     }
 }
