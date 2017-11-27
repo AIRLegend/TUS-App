@@ -3,7 +3,6 @@ package com.air.mover.presenter;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-
 import com.air.mover.dao.model.Parada;
 import com.air.mover.dao.dataloader.ParserJSON;
 import com.air.mover.dao.dataloader.RemoteFetch;

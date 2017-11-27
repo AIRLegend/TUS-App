@@ -20,8 +20,8 @@ import java.util.List;
 
 public class ParserJSON
 {
-    private static final String CODIFICACION="UTF-8";
     private static final String RECURSOS_JSON= "resources";
+    private static final String UTF8 = "UTF-8";
 
     //Constructor privado para evitar la creacion de instancias
     private ParserJSON(){}
@@ -33,7 +33,7 @@ public class ParserJSON
      */
     public static List<Linea> readArrayLineasBus (InputStream in) throws IOException
     {
-            JsonReader reader = new JsonReader(new InputStreamReader(in, CODIFICACION));
+            JsonReader reader = new JsonReader(new InputStreamReader(in, UTF8));
             List<Linea> listLineasBus = new ArrayList<>();
             reader.beginObject(); //summary y resources
             while (reader.hasNext()){
@@ -64,7 +64,7 @@ public class ParserJSON
      */
     public static List<Parada> readParadasList (InputStream in) throws  IOException
     {
-        JsonReader reader = new JsonReader(new InputStreamReader(in, CODIFICACION));
+        JsonReader reader = new JsonReader(new InputStreamReader(in, UTF8));
         List<Parada> paradas = new ArrayList<>();
         reader.beginObject();
 
@@ -97,7 +97,7 @@ public class ParserJSON
      */
     public static List<Parada> readParadasTodasList (InputStream in) throws  IOException
     {
-        JsonReader reader = new JsonReader(new InputStreamReader(in, CODIFICACION));
+        JsonReader reader = new JsonReader(new InputStreamReader(in, UTF8));
         List<Parada> paradas = new ArrayList<>();
         reader.beginObject();
 

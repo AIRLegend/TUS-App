@@ -8,4 +8,10 @@
     <string name="paradas_title">PARADAS</string>
     <string name="search_lineas">Buscar linea</string>
     <string name="search_paradas_lineas">Buscar parada</string>
+    <string name="title_activity_detalles_parada">DetallesParadaActivity</string>
+    <string name="comentario_default">Pulse para introducir una nota.</string>
+    <string name="comentario_title">Notas</string>
+    <string name="estimaciones_title">Estimaciones</string>
+    <string name="action_settings">Settings</string>
+    <string name="save_comment">Guardar nota</string>
 </resources>

@@ -10,16 +10,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.air.mover.R;
 import com.air.mover.dao.model.Parada;
 import com.air.mover.presenter.ListParadasLineaPresenter;
 import com.air.mover.view.IListParadasView;
 import com.air.mover.view.ListParadasLineaAdapter;
 import com.air.mover.view.callbacks.CallbackParadasLinea;
-
 import java.util.List;
-
 
 /**
  *  Esta clase se encarga de definir y gestionar la vista correspondiente al fragmento paradas todas de la aplicacion

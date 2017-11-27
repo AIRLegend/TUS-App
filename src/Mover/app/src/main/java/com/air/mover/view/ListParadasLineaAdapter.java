@@ -6,11 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.air.mover.R;
 import com.air.mover.dao.model.Parada;
 import com.air.mover.presenter.CommonUtils;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
