@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp">
+
+
+    <ImageView
+        android:id="@+id/imageViewBusEstimaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:adjustViewBounds="false"
+        android:src="@drawable/ic_directions_bus_black_24dp"
+        android:layout_marginLeft="5dp" />
+
+    <TextView
+        android:id="@+id/txtNumLinea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginLeft="40dp" />
+    />
+      <TextView
+          android:id="@+id/txtEstimacionSegundos"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:layout_alignLeft="@id/txtNumLinea"
+          android:textColor="@android:color/black"
+          android:textStyle="normal"
+          android:textSize="18sp"
+          android:layout_marginLeft="70dp" />
+
+
+  </RelativeLayout>

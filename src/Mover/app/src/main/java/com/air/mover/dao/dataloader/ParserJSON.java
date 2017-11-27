@@ -12,11 +12,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
-  *  Esta clase se encarga de realizar el parseo de los datos correspondientes a las lineas de los TUS de Santander.
-  *  Estos datos son leidos del Open Data proporcionado por el Ayuntamiento de Santander y son representados en un formato denominado JSON.
+ *  Esta clase se encarga de realizar el parseo de los datos correspondientes a las lineas de los TUS de Santander.
+ *  Estos datos son leidos del Open Data proporcionado por el Ayuntamiento de Santander y son representados en un formato denominado JSON.
  *
  *   @version 29/10/17
-  */
+ */
 
 public class ParserJSON
 {
@@ -33,27 +33,27 @@ public class ParserJSON
      */
     public static List<Linea> readArrayLineasBus (InputStream in) throws IOException
     {
-            JsonReader reader = new JsonReader(new InputStreamReader(in, UTF8));
-            List<Linea> listLineasBus = new ArrayList<>();
-            reader.beginObject(); //summary y resources
-            while (reader.hasNext()){
-                    String name = reader.nextName();
-                    if(name.equals (RECURSOS_JSON)){
-                        reader.beginArray(); //cada elemento del array es un object
-                        while(reader.hasNext()){
-                            listLineasBus.add(readLinea(reader));
-                        }//while
+        JsonReader reader = new JsonReader(new InputStreamReader(in, UTF8));
+        List<Linea> listLineasBus = new ArrayList<>();
+        reader.beginObject(); //summary y resources
+        while (reader.hasNext()){
+            String name = reader.nextName();
+            if(name.equals (RECURSOS_JSON)){
+                reader.beginArray(); //cada elemento del array es un object
+                while(reader.hasNext()){
+                    listLineasBus.add(readLinea(reader));
+                }//while
 
-                    }//if
-                    else{
-                        reader.skipValue();
-                    }//else
-            }
-            //Ordenamos la lista obtenida
-            Collections.sort(listLineasBus);
+            }//if
+            else{
+                reader.skipValue();
+            }//else
+        }
+        //Ordenamos la lista obtenida
+        Collections.sort(listLineasBus);
 
-            return listLineasBus;
-        }//readArrayLineasBus
+        return listLineasBus;
+    }//readArrayLineasBus
 
 
     /**
@@ -242,6 +242,84 @@ public class ParserJSON
         return new Parada(name,pX, pY, numParada);
 
     }//readParada
+
+    /**
+     * Método para obtener todas las lineas de buses
+     * @param in InputStream del JSON con las lineas de buses
+     * @return Lista con todas las lineas
+     * @throws IOException
+     */
+    public static List<Estimacion> readArrayEstimacionesParada (InputStream in) throws IOException
+    {
+        JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+        List<Estimacion> listEstimaciones = new ArrayList<>();
+        reader.beginObject(); //summary y resources
+        while (reader.hasNext()){
+            String name = reader.nextName();
+            if(name.equals ("resources")){
+                reader.beginArray(); //cada elemento del array es un object
+                while(reader.hasNext()){
+                    readEstimacion(reader, listEstimaciones);
+                }//while
+
+            }//if
+            else{
+                reader.skipValue();
+            }//else
+        }
+
+        Collections.sort(listEstimaciones);
+        return listEstimaciones;
+    }//readArrayLineasBus
+
+    public static void readEstimacion (JsonReader reader, List<Estimacion> listaEstimacion) throws IOException
+    {
+        reader.beginObject(); //Leemos un object
+        String numParada ="";
+        String numLinea = "";
+        String estimacionEnSegundos1="";
+        String estimacionEnSegundos2="";
+        while(reader.hasNext())
+        {
+            String n = reader.nextName();
+            if (n.equals("ayto:paradaId"))
+            {
+                numParada = reader.nextString();
+            }//if
+            else if (n.equals("ayto:etiqLinea"))
+            {
+                numLinea = reader.nextString();
+            }//else if
+            else if (n.equals("ayto:tiempo1"))
+            {
+                estimacionEnSegundos1= reader.nextString();
+            }//else if
+            else if (n.equals("ayto:tiempo2"))
+            {
+                estimacionEnSegundos2 = reader.nextString();
+            }//else if
+            else
+            {
+                reader.skipValue();
+            }//else
+        }//while
+        if (!numLinea.contains("N")) {
+            if(!estimacionEnSegundos1.equals(""))
+            {
+                listaEstimacion.add(new Estimacion(numLinea,numParada,convierteAMinutos(estimacionEnSegundos1)));
+            }
+            if(!estimacionEnSegundos2.equals(""))
+            {
+                listaEstimacion.add(new Estimacion(numLinea,numParada,convierteAMinutos(estimacionEnSegundos2)));
+            }
+        }
+        reader.endObject();
+    }//readParada
+
+    private static String convierteAMinutos(String segundos)
+    {
+        return Integer.toString(Integer.parseInt(segundos)/60);
+    }
 
 
 }//ParserJSON

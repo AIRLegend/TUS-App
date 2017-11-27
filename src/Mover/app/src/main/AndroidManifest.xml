@@ -26,7 +26,7 @@
         </activity>
         <activity android:name=".view.DetallesLineaActivity" />
         <activity
-            android:name=".DetallesParadaActivity"
+            android:name=".view.DetallesParadaActivity"
             android:label="@string/title_activity_detalles_parada"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

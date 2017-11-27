@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.air.mover.DetallesParadaActivity;
 import com.air.mover.R;
 import com.air.mover.dao.model.Linea;
 import com.air.mover.dao.model.Parada;

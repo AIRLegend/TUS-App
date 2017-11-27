@@ -28,7 +28,7 @@ public class RemoteFetch {
     public static final String URL_PARADAS_INFO= "http://datos.santander.es/api/rest/datasets/paradas_bus.json?items=2300";
 
     //Estimacion del tiempo de llegada
-    public static final String URL_ESTIMACION= "http://datos.santander.es/api/rest/datasets/control_flotas_estimaciones.json?items=2300";
+    public static final String URL_ESTIMACION= "http://datos.santander.es/api/rest/datasets/control_flotas_estimaciones.json?query=ayto\\:paradaId:";
 
     private static BufferedInputStream bufferedData;
 
@@ -44,10 +44,10 @@ public class RemoteFetch {
      * @throws IOException
      */
     public static void getJSON(String urlJSON) throws IOException {
-            URL url = new URL(urlJSON);
-            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.addRequestProperty("Accept", "application/json");
-            bufferedData =  new BufferedInputStream(urlConnection.getInputStream());
+        URL url = new URL(urlJSON);
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.addRequestProperty("Accept", "application/json");
+        bufferedData =  new BufferedInputStream(urlConnection.getInputStream());
     }//getJSON
 
     /**
