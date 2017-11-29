@@ -1,0 +1,15 @@
+{"summary":{"items":33,"items_per_page":1000,"pages":1,"current_page":1},"resources":[
+  {
+    "ayto:tiempo1":"25",
+    "ayto:distancia2":"0",
+    "ayto:destino1":"CUETO por el SARDINERO",
+    "ayto:distancia1":"2322",
+    "ayto:paradaId":"463",
+    "ayto:destino2":"CUETO por el SARDINERO",
+    "ayto:fechActual":"2017-11-28T07:45:11.260Z",
+    "dc:modified":"2017-11-28T07:45:14.788Z",
+    "dc:identifier":"111",
+    "ayto:etiqLinea":"20",
+    "uri":"http://datos.santander.es/api/datos/control_flotas_estimaciones/111.json"}
+]
+}

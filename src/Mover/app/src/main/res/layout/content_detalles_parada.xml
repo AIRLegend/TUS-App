@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.air.mover.DetallesParadaActivity"
+    tools:context="com.air.mover.view.DetallesParadaActivity"
     tools:showIn="@layout/activity_detalles_parada">
 
     <LinearLayout
@@ -13,17 +13,28 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listaEstimacionesParada"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="25dp">
+        </android.support.v7.widget.RecyclerView>
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:text="@string/comentario_title" />
+            android:paddingTop="25dp"
+            android:text="@string/comentario_title"/>
 
         <EditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/txt_sug_notas_vacio"
             android:ems="10"
             android:inputType="textMultiLine" />
         <Button
@@ -32,6 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/save_comment"
             style="@style/Widget.AppCompat.Button.Colored"/>
+
 
 
     </LinearLayout>

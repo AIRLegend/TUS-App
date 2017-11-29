@@ -184,7 +184,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8A() throws Exception {
-        Assert.assertEquals(filterLineas(l, "12").size(), 1);
+        Assert.assertEquals(1,filterLineas(l, "12").size());
     }//U8A
 
     /**
@@ -193,7 +193,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8B() throws Exception {
-        Assert.assertEquals(filterLineas(l, "50").size(), 0);
+        Assert.assertEquals(0,filterLineas(l, "50").size());
     }//U8B
 
     /**
@@ -202,9 +202,9 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8C() throws Exception {
-        Assert.assertEquals(filterLineas(l, "5").size(), 4);
-        Assert.assertEquals(filterLineas(l, "5C").size(), 2);
-        Assert.assertEquals(filterLineas(l, "5C1").size(), 1);
+        Assert.assertEquals(4,filterLineas(l, "5").size());
+        Assert.assertEquals(2,filterLineas(l, "5C").size());
+        Assert.assertEquals(1,filterLineas(l, "5C1").size());
     }//U8C
 
     /**
@@ -213,7 +213,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8D() throws Exception {
-        Assert.assertEquals(filterLineas(l, "PLAZA DE LOS REMEDIOS").size(), 1);
+        Assert.assertEquals(1,filterLineas(l, "PLAZA DE LOS REMEDIOS").size());
     }//U8D
 
     /**
@@ -222,7 +222,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8E() throws Exception {
-        Assert.assertEquals(filterLineas(l, "Ojaiz-piquio").size(), 1);
+        Assert.assertEquals(1,filterLineas(l, "Ojaiz-piquio").size());
     }//U8E
 
     /**
@@ -231,7 +231,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8F() throws Exception {
-        Assert.assertEquals(filterLineas(l, "PcTcAn-VaLdEnOjA").size(), 1);
+        Assert.assertEquals(1,filterLineas(l, "PcTcAn-VaLdEnOjA").size());
     }//U8F
 
     /**
@@ -240,7 +240,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8G() throws Exception {
-        Assert.assertEquals(filterLineas(l, "Valdec").size(), 3);
+        Assert.assertEquals(3,filterLineas(l, "Valdec").size());
     }//U8G
 
     /**
@@ -249,7 +249,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8H() throws Exception {
-        Assert.assertEquals(filterLineas(l, "Unican").size(), 0);
+        Assert.assertEquals(0,filterLineas(l, "Unican").size());
     }//U8H
 
     /**
@@ -258,7 +258,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8I() throws Exception {
-        Assert.assertEquals(filterLineas(l, "13 LLUJA-CUETO").size(), 1);
+        Assert.assertEquals(1,filterLineas(l, "13 LLUJA-CUETO").size());
     }//U8I
 
     /**
@@ -267,7 +267,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8J() throws Exception {
-        Assert.assertEquals(filterLineas(l, "13 UNICAN").size(), 0);
+        Assert.assertEquals(0,filterLineas(l, "13 UNICAN").size());
     }//U8J
 
     /**
@@ -276,7 +276,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8K() throws Exception {
-        Assert.assertEquals(filterLineas(l, "90 PLAZA DE LOS REMEDIOS").size(), 0);
+        Assert.assertEquals(0,filterLineas(l, "90 PLAZA DE LOS REMEDIOS").size());
 
     }//U8K
 
@@ -286,7 +286,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8L() throws Exception {
-        Assert.assertEquals(filterLineas(l, "13 PLAZA DE LOS REMEDIOS").size(), 0);
+        Assert.assertEquals(0,filterLineas(l, "13 PLAZA DE LOS REMEDIOS").size());
     }//U8L
 
     /**
@@ -295,7 +295,7 @@ public class CommonUtilsTest {
      */
     @Test
     public void U8M() throws Exception {
-        Assert.assertEquals(filterLineas(l, "13  LLUJA-CUETO").size(), 1);
+        Assert.assertEquals(1,filterLineas(l, "13  LLUJA-CUETO").size());
     }//U8M
 
 }

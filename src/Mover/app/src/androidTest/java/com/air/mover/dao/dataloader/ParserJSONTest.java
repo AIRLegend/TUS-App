@@ -4,6 +4,7 @@ import android.support.test.InstrumentationRegistry;
 import android.util.JsonReader;
 
 import com.air.mover.R;
+import com.air.mover.dao.model.Estimacion;
 import com.air.mover.dao.model.Linea;
 import com.air.mover.dao.model.Parada;
 
@@ -13,6 +14,7 @@ import org.junit.Test;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -299,6 +301,149 @@ public class ParserJSONTest {
         }catch(Exception e){
             Assert.fail("La lista debería tener 2 lineas");
             e.printStackTrace();
+        }
+    }
+    //PRUEBAS UNITARIAS US-VerEstimaciones
+
+/*
+Test que comprueba que readEstimacion() lee correctamente el objeto correspondiente
+cuando este contiene las 2 proximas llegadas.
+ */
+    @Test
+    public void U13A() throws Exception{
+        try{
+            List<Estimacion> list = new ArrayList<>();
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.estimaciones_test_readestimacion);//cambiar por json de estimaciones
+            JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+            ParserJSON.readEstimacion(reader, list);
+
+            Assert.assertEquals("20",list.get(0).getNumLinea());
+            Assert.assertEquals("463",list.get(0).getNumParada());
+            Assert.assertEquals("0",list.get(0).getTiempoParaLlegada());
+
+
+            Assert.assertEquals("20",list.get(1).getNumLinea());
+            Assert.assertEquals("463",list.get(1).getNumParada());
+            Assert.assertEquals("0",list.get(1).getTiempoParaLlegada());
+
+        }catch(Exception e){
+            Assert.fail("Error");
+            e.printStackTrace();
+
+        }
+    }
+/*
+Test que comprueba que readEstimacion() lee correctamente el objeto correspondiente
+cuando este contiene unicamente 1 proxima llegada.
+ */
+    @Test
+    public void U13B() throws Exception{
+        try{
+            List<Estimacion> list = new ArrayList<>();
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.estimaciones_test_readestimacion1);//cambiar por json de estimacion
+            JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+            ParserJSON.readEstimacion(reader, list);
+
+            Assert.assertEquals("20",list.get(0).getNumLinea());
+            Assert.assertEquals("463",list.get(0).getNumParada());
+            Assert.assertEquals("0",list.get(0).getTiempoParaLlegada());
+
+        }catch(Exception e){
+            Assert.fail("Error");
+            e.printStackTrace();
+
+        }
+    }
+
+    /*
+Test que comprueba que readEstimacion() no rellena la lista pasada como
+parametro cuando intenta leer un json vacio.
+ */
+    @Test
+    public void U13C() throws Exception{
+        try{
+            List<Estimacion> list = new ArrayList<>();
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.estimaciones_test_readestimacion_vacio);//cambiar por json de estimacion vacio
+            JsonReader reader = new JsonReader(new InputStreamReader(is, "UTF-8"));
+            ParserJSON.readEstimacion(reader, list);
+
+            Assert.assertEquals(0,list.size());
+
+        }catch(Exception e){
+            Assert.fail("Error");
+            e.printStackTrace();
+
+        }
+    }
+    /*
+    Test que comprueba que el metodo readArrayEstimacionesParada()
+    devuelve una lista vacia al leeer un json sin estimaciones
+     */
+    @Test
+    public void U14A() throws Exception{
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.estimaciones_test_vacio);//json estimaciones vacio
+            List<Estimacion> e = ParserJSON.readArrayEstimacionesParada(is);
+
+            Assert.assertEquals(0,e.size());
+
+        }catch(Exception e){
+            Assert.fail("Error");
+            e.printStackTrace();
+
+        }
+    }
+
+    /*
+Test que comprueba que el metodo readArrayEstimacionesParada()
+devuelve una lista de 1 elemento al leeer un json con 1 estimacion.
+ */
+    @Test
+    public void U14B() throws Exception{
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.estimaciones_test_1);//json estimaciones vacio
+            List<Estimacion> e = ParserJSON.readArrayEstimacionesParada(is);
+
+            Assert.assertEquals("20",e.get(0).getNumLinea());
+            Assert.assertEquals("463",e.get(0).getNumParada());
+            Assert.assertEquals("0",e.get(0).getTiempoParaLlegada());
+
+
+        }catch(Exception e){
+
+        }
+    }
+
+    /*
+Test que comprueba que el metodo readArrayEstimacionesParada()
+devuelve una lista de varios elementos al leeer un json con mas de una estimacion.
+*/
+    @Test
+    public void U14C() throws Exception{
+        try{
+            InputStream is = InstrumentationRegistry.getTargetContext().getResources().openRawResource(R.raw.estimaciones_test);//json estimaciones vacio
+            List<Estimacion> e = ParserJSON.readArrayEstimacionesParada(is);
+
+            Assert.assertEquals("20",e.get(0).getNumLinea());
+            Assert.assertEquals("463",e.get(0).getNumParada());
+            Assert.assertEquals("0",e.get(0).getTiempoParaLlegada());
+
+            Assert.assertEquals("20",e.get(1).getNumLinea());
+            Assert.assertEquals("463",e.get(1).getNumParada());
+            Assert.assertEquals("0",e.get(1).getTiempoParaLlegada());
+
+            Assert.assertEquals("21",e.get(2).getNumLinea());
+            Assert.assertEquals("467",e.get(2).getNumParada());
+            Assert.assertEquals("0",e.get(2).getTiempoParaLlegada());
+
+            Assert.assertEquals("21",e.get(3).getNumLinea());
+            Assert.assertEquals("467",e.get(3).getNumParada());
+            Assert.assertEquals("1",e.get(3).getTiempoParaLlegada());
+
+        }catch(Exception e){
+            Assert.fail("Error");
+            e.printStackTrace();
+
         }
     }
 }

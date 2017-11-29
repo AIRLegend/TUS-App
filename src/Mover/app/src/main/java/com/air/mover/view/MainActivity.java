@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.air.mover.DetallesParadaActivity;
 import com.air.mover.R;
 import com.air.mover.dao.model.Linea;
 import com.air.mover.dao.model.Parada;
@@ -139,23 +138,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
 
+    /**
+     * Metodo que se ejecuta cuando se rescata una actividad de memoria (al volver a la app,
+     * de otra activity...)
+     */
     @Override
     public void onResume() {
         super.onResume();
         isChangingActivity = false;
     }
-
-    /**
-     *  Metodo que se ejecuta cuando se reinicia la app y hace que la activity se ponga por defecto en
-     *  la primera pestana de lineas.
-
-    @Override
-    protected void onStart()
-    {
-        super.onStart();
-        onNavigationItemSelected(mBottomBar.getMenu().getItem(0));
-        mBottomBar.setSelectedItemId(R.id.action_lineas);
-    } //onStart
-
-    // */
 }

@@ -45,17 +45,16 @@ public class ListLineasPresenterTest {
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
-                listLineasPresenter = new ListLineasPresenter(mActivityTestRule.getActivity().getApplicationContext(),
-                        new LineasTodasFragment());
+                listLineasPresenter = new ListLineasPresenter(new LineasTodasFragment());
             }
         });
-        Assert.assertEquals("URL correcta, con conexion a internet",true, listLineasPresenter.obtenLineas());
+        Assert.assertEquals("Error, no se han obtenido las líneas ",true, listLineasPresenter.obtenLineas());
         List<Linea> l = listLineasPresenter.getListaLineasBus();
-        Assert.assertEquals("El tamaño de la lista es diferente",33,l.size());
+        Assert.assertTrue("El tamaño de la lista es diferente",l.size()>0);
     }//I1A
 
     /**
-     * Test para comprobar que el metodo obtenLineas() retorne true cuando la url dada es incorrecta,
+     * Test para comprobar que el metodo obtenLineas() retorne false cuando la url dada es incorrecta,
      * haya conexión a internet y el numero de lineas sea 0.
      * @throws Exception
      */
@@ -67,8 +66,7 @@ public class ListLineasPresenterTest {
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
-                listLineasPresenter = new ListLineasPresenter(mActivityTestRule.getActivity().getApplicationContext(),
-                        new LineasTodasFragment()){
+                listLineasPresenter = new ListLineasPresenter(new LineasTodasFragment()){
                     /**
                      * Sobreescribir el metodo obtenLineas() cambiando la url original por una incorrecta
                      */
@@ -87,7 +85,7 @@ public class ListLineasPresenterTest {
                 };
             }
         });
-        Assert.assertEquals(false, listLineasPresenter.obtenLineas());
+        Assert.assertEquals("Error, no se deberian obtener las líneas",false, listLineasPresenter.obtenLineas());
     }//I1B
 
     /**
@@ -104,11 +102,10 @@ public class ListLineasPresenterTest {
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
-                listLineasPresenter = new ListLineasPresenter(mActivityTestRule.getActivity().getApplicationContext(),
-                        new LineasTodasFragment());
+                listLineasPresenter = new ListLineasPresenter(new LineasTodasFragment());
             }
         });
-        Assert.assertEquals(false,listLineasPresenter.obtenLineas());
+        Assert.assertEquals("Error, no se deberian obtener las líneas",false,listLineasPresenter.obtenLineas());
     }//I1C
 
     /**

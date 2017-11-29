@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 /**
- * Created by air on 7/11/17.
+ *  Esta clase define la vista para cada parada
+ *
+ *  @version 07/11/17
  */
-
 public class ListParadasLineaAdapter extends RecyclerView.Adapter<ListParadasLineaAdapter.ViewHolderParadasLinea> {
 
     Context context;

@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.air.mover.DetallesParadaActivity;
 import com.air.mover.R;
 import com.air.mover.dao.model.Parada;
 import com.air.mover.presenter.ListParadasLineaPresenter;

@@ -164,7 +164,7 @@ public class ListParadasLineaPresenterTest {
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()),1);
             }
         });
-        Assert.assertEquals("URL correcta, con conexion a internet",true,
+        Assert.assertEquals("Error, no se han obtenido las paradas",true,
                 listParadasLineaPresenter.obtenParadasLineas(1));
     }//I2A
 
@@ -186,7 +186,8 @@ public class ListParadasLineaPresenterTest {
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()), 1);
             }
         });
-        Assert.assertEquals(false,listParadasLineaPresenter.obtenParadasLineas(1));
+        Assert.assertEquals("Error, no se deberian obtener las paradas",false,
+                listParadasLineaPresenter.obtenParadasLineas(1));
     }//I2B
 
     /**
@@ -206,12 +207,12 @@ public class ListParadasLineaPresenterTest {
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()),0);
             }
         });
-        Assert.assertEquals("El identificador de la línea no existe",true,
+        Assert.assertEquals("Error en la obtención de las paradas",true,
                 listParadasLineaPresenter.obtenParadasLineas(0));
     }//I2C
 
     /**
-     * Test para comprobar que el metodo obtenParadasLinea() retorne true(false) cuando la url dada es correcta,
+     * Test para comprobar que el metodo obtenParadasLinea() retorne true cuando la url dada es correcta,
      * haya conexión a internet y el identificador de la línea es mayor que 0 y no existente.
      * @throws Exception
      */
@@ -227,7 +228,7 @@ public class ListParadasLineaPresenterTest {
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()),100000);
             }
         });
-        Assert.assertEquals("El identificador de la línea no existe",true,
+        Assert.assertEquals("Error en la obtención de las paradas",true,
                 listParadasLineaPresenter.obtenParadasLineas(100000));
         // comprobamos que la lista de paradas de la línea esta vacía
         // si metemos un identificador inexistente
@@ -252,7 +253,7 @@ public class ListParadasLineaPresenterTest {
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()),-1);
             }
         });
-        Assert.assertEquals("El identificador de la línea no existe",false,
+        Assert.assertEquals("Error, no se deberian obtener las paradas",false,
                 listParadasLineaPresenter.obtenParadasLineas(-1));
     }//I2E
 
@@ -380,7 +381,7 @@ public class ListParadasLineaPresenterTest {
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()));
             }
         });
-        Assert.assertEquals("El identificador de la línea no existe",true,
+        Assert.assertEquals("Error en la obtención de paradas",true,
                 listParadasLineaPresenter.obtenParadasLineas(-10));
     }//I3A
 
@@ -402,7 +403,7 @@ public class ListParadasLineaPresenterTest {
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()));
             }
         });
-        Assert.assertEquals("El identificador de la línea no existe",true,
+        Assert.assertEquals("Error en la obtención de las paradas",true,
                 listParadasLineaPresenter.obtenParadasLineas(2));
     }//I3B
 
@@ -424,7 +425,8 @@ public class ListParadasLineaPresenterTest {
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()));
             }
         });
-        Assert.assertEquals(false, listParadasLineaPresenter.obtenParadasLineas(1));
+        Assert.assertEquals("Error, no se deberian obtener las paradas",false,
+                listParadasLineaPresenter.obtenParadasLineas(1));
     }//I3C
 
     /**
@@ -444,7 +446,8 @@ public class ListParadasLineaPresenterTest {
                         new ListParadasLineaAdapter(mActivityTestRule.getActivity().getApplicationContext()));
             }
         });
-        Assert.assertEquals(false, listParadasLineaPresenter.obtenParadasLineas(-1));
+        Assert.assertEquals("Error, no se deberian obtener las paradas",false,
+                listParadasLineaPresenter.obtenParadasLineas(-1));
     }//I3D
 
 

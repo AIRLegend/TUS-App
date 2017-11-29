@@ -1,6 +1,5 @@
 package com.air.mover.presenter;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -22,22 +21,18 @@ import java.util.List;
 public class ListLineasPresenter
 {
     private IListLineasView listLineasView; //Vista de las lineas de TUS
-    private List<Linea> listaLineasBus;
-    //private RemoteFetch remoteFetchLineas; //Modelo de datos lineas de TUS
-    private Context context;
+    private List<Linea> listaLineasBus; //Lista de las lineas
 
 
     /**
      * Metodo constructor que inicializa los atributos de
      * la clase
      *
-     * @param context contexto de la aplicacion
      * @param listLineasView vista donde se mostraran las lineas del TUS
      */
-    public ListLineasPresenter(Context context, IListLineasView listLineasView)
+    public ListLineasPresenter(IListLineasView listLineasView)
     {
         this.listLineasView = listLineasView;
-        this.context = context;
 
     }// ListLineasPresenter
 
