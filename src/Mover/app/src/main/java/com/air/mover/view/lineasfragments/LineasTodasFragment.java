@@ -70,7 +70,7 @@ public class LineasTodasFragment extends ListFragment implements IListLineasView
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        this.listLineasPresenter = new ListLineasPresenter(getContext(),this);
+        this.listLineasPresenter = new ListLineasPresenter(this);
         dialog= new ProgressDialog(getContext());
 
         if (getParentFragment() instanceof LineasFragment) {

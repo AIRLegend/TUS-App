@@ -3,8 +3,6 @@ package com.air.mover.view;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
@@ -13,30 +11,12 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.air.mover.R;
 import com.air.mover.dao.model.Estimacion;
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListAdapter;
-import android.widget.TextView;
-
-import com.air.mover.R;
-import com.air.mover.dao.model.Parada;
-import com.air.mover.presenter.CommonUtils;
-
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-
-
-
 import java.util.List;
 
 /**

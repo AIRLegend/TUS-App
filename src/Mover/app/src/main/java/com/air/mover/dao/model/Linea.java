@@ -98,6 +98,22 @@ public class Linea implements Comparable<Linea>
      }//compareTo
 
      @Override
+     public boolean equals(Object obj) {
+         if(obj instanceof Linea){
+             Linea l = (Linea) obj;
+             if(l.getName().equals(name) && l.getNumero().equals(numero) && l.getIdentifier()==identifier){
+                 return true;
+             }//if
+         }//if
+         return false;
+     }//equals
+
+     @Override
+     public int hashCode() {
+         return super.hashCode();
+     }
+
+     @Override
      public String toString()
      {
         return numero +" "+name;

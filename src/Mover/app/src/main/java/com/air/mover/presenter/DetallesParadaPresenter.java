@@ -3,7 +3,6 @@ package com.air.mover.presenter;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.BaseAdapter;
 
 import com.air.mover.view.DetallesParadaActivity;
 import com.air.mover.dao.database.Database;
