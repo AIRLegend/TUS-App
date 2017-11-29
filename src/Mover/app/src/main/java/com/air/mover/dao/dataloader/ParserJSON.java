@@ -2,7 +2,9 @@ package com.air.mover.dao.dataloader;
 
 import android.util.JsonReader;
 
-import com.air.mover.dao.model.*;
+import com.air.mover.dao.model.Linea;
+import com.air.mover.dao.model.Estimacion;
+import com.air.mover.dao.model.Parada;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -251,12 +253,12 @@ public class ParserJSON
      */
     public static List<Estimacion> readArrayEstimacionesParada (InputStream in) throws IOException
     {
-        JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
+        JsonReader reader = new JsonReader(new InputStreamReader(in, UTF8));
         List<Estimacion> listEstimaciones = new ArrayList<>();
         reader.beginObject(); //summary y resources
         while (reader.hasNext()){
             String name = reader.nextName();
-            if(name.equals ("resources")){
+            if(name.equals (RECURSOS_JSON)){
                 reader.beginArray(); //cada elemento del array es un object
                 while(reader.hasNext()){
                     readEstimacion(reader, listEstimaciones);

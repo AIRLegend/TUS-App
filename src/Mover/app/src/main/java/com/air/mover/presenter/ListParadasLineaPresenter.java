@@ -132,7 +132,7 @@ public class ListParadasLineaPresenter
 
 
         /**
-         * Método a través del cual se almacenan las lineas de buses en el atributo listaLineasBus
+         * Metodo a través del cual se almacenan las lineas de buses en el atributo listaLineasBus
          * de esta clase. Para realizar esto internamente realiza una llamada a la función
          * getJSON (RemoteFetch) para seguidamente parsear el JSON obtenido con la llamada
          * a readArrayLineasBus (ParserJSON)
