@@ -138,6 +138,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
 
+    /**
+     * Metodo que se ejecuta cuando se rescata una actividad de memoria (al volver a la app,
+     * de otra activity...)
+     */
     @Override
     public void onResume() {
         super.onResume();

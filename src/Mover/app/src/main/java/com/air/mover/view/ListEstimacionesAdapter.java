@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
+ * Adaptador de la lista de estimaciones de autobuses.
  * Created by Adribece on 24/11/2017.
  */
 
@@ -44,10 +45,13 @@ public class ListEstimacionesAdapter extends RecyclerView.Adapter<ListEstimacion
         return  new ViewHolderEstimacionesParada(viewRow);
     }//onCreateViewHolder
 
+    /**
+     * Metodo que se ejecuta al "acoplar" el ViewHolder a la view padre.
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(ViewHolderEstimacionesParada holder, int position) {
-
-
 
         //Modificacion del color del numero de la linea del TUS
         String numLinea=mData.get(position).getNumLinea();
@@ -64,8 +68,6 @@ public class ListEstimacionesAdapter extends RecyclerView.Adapter<ListEstimacion
         //Escribimos el numero de la linea del TUS
         holder.textViewNumeroLinea.setText(builder);
         holder.textViewEstimacionSegundos.setText(mData.get(position).getTiempoLlegadaParaMostrar()); //Forzar la conversion a String.
-
-
 
     }//onBindViewHolder
 

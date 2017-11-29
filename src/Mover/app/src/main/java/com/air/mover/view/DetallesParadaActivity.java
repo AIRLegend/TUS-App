@@ -16,15 +16,25 @@ import com.air.mover.R;
 import com.air.mover.dao.model.Parada;
 import com.air.mover.presenter.DetallesParadaPresenter;
 
+/**
+ * Activity correspondiente a los detalles de una parada. Aqui se muestra el nombre de la parada,
+ * las estimaciones de los próximos autobuses y un campo para editar las notas de la parada.
+ */
 public class DetallesParadaActivity extends AppCompatActivity implements ListEstimacionesAdapter.ItemClickListener
 {
 
-    ListEstimacionesAdapter adapterEstimacionesParada;
-    DetallesParadaPresenter listEstimacionesParadaPresenter;
+    private ListEstimacionesAdapter adapterEstimacionesParada;
+    private DetallesParadaPresenter listEstimacionesParadaPresenter;
     private ProgressDialog dialog;
     private EditText comment;
     private Parada parada;
 
+    /**
+     * Metodo que se ejecuta cuando se crea la activity. Se encarga
+     * de asociar la activity con su vista asi como de la gestion de esta
+     *
+     * @param savedInstanceState estado mas reciente de la activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +79,10 @@ public class DetallesParadaActivity extends AppCompatActivity implements ListEst
     }
 
 
-
+    /**
+     * Metodo que se ejecuta cuando se rescata una actividad de memoria (al volver a la app,
+     * de otra activity...)
+     */
     @Override
     public void onResume()
     {
@@ -78,12 +91,22 @@ public class DetallesParadaActivity extends AppCompatActivity implements ListEst
     }//onResume
 
 
+    /**
+     * Metodo que recoge el evento de click en un elemento de la lista.
+     * De momento pulsar estimaciones no hace nada.
+     * @param view View pulsada
+     * @param position Posicion de la lista pulsada
+     */
     @Override
     public void onItemClick(View view, int position)
     {
         Log.d("Estimacion pulsada =>", ""+position);
     }
 
+    /**
+     * Metodo que muestra un cuadro de carga si se llama con "true".
+     * @param state true => muestra el cuadro, false => no lo muestra.
+     */
     public void showProgress (boolean state)
     {
         if(state)
