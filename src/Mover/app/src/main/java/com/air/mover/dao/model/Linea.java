@@ -97,6 +97,12 @@ public class Linea implements Comparable<Linea>
          return identifier - linea.getIdentifier();
      }//compareTo
 
+     /**
+      * Metodo que se encarga de dictaminar si el objeto pasado como parametro
+      * es igual al objeto this
+      * @param obj objeto con el que se comprueba si es igual
+      * @return true si es igual, false en caso contrario
+      */
      @Override
      public boolean equals(Object obj) {
          if(obj instanceof Linea){
@@ -108,11 +114,19 @@ public class Linea implements Comparable<Linea>
          return false;
      }//equals
 
+     /**
+      * Metodo encargado de generar el codigo hash del objeto this
+      * @return codigo hash del objeto this
+      */
      @Override
      public int hashCode() {
          return super.hashCode();
-     }
+     }//hashCode
 
+     /**
+      * Metodo encargado de describir el objeto this a modo de string
+      * @return descripcion del objeto this
+      */
      @Override
      public String toString()
      {

@@ -16,19 +16,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by air on 22/11/17.
+ * Esta clase forma el enlace entre el modelo de datos de los detalles de una parada y
+ * la vista correspondiente a los detalles de una parada de la aplicacion
+ *
+ * @version 22/11/17
  */
-
 public class DetallesParadaPresenter {
 
-    private DetallesParadaActivity view;
-    private ListEstimacionesAdapter adapter;
-    private List<Estimacion> listaEstimacionesParada;
-    private Context context;
-    private int numParada;
+    private DetallesParadaActivity view; //Vista de los detalles de una parada
+    private ListEstimacionesAdapter adapter; //Adaptador utilizado para mostrar las estimaciones asociados a la parada
+    private List<Estimacion> listaEstimacionesParada; //Lista de estimaciones para la parada
+    private Context context; //Estado actual de la aplicacion
+    private int numParada;//Numero de la parada sobre la cual se consulta informacion
 
-
-
+    /**
+     * Metodo constructor que inicializa los atributos de la clase
+     *
+     * @param context estado actual de la aplicacion
+     * @param adapter Adaptador utilizado para mostrar las estimaciones de la parada
+     * @param numParada Numero de la parada sobre la cual se consultan sus detalles
+     */
     public  DetallesParadaPresenter(Context context, ListEstimacionesAdapter adapter, int numParada) {
         this.context = context;
         this.adapter=adapter;
@@ -39,17 +46,23 @@ public class DetallesParadaPresenter {
      * Carga un comentario de la base de datos y lo muestra en la vista.
      * @param name nombre de la parada
      */
-    public void loadComment(int id, String name) {
+    public void loadComment(int id, String name)
+    {
         Parada loaded = Database.getCommentParada(id, name,context);
         if (loaded.getComentarios() == null) {
             view.setComment("");
-        } else {
+        }//if
+        else {
             view.setComment(loaded.getComentarios());
-        }
+        }//else
+    }//loadComment
 
-
-    }
-
+    /**
+     * Modifica un comentario de la base de datos
+     * @param id id del comentario
+     * @param nombre nombre de la parada
+     * @param comment comentario asociado
+     */
     public  void setComment(int id, String nombre, String comment) {
         Database.addComment(id,nombre,comment, context);
     }
@@ -58,7 +71,7 @@ public class DetallesParadaPresenter {
 
 
     /**
-     * Clase asincrona que permite descargar las lineas de TUS de internet
+     * Clase asincrona que permite descargar las estimaciones para una parada
      * asi como de almacenarlas. Tambien se encarga de la gestion de la vista
      * durante el proceso entero de descarga y visualizacion
      */
@@ -73,8 +86,9 @@ public class DetallesParadaPresenter {
         {
             if (context instanceof DetallesParadaActivity)
             {
+                //Indicamos al usuario que se estan descargando las estimaciones
                 view.showProgress(true);
-            }
+            }//if
         }//onPreExecute
 
         /**
@@ -109,17 +123,19 @@ public class DetallesParadaPresenter {
 
                 if (context instanceof DetallesParadaActivity) {
                     ((DetallesParadaActivity) (context)).showProgress(false);
-                }
+                }//if
                 else
                 {
                     view.showProgress(false);
-                }
+                }//else
+
+                //Actualizamos el adapter de estimaciones para que se muestren por pantalla
                 adapter.setListaEstimaciones(estimacionesParada);
                 adapter.updateData(estimacionesParada);
             }//if
-        }
+        } //onPostExecute
 
-    }
+    } //LeerEstimacionesInternet
 
 
     /**
@@ -128,30 +144,49 @@ public class DetallesParadaPresenter {
      */
     public void start()
     {
-        //Procedemos a la lectura de la informacion sobre las lineas proporcionadas por el ayuntamiento
+        //Procedemos a la lectura de la informacion sobre las estimaciones de la parada proporcionadas por el ayuntamiento
         LeerEstimacionesInternet leerLineasInternet= new LeerEstimacionesInternet();
         leerLineasInternet.execute();
 
     }// start
 
-
+    /**
+     * Metodo que asigna la view para mostrar todas las estimaciones de TUS
+     *
+     * @param view view para mostrar todas las estimaciones de TUS
+     */
     public void setListaEstimacionesParadaView(DetallesParadaActivity view)
     {
         this.view= view;
     }
 
+    /**
+     * Metodo que se encarga de actualizar los datos del adapter correspondiente
+     * a los detalles de la parada
+     */
     public void updateData()
     {
         adapter.updateData(listaEstimacionesParada);
     }
 
 
-
+    /**
+     * Metodo que asigna una lista de estimaciones a la parada
+     *
+     * @param listaEstimacionesParada lista de estimaciones
+     */
     public void setListaEstimacionesBus(List<Estimacion> listaEstimacionesParada)
     {
         this.listaEstimacionesParada = listaEstimacionesParada;
     }
 
+    /**
+     * Metodo a través del cual se almacenan las estimaciones para la parada.
+     * Para realizar esto internamente realiza una llamada a la función
+     * getJSON (RemoteFetch) para seguidamente parsear el JSON
+     * @return true si se han podido almacenar las estimaciones
+     * @throws Exception si ha habido problemas para descargar las estimaciones
+     */
     public boolean obtenEstimacionesParada(int identificadorParada)
     {
         try
@@ -164,14 +199,16 @@ public class DetallesParadaPresenter {
             Log.e("ERROR","Error en la obtención de las estimaciones de Bus: "+e.getMessage());
             return false;
         }//catch
-    }//obtenLineas
+    }//obtenEstimacionesParada
 
 
+    /**
+     * Metodo observador de la lista de estimaciones almacenada
+     *
+     * @return lista de estimaciones para la parada
+     */
     public List<Estimacion> getListaEstimacionesParada() {
         return this.listaEstimacionesParada;
-    }//getListaLineasBus
+    }//getListaEstimacionesParada
 
-
-
-
-}
+}//DetallesParadaPresenter

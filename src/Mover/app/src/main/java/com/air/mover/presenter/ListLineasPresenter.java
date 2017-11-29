@@ -21,7 +21,7 @@ import java.util.List;
 public class ListLineasPresenter
 {
     private IListLineasView listLineasView; //Vista de las lineas de TUS
-    private List<Linea> listaLineasBus;
+    private List<Linea> listaLineasBus; //Lista de las lineas
 
 
     /**

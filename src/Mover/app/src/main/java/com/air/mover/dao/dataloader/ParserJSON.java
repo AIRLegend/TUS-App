@@ -246,9 +246,9 @@ public class ParserJSON
     }//readParada
 
     /**
-     * Método para obtener todas las lineas de buses
+     * Método para obtener todas las estimaciones existentes para una parada
      * @param in InputStream del JSON con las lineas de buses
-     * @return Lista con todas las lineas
+     * @return Lista con todas las estimaciones para la parada
      * @throws IOException
      */
     public static List<Estimacion> readArrayEstimacionesParada (InputStream in) throws IOException
@@ -270,13 +270,23 @@ public class ParserJSON
             }//else
         }
 
+        //Ordenamos las estimaciones de menor a mayor tiempo restante para la llegada de la linea a la parada
         Collections.sort(listEstimaciones);
-        return listEstimaciones;
-    }//readArrayLineasBus
 
+        return listEstimaciones;
+    }//readArrayEstimacionesParada
+
+
+    /**
+     * Metodo que se encarga de leer y crear dos estimaciones de TUS a partir del lector pasado como parametro.
+     * Ademas añade esas dos estimaciones a una lista pasada como parametro
+     * @param reader lector de los datos con formato JSON
+     * @param listaEstimacion lista sobre la que se anhadiran las dos estimaciones leidas
+     */
     public static void readEstimacion (JsonReader reader, List<Estimacion> listaEstimacion) throws IOException
     {
         reader.beginObject(); //Leemos un object
+
         String numParada ="";
         String numLinea = "";
         String estimacionEnSegundos1="";
@@ -305,23 +315,32 @@ public class ParserJSON
                 reader.skipValue();
             }//else
         }//while
+
         if (!numLinea.contains("N")) {
             if(!estimacionEnSegundos1.equals(""))
             {
+                //Se trata de una estimacion no vacia, luego anhadimos la estimacion
                 listaEstimacion.add(new Estimacion(numLinea,numParada,convierteAMinutos(estimacionEnSegundos1)));
-            }
+            }//if
             if(!estimacionEnSegundos2.equals(""))
             {
+                //Se trata de una estimacion no vacia, luego anhadimos la estimacion
                 listaEstimacion.add(new Estimacion(numLinea,numParada,convierteAMinutos(estimacionEnSegundos2)));
-            }
-        }
+            }//if
+        }//if
         reader.endObject();
-    }//readParada
+    }//readEstimacion
 
+    /**
+     * Metodo encargado de transformar de segundos a minutos el tiempo pasado
+     * por parametro
+     * @param segundos tiempo en segundos a ser convertidos
+     * @return tiempo en minutos
+     */
     private static String convierteAMinutos(String segundos)
     {
         return Integer.toString(Integer.parseInt(segundos)/60);
-    }
+    }//convierteAMinutos
 
 
 }//ParserJSON
